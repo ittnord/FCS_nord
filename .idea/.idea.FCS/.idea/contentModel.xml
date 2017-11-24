@@ -86,6 +86,10 @@
             </e>
           </e>
           <e p="Resources" t="Include">
+            <e p="Bluenoise64" t="Include">
+              <e p="COPYING.txt" t="Include" />
+              <e p="LICENSE.txt" t="Include" />
+            </e>
             <e p="Shaders" t="Include">
               <e p="ACES.cginc" t="Include" />
               <e p="AmbientOcclusion.cginc" t="Include" />
@@ -370,6 +374,7 @@
             </e>
           </e>
           <e p="Network" t="Include">
+            <e p="Instruction.txt" t="Include" />
             <e p="Scripts" t="Include">
               <e p="Lobby" t="Include">
                 <e p="LobbyHook.cs" t="Include" />
