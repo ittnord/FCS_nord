@@ -1,23 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace FCS
 {
-    public interface ICharacter
-    {
-        event Action<IStat> OnStatChanged;
-        event Action<IStat> OnStatDie;
-
-        HashSet<IStat> GetStats();
-        List<IAbility> GetAbilities();
-    }
-
-    public class Character : ICharacter
+    public class Character : MonoBehaviour
     {
         private readonly HashSet<IStat> _stats = new HashSet<IStat>();
-        private readonly List<IAbility> _abilities = new List<IAbility>();
-
 
         public event Action<IStat> OnStatChanged;
         public event Action<IStat> OnStatDie;
@@ -25,16 +15,6 @@ namespace FCS
         public HashSet<IStat> GetStats()
         {
             return _stats;
-        }
-
-        public List<IAbility> GetAbilities()
-        {
-            return _abilities;
-        }
-
-        public void Use(IAbility ability)
-        {
-            // TODO: implement me
         }
 
         public void Change(StatType type, int value)
