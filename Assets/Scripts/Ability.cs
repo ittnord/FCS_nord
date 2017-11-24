@@ -21,11 +21,16 @@ namespace FCS
 
             if (_distance > MaxDistance)
             {
-                Destroy(gameObject);
+                OnMaxDistance();
             }
         }
 
-        public void OnCollideWithEnvironment(Environment env)
+        public virtual void OnMaxDistance()
+        {
+            Destroy(gameObject);
+        }
+
+        public virtual void OnCollideWithEnvironment(Environment env)
         {
             Debug.Log("FUCK EAH!");
             Destroy(gameObject);

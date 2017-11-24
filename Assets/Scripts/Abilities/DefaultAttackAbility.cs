@@ -5,6 +5,12 @@ namespace FCS
 {
     public class DefaultAttackAbility : Ability
     {
-        
+        private const int _damage = -10;
+
+        public override void OnCollideWithCharacter(Character character)
+        {
+            character.Change(StatType.Hp, _damage);
+            Destroy(gameObject);
+        }
     }
 }

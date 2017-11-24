@@ -18,6 +18,11 @@ namespace FCS
         public event Action<IStat> OnStatChanged;
         public event Action<IStat> OnStatDie;
 
+        private void Start()
+        {
+            _stats.Add(new Stat(StatType.Hp, 100));
+        }
+
         public HashSet<IStat> GetStats()
         {
             return _stats;
