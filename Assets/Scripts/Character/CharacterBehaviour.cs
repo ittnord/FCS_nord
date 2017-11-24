@@ -6,7 +6,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace FCS
 {
-    public class Character : ThirdPersonCharacter
+    public class CharacterBehaviour : ThirdPersonCharacter
     {
         [SerializeField]
         private Ability _abilityPrefab;

@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace FCS
 {
+    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(Rigidbody))]
     public class Environment : MonoBehaviour
     {
         void OnTriggerEnter(Collider col)

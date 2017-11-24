@@ -4,12 +4,12 @@ namespace FCS
 {
     public class Ability : MonoBehaviour
     {
-        private Character _owner;
+        private CharacterBehaviour _owner;
         private IAbilityPerformer _performer;
 
         private float _distance;
 
-        public Character Caster;
+        public CharacterBehaviour Caster;
         public int Speed = 10;
         public int MaxDistance = 10;
 
@@ -36,7 +36,7 @@ namespace FCS
             Destroy(gameObject);
         }
 
-        public virtual void OnCollideWithCharacter(Character character)
+        public virtual void OnCollideWithCharacter(CharacterBehaviour character)
         {
             Debug.Log("FUCK EAH!");
             Destroy(gameObject);

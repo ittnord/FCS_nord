@@ -11,13 +11,12 @@ namespace Prototype.NetworkLobby
         protected bool isDisplayed = true;
         protected Image panelImage;
 
-        void Start()
+        private void Start()
         {
             panelImage = GetComponent<Image>();
         }
 
-
-        void Update()
+        private void Update()
         {
             if (!isInGame)
                 return;

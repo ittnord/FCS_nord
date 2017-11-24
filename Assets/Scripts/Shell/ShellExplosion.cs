@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using Character;
 
 public class ShellExplosion : NetworkBehaviour
 {
@@ -53,7 +54,7 @@ public class ShellExplosion : NetworkBehaviour
                 continue;
 
             // Find the TankHealth script associated with the rigidbody.
-            TankHealth targetHealth = targetRigidbody.GetComponent<TankHealth>();
+            CharacterHealth targetHealth = targetRigidbody.GetComponent<CharacterHealth>();
 
             // If there is no TankHealth script attached to the gameobject, go on to the next collider.
             if (!targetHealth)

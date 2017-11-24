@@ -2,7 +2,7 @@ namespace FCS
 {
     public interface IAbilityPerformer
     {
-        void Perform(Character character);
+        void Perform(CharacterBehaviour character);
         void Perform(Environment env);
     }
 }

@@ -3,15 +3,15 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace FCS
 {
-    [RequireComponent(typeof(Character))]
+    [RequireComponent(typeof(CharacterBehaviour))]
     public class MyCharacterController : ThirdPersonUserControl
     {
-        private Character _character;
+        private CharacterBehaviour _character;
 
         protected override void Start()
         {
             base.Start();
-            _character = GetComponent<Character>();
+            _character = GetComponent<CharacterBehaviour>();
         }
 
         protected override void Update()

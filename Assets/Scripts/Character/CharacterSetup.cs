@@ -1,0 +1,115 @@
+﻿using FCS.Managers;
+using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
+
+namespace FCS.Character
+{
+    public class CharacterSetup : NetworkBehaviour
+    {
+        [Header("UI")] 
+        [SerializeField]
+        private Text _nameText;
+
+        [Header("Network")] [Space] [SyncVar] 
+        private Color _color;
+
+        [SyncVar] 
+        private string _playerName;
+
+        //this is the player number in all of the players
+        [SyncVar] 
+        private int _playerNumber;
+
+        //This is the local ID when more than 1 player per client
+        [SyncVar] 
+        private int _localId;
+
+        [SyncVar] 
+        private bool _isReady = false;
+
+        //This allow to know if the crown must be displayed or not
+        protected bool isLeader = false;
+
+        public int LocalId
+        {
+            get { return _localId; }
+            set { _localId = value; }
+        }
+
+        public Color Color { get { return _color; } set { _color = value; } }
+        public string PlayerName { get { return _playerName; } set { _playerName = value; } }
+        public int PlayerNumber { get { return _playerNumber; } set { _playerNumber = value; } }
+        public bool IsReady { get { return _isReady; } set { _isReady = true; } }
+
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+
+            if (!isServer) //if not hosting, we had the tank to the gamemanger for easy access!
+                GameManager.AddCharacter(gameObject, _playerNumber, _color, _playerName, _localId);
+
+            GameObject TankRenderers = transform.Find("TankRenderers").gameObject;
+
+            // Get all of the renderers of the tank.
+            Renderer[] renderers = TankRenderers.GetComponentsInChildren<Renderer>();
+
+            // Go through all the renderers...
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                // ... set their material color to the color specific to this tank.
+                renderers[i].material.color = _color;
+            }
+
+            if (TankRenderers)
+                TankRenderers.SetActive(false);
+
+            _nameText.text = "<color=#" + ColorUtility.ToHtmlStringRGB(_color) + ">" + _playerName + "</color>";
+        }
+
+        [ClientCallback]
+        public void Update()
+        {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
+
+            if (GameManager.Instance.GameIsFinished && !_isReady)
+            {
+                if (Input.GetButtonDown("Fire" + (_localId + 1)))
+                {
+                    CmdSetReady();
+                }
+            }
+        }
+
+        public void SetLeader(bool leader)
+        {
+            RpcSetLeader(leader);
+        }
+
+        [ClientRpc]
+        public void RpcSetLeader(bool leader)
+        {
+            isLeader = leader;
+        }
+
+        [Command]
+        public void CmdSetReady()
+        {
+            _isReady = true;
+        }
+
+        public void ActivateCrown(bool active)
+        {
+//if we try to show (not hide) the crown, we only show it we are the current leader
+            _nameText.gameObject.SetActive(active);
+        }
+
+        public override void OnNetworkDestroy()
+        {
+            GameManager.RemoveCharacter(gameObject);
+        }
+    }
+}

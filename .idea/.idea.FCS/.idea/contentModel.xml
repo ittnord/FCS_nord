@@ -198,26 +198,47 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Abilities" t="Include">
+            <e p="DefaultAttackAbility.cs" t="Include" />
+          </e>
+          <e p="Ability.cs" t="Include" />
+          <e p="AbilityPerformer.cs" t="Include" />
           <e p="Camera" t="Include">
             <e p="CameraControl.cs" t="Include" />
           </e>
-          <e p="Game.cs" t="Include" />
-          <e p="Managers" t="Include">
-            <e p="GameManager.cs" t="Include" />
-            <e p="TankLobbyHook.cs" t="Include" />
-            <e p="TankManager.cs" t="Include" />
+          <e p="Character" t="Include">
+            <e p="CharacterBehaviour.cs" t="Include" />
+            <e p="CharacterHealth.cs" t="Include" />
+            <e p="CharacterMovement.cs" t="Include" />
+            <e p="CharacterSetup.cs" t="Include" />
+            <e p="CharacterShooting.cs" t="Include" />
+            <e p="CharaterHealth.cs" t="Include" />
           </e>
+          <e p="Environment.cs" t="Include" />
+          <e p="Game.cs" t="Include" />
+          <e p="IStat.cs" t="Include" />
+          <e p="Lobby" t="Include">
+            <e p="LobbyHook.cs" t="Include" />
+            <e p="LobbyInfoPanel.cs" t="Include" />
+            <e p="LobbyMainMenu.cs" t="Include" />
+            <e p="LobbyManager.cs" t="Include" />
+            <e p="LobbyPlayer.cs" t="Include" />
+            <e p="LobbyPlayerList.cs" t="Include" />
+            <e p="LobbyServerEntry.cs" t="Include" />
+            <e p="LobbyServerList.cs" t="Include" />
+            <e p="LobbyTopPanel.cs" t="Include" />
+          </e>
+          <e p="Managers" t="Include">
+            <e p="CharacterLobbyHook.cs" t="Include" />
+            <e p="CharacterManager.cs" t="Include" />
+            <e p="GameManager.cs" t="Include" />
+          </e>
+          <e p="MyCharacterController.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="Shell" t="Include">
             <e p="ShellExplosion.cs" t="Include" />
           </e>
           <e p="Singleton.cs" t="Include" />
-          <e p="Tank" t="Include">
-            <e p="TankHealth.cs" t="Include" />
-            <e p="TankMovement.cs" t="Include" />
-            <e p="TankSetup.cs" t="Include" />
-            <e p="TankShooting.cs" t="Include" />
-          </e>
           <e p="UI" t="Include">
             <e p="UIDirectionControl.cs" t="Include" />
           </e>
@@ -375,20 +396,6 @@
           </e>
           <e p="Network" t="Include">
             <e p="Instruction.txt" t="Include" />
-            <e p="Scripts" t="Include">
-              <e p="Lobby" t="Include">
-                <e p="LobbyHook.cs" t="Include" />
-                <e p="LobbyInfoPanel.cs" t="Include" />
-                <e p="LobbyMainMenu.cs" t="Include" />
-                <e p="LobbyManager.cs" t="Include" />
-                <e p="LobbyPlayer.cs" t="Include" />
-                <e p="LobbyPlayerList.cs" t="Include" />
-                <e p="LobbyServerEntry.cs" t="Include" />
-                <e p="LobbyServerList.cs" t="Include" />
-                <e p="LobbyTopPanel.cs" t="Include" />
-              </e>
-              <e p="SimpleController.cs" t="Include" />
-            </e>
           </e>
           <e p="ParticleSystems" t="Include">
             <e p="ParticleSystemsGuidelines.txt" t="Include" />
