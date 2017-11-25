@@ -54,7 +54,6 @@ namespace Character
             }
         }
 
-
         private void SetHealthUI()
         {
             _slider.value = _currentHealth;

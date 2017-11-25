@@ -244,6 +244,9 @@ namespace Prototype.NetworkLobby
         public void CmdColorChange()
         {
             int idx = System.Array.IndexOf(Colors, playerColor);
+  
+            if (idx < 0 || idx >= Colors.Length)
+                idx = 0;
             playerColor = Colors[idx];
         }
 
