@@ -19,6 +19,11 @@ namespace FCS
         [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
+            if (character == Caster && Distance < 1)
+            {
+                return;
+            }
+
             int damage = (int)(_maxDamage * (Distance / MaxDistance));
             character.Change(StatType.Hp, -damage);
             Caster.Change(StatType.Hp, damage);

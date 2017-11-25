@@ -29,6 +29,11 @@ namespace FCS
         [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
+            if (character == Caster && Distance < 1)
+            {
+                return;
+            }
+
             Explode(false);
         }
 

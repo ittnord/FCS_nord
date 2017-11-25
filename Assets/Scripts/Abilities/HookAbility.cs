@@ -32,6 +32,10 @@ namespace FCS
         [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
+            if (character == Caster && Distance < 1)
+            {
+                return;
+            }
             var hookEffect = character.gameObject.AddComponent<HookEffect>();
             hookEffect.Init(Caster.transform, character.transform, _hookSpeed, _hookDuration);
             Destroy(gameObject);

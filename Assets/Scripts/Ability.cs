@@ -39,10 +39,10 @@ namespace FCS
 
         protected virtual void Update()
         {
-            if (Time.time >=_colliderActivationTime)
-            {
-                GetComponent<Collider>().enabled = true;
-            }
+            //if (Time.time >=_colliderActivationTime)
+            //{
+            //    GetComponent<Collider>().enabled = true;
+            //}
 
             Distance += Speed * Time.deltaTime;
             Vector3 v = transform.rotation * Vector3.forward * Speed * Time.deltaTime;
@@ -66,7 +66,7 @@ namespace FCS
             var testScale = new Vector3(colliderSize.x, colliderSize.y, colliderSize.z);
             transform.localScale = testScale;
 
-            _colliderActivationTime = Time.time + 0.15f;
+            //_colliderActivationTime = Time.time + 0.15f;
         }
 
         public virtual void OnMaxDistance()
@@ -84,6 +84,11 @@ namespace FCS
         [ServerCallback]
         public virtual void OnCollideWithCharacter(CharacterBehaviour character)
         {
+            if (shield.Owner == Caster && Distance < 10)
+            {
+                return;
+            }
+
             Debug.Log("FUCK EAH!");
             Destroy(gameObject);
         }

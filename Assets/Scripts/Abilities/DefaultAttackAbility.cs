@@ -13,6 +13,11 @@ namespace FCS
         [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
+            if (character == Caster && Distance < 1)
+            {
+                return;
+            }
+
             character.Change(StatType.Hp, _damage);
             var direction = (character.transform.position - transform.position).normalized;
             var move = character.gameObject.AddComponent<MoveEffect>();
