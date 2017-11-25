@@ -14,6 +14,7 @@ namespace FCS
         public int Speed = 10;
         public int MaxDistance = 10;
 
+        public GameObject SpawnEffect;
         public GameObject ImpactEffect;
 
         protected void Start()

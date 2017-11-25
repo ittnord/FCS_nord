@@ -16,7 +16,8 @@ namespace FCS
         [ServerCallback]
         public override void OnInstantiate()
         {
-            Explode(false, true);
+            Explode(true);
+            Destroy(gameObject);
         }
     }
 }

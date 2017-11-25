@@ -15,22 +15,22 @@ namespace FCS
 
         public override void OnMaxDistance()
         {
-            Explode(true, true);
+            Explode(false);
         }
 
         [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)
         {
-            Explode(true, true);
+            Explode(false);
         }
 
         [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
-            Explode(true, true);
+            Explode(false);
         }
 
-        protected void Explode(bool damageSelf, bool pushSelf)
+        protected void Explode(bool ignoreSelf)
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, _maxRadius);
             foreach (Collider collider in hitColliders)
@@ -38,6 +38,11 @@ namespace FCS
                 var character = collider.GetComponent<CharacterBehaviour>();
                 if (character != null)
                 {
+                    if (ignoreSelf && character == Caster)
+                    {
+                        continue;
+                    }
+
                     var distance = Vector3.Distance(transform.position, collider.transform.position);
                     var direction = (collider.transform.position - transform.position).normalized;
                     var move = collider.gameObject.AddComponent<MoveEffect>();
@@ -64,6 +69,12 @@ namespace FCS
 
         private void PlayEffect(float explosionRadius)
         {
+            if (ImpactEffect == null)
+            {
+                Debug.LogWarning("No explosion effect!");
+                return;
+            }
+
             explosionRadius *= 2;
             var effect = Instantiate(ImpactEffect, transform.position, Quaternion.identity);
             Vector3 explosionSize = new Vector3(explosionRadius, explosionRadius, explosionRadius);
