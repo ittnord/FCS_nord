@@ -53,13 +53,13 @@ namespace Character
         //We freeze the rigibody when the control is disabled to avoid the tank drifting!
         protected RigidbodyConstraints OriginalConstrains;
 
-        void OnDisable()
+        private void OnDisable()
         {
             OriginalConstrains = Rigidbody.constraints;
             Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         }
 
-        void OnEnable()
+        private void OnEnable()
         {
             Rigidbody.constraints = OriginalConstrains;
         }

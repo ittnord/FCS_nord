@@ -31,16 +31,10 @@ namespace Character
         private float _currentHealth; // How much health the tank currently has.*
 
         [SyncVar] private bool _zeroHealthHappened; // Has the tank been reduced beyond zero health yet?
-        private BoxCollider _collider; // Used so that the tank doesn't collide with anything when it's dead.
 
         public CharacterManager Manager { get; set; }
         public GameObject CharacterRenderers { get { return _characterRenderers; } set { _characterRenderers = value; } }
 
-
-        private void Awake()
-        {
-            _collider = GetComponent<BoxCollider>();
-        }
 
         // This is called whenever the tank takes damage.
         public void Damage(float amount)
@@ -97,8 +91,6 @@ namespace Character
 
         private void SetCharacterActive(bool active)
         {
-            _collider.enabled = active;
-
             _characterRenderers.SetActive(active);
             _healthCanvas.SetActive(active);
 

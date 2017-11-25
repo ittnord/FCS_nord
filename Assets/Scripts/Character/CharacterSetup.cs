@@ -60,10 +60,6 @@ namespace FCS.Character
             }
 
             gameObject.SetActive(true);
-
-//            if (gameObject)
-//                gameObject.SetActive(false);
-
             _nameText.text = "<color=#" + ColorUtility.ToHtmlStringRGB(_color) + ">" + _playerName + "</color>";
 
             if (isClient)

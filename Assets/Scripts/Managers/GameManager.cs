@@ -226,7 +226,7 @@ namespace FCS.Managers
         void RpcRoundPlaying()
         {
             // As soon as the round begins playing let the players control the tanks.
-            EnableTankControl();
+            EnableCharacterControl();
 
             // Clear the text from the screen.
             _messageText.text = string.Empty;
@@ -292,7 +292,7 @@ namespace FCS.Managers
             for (int i = 0; i < Characters.Count; i++)
             {
                 // ... and if they are active, increment the counter.
-                if (Characters[i].TankRenderers.activeSelf)
+                if (Characters[i].CharacterRenderers.activeSelf)
                     numTanksLeft++;
             }
 
@@ -309,7 +309,7 @@ namespace FCS.Managers
             for (int i = 0; i < Characters.Count; i++)
             {
                 // ... and if one of them is active, it is the winner so return it.
-                if (Characters[i].TankRenderers.activeSelf)
+                if (Characters[i].CharacterRenderers.activeSelf)
                     return Characters[i];
             }
 
@@ -390,7 +390,7 @@ namespace FCS.Managers
         }
 
 
-        private void EnableTankControl()
+        private void EnableCharacterControl()
         {
             for (int i = 0; i < Characters.Count; i++)
             {

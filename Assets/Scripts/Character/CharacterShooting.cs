@@ -20,19 +20,20 @@ namespace Character
         private void Awake()
         {
             _character = GetComponent<CharacterBehaviour>();
-            if (isClient)
-            {
-                InputController.Instance.OnAbilityUsed += UseAbility;
-            }
+            InputController.Instance.OnAbilityUsed += UseAbility;
         }
 
         private void OnDestroy()
         {
-            InputController.Instance.OnAbilityUsed -= UseAbility;
+            if (InputController.Instance != null)
+                InputController.Instance.OnAbilityUsed -= UseAbility;
         }
 
-        public void UseAbility()
+        private void UseAbility()
         {
+            if (!isLocalPlayer)
+                return;
+
             CmdUseAbility();
         }
 

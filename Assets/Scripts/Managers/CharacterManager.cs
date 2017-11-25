@@ -23,7 +23,7 @@ namespace FCS.Managers
         [HideInInspector]
         public GameObject Instance;             // A reference to the instance of the tank when it is created.
         [HideInInspector]
-        public GameObject TankRenderers;        // The transform that is a parent of all the tank's renderers.  This is deactivated when the tank is dead.
+        public GameObject CharacterRenderers;        // The transform that is a parent of all the tank's renderers.  This is deactivated when the tank is dead.
         [HideInInspector]
         public int Wins;                        // The number of wins this player has so far.
         [HideInInspector]
@@ -45,7 +45,7 @@ namespace FCS.Managers
             this.CharacterSetup = Instance.GetComponent<CharacterSetup>();
 
             // Get references to the child objects.
-            TankRenderers = Health.CharacterRenderers;
+            CharacterRenderers = Health.CharacterRenderers;
 
             //Set a reference to that amanger in the health script, to disable control when dying
             Health.Manager = this;
