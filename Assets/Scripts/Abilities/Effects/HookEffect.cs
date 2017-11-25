@@ -30,8 +30,8 @@ namespace FCS
         {
             if (_lineRenderer != null)
             {
-                _lineRenderer.SetPosition(0, new Vector3(_hookOrigin.transform.position.x, 1, _hookOrigin.transform.position.x));
-                _lineRenderer.SetPosition(0, new Vector3(_hookTarget.transform.position.x, 1, _hookOrigin.transform.position.x));
+                _lineRenderer.SetPosition(0, new Vector3(_hookOrigin.transform.position.x, 1, _hookOrigin.transform.position.z));
+                _lineRenderer.SetPosition(1, new Vector3(_hookTarget.transform.position.x, 1, _hookTarget.transform.position.z));
             }
 
             var direction = (_hookOrigin.transform.position - _hookTarget.position).normalized;
@@ -41,8 +41,9 @@ namespace FCS
             //transform.Translate(v);
             transform.position += v;
 
-            if (Vector3.Distance(_hookOrigin.position, _hookTarget.position) <= 1f)
+            if (Vector3.Distance(_hookOrigin.position, _hookTarget.position) <= 2f)
             {
+                Destroy(_lineRenderer);
                 Destroy(this);
             }
         }
