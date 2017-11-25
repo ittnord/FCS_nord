@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using FCS.Managers;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -51,6 +52,14 @@ namespace FCS.Character
         {
             base.OnStartClient();
 
+            _abilityTypes = new SyncListStruct<Abilities>
+            {
+                Abilities.DefaultAbility,
+                Abilities.Teleport,
+                Abilities.Hook,
+                Abilities.ForcePush
+            };
+
             if (!isServer) //if not hosting, we had the tank to the gamemanger for easy access!
                 GameManager.AddCharacter(gameObject, _playerNumber, _color, _playerName, _localId);
 
@@ -66,6 +75,11 @@ namespace FCS.Character
 
             gameObject.SetActive(true);
             _nameText.text = "<color=#" + ColorUtility.ToHtmlStringRGB(_color) + ">" + _playerName + "</color>";
+        }
+
+        public List<Abilities> GetAbilities()
+        {
+            return _abilityTypes.ToList();
         }
 
         [ClientCallback]

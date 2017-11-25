@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58f4a0d5c929f940ad7a57de2efcc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityType: 3
+  AbilityType: 2
   Caster: {fileID: 0}
   Speed: 10
   MaxDistance: 10

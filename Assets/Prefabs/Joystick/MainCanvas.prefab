@@ -258,6 +258,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guiHolder: {fileID: 224226690295089038}
+  _defaultAttack: {fileID: 114699884128907728, guid: 0f9bcee6319945d4b8b6d8f345b24c8b,
+    type: 2}
+  _explosion: {fileID: 114255693539997824, guid: d82bbe7343474354d8b480ba33c79994,
+    type: 2}
+  _fireBall: {fileID: 114099580801092934, guid: 5e0e61b748ff62b4fa77f2ae448dc100,
+    type: 2}
+  _forcePush: {fileID: 114071773095773806, guid: 124892c26d53e2c4e80e92508dc443c6,
+    type: 2}
+  _invisibility: {fileID: 114042370040659040, guid: 9837d46f079179f40811e0143ff904eb,
+    type: 2}
+  _lifeDrain: {fileID: 114744087794051306, guid: 3336e5ac1ef43b349b61bb6e9021bddf,
+    type: 2}
+  _shield: {fileID: 114307373170221682, guid: eee3908c631de2649a47760c00e9852e, type: 2}
+  _swap: {fileID: 114360571066030352, guid: dcb461d48131361449ef8b6302b4b7e1, type: 2}
+  _teleport: {fileID: 114094021885329396, guid: aaa266bca5e56b246827f2c75299f8ab,
+    type: 2}
+  _hook: {fileID: 114623538408541796, guid: 09530a306acb43e468def19fcd935acb, type: 2}
   BattleHud: {fileID: 114494231639133486, guid: bee1faf4c7baba148bdfc619310eb825,
     type: 2}
 --- !u!114 &114779934061977258

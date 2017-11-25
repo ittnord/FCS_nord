@@ -1,3 +1,5 @@
+using System.Linq;
+using FCS.Managers;
 using UnityEngine;
 
 namespace FCS
@@ -17,7 +19,13 @@ namespace FCS
 
         protected void Start()
         {
-            // TODO: вытащить CharacterSetup
+            var character = GameManager.Characters.First(element => element.CharacterSetup.isLocalPlayer)
+                .CharacterSetup;
+            var abilities = character.GetAbilities();
+            _abilitySlotMain.AbilityType = abilities[0];
+            _abilitySlotAdd1.AbilityType = abilities[1];
+            _abilitySlotAdd2.AbilityType = abilities[2];
+            _abilitySlotAdd3.AbilityType = abilities[3];
         }
     }
 }

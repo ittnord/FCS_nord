@@ -7,11 +7,11 @@ namespace FCS
     {
         public Vector3 InputDirection { get; set; }
 
-        public event Action OnAbilityUsed;
+        public event Action<Ability> OnAbilityUsed;
 
-        public void HandleAbility()
+        public void HandleAbility(Ability ability)
         {
-            OnAbilityUsed?.Invoke();
+            OnAbilityUsed?.Invoke(ability);
         }
 
         public bool InverseDirection { set; get; }

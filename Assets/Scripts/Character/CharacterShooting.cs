@@ -8,14 +8,14 @@ namespace Character
     public class CharacterShooting : NetworkBehaviour
     {
         public int PlayerNumber = 1; // Used to identify the different players.
-       
-        [SerializeField]
-        private Ability _abilityPrefab;
+
         public Transform FireTransform; // A child of the tank where the shells are spawned.
 
         [SyncVar] public int localID;
 
         private CharacterBehaviour _character;
+
+        private Ability _useAbility;
 
         private void Awake()
         {
@@ -29,18 +29,19 @@ namespace Character
                 InputController.Instance.OnAbilityUsed -= UseAbility;
         }
 
-        private void UseAbility()
+        private void UseAbility(Ability ability)
         {
             if (!isLocalPlayer)
                 return;
 
+            _useAbility = ability;
             CmdUseAbility();
         }
 
         [Command]
         private void CmdUseAbility()
         {
-            var ability = Instantiate(_abilityPrefab);
+            var ability = Instantiate(_useAbility);
             ability.transform.position = FireTransform.position;
             ability.transform.rotation = transform.rotation;
             ability.Caster = _character;
@@ -55,7 +56,7 @@ namespace Character
 #if !MOBILE_INPUT
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                InputController.Instance.HandleAbility();
+                InputController.Instance.HandleAbility(GuiFactory.Instance.Instantiate(Abilities.DefaultAbility));
             }
 #endif
         }

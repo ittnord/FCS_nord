@@ -4,7 +4,6 @@ using System.Collections;
 public class TimeBasedEffect : MonoBehaviour
 {
     private float _expireTime;
-    private float _tickTime;
     private float _nextTickTime;
     private int _tickCount;
 
@@ -15,7 +14,6 @@ public class TimeBasedEffect : MonoBehaviour
 
     public virtual void Init(float duration, float tickTime)
     {
-        _tickTime = _tickTime;
         _nextTickTime = Time.time + _nextTickTime;
         Init(duration);
     }

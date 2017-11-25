@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4156204380300088}
   - component: {fileID: 33410368386989676}
   - component: {fileID: 23314491737279958}
-  - component: {fileID: 114094021885329396}
   - component: {fileID: 65859031751391198}
   - component: {fileID: 114273242099824580}
   - component: {fileID: 114544931708056056}
+  - component: {fileID: 114042370040659040}
   m_Layer: 0
   m_Name: Invisibility
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 1, z: 1}
   m_Center: {x: 0, y: 0.3, z: 0}
---- !u!114 &114094021885329396
+--- !u!114 &114042370040659040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -106,10 +106,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411788766746552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107efb06ba1b99149a18481c31079ef6, type: 3}
+  m_Script: {fileID: 11500000, guid: 069ea9db7c4f73e4db2921622100a76b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityType: 10
+  AbilityType: 6
   Caster: {fileID: 0}
   Speed: 10
   MaxDistance: 10
