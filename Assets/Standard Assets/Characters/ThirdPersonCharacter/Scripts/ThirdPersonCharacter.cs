@@ -61,7 +61,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		    if (m_ForwardAmount > 0.01f)
 		    {
-		        transform.rotation = Quaternion.FromToRotation(Vector3.right, move);
+		        var correctedDir = Quaternion.AngleAxis(35.0f, Vector3.up) * Vector3.right;
+
+                transform.rotation = Quaternion.FromToRotation(correctedDir, move);
             }
             
 			PreventStandingInLowHeadroom();
