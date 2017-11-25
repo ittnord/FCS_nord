@@ -36,7 +36,12 @@ namespace FCS
 
         [ServerCallback]
         public virtual void OnInstantiate()
-        { }
+        {
+            if (SpawnEffect != null)
+            {
+                Instantiate(SpawnEffect, Caster.transform.position, Quaternion.identity);
+            }
+        }
 
         public virtual void OnMaxDistance()
         {
