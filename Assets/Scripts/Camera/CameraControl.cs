@@ -1,4 +1,5 @@
-﻿using FCS.Managers;
+﻿using Character;
+using FCS.Managers;
 using UnityEngine;
 
 
@@ -85,6 +86,8 @@ public class CameraControl : MonoBehaviour
             if (!GameManager.Characters[i].Instance.activeSelf)
                 continue;
 
+            if(!GameManager.Characters[i].Instance.GetComponent<CharacterMovement>().isLocalPlayer)
+                continue;
             // Add to the average and increment the number of targets in the average.
             average += GameManager.Characters[i].Instance.transform.position;
             numTargets++;
@@ -137,6 +140,9 @@ public class CameraControl : MonoBehaviour
             if (!GameManager.Characters[i].Instance.activeSelf)
                 continue;
 
+            if(!GameManager.Characters[i].Instance.GetComponent<CharacterMovement>().isLocalPlayer)
+                continue;
+            
             // Find the distance from the camera's desired position to the target.
             float targetDistance = (desiredPosition - GameManager.Characters[i].Instance.transform.position).magnitude;
 
