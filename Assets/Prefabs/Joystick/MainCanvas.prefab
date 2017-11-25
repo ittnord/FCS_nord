@@ -272,8 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvas: {fileID: 223134985312845442}
-  _guiHolder: {fileID: 224021402167170930, guid: bee1faf4c7baba148bdfc619310eb825,
-    type: 2}
+  _guiHolder: {fileID: 224226690295089038}
 --- !u!114 &114781574382196402
 MonoBehaviour:
   m_ObjectHideFlags: 1
