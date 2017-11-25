@@ -35,6 +35,8 @@ namespace FCS.Managers
         public CharacterShooting Shooting;
         public CharacterHealth Health;
         public CharacterSetup CharacterSetup;
+        public CharacterShield CharacterShield;
+        public CharacterBehaviour CharacterBehaviour;
 
         public void Setup()
         {
@@ -42,6 +44,8 @@ namespace FCS.Managers
             Movement = Instance.GetComponent<CharacterMovement>();
             Shooting = Instance.GetComponent<CharacterShooting>();
             Health = Instance.GetComponent<CharacterHealth>();
+            CharacterBehaviour = Instance.GetComponent<CharacterBehaviour>();
+            CharacterShield = Instance.GetComponent<CharacterShield>();
             this.CharacterSetup = Instance.GetComponent<CharacterSetup>();
 
             // Get references to the child objects.
@@ -62,6 +66,9 @@ namespace FCS.Managers
             this.CharacterSetup.PlayerName = PlayerName;
             this.CharacterSetup.PlayerNumber = PlayerNumber;
             this.CharacterSetup.LocalId = LocalPlayerID;
+
+            CharacterShield.PlayerNumber = PlayerNumber;
+            CharacterShield._character = CharacterBehaviour;
         }
 
 

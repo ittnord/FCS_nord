@@ -1,3 +1,6 @@
+using System.Linq;
+using FCS.Character;
+using FCS.Managers;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -5,30 +8,25 @@ namespace FCS
 {
     public class CharacterShield : NetworkBehaviour
     {
-        private CharacterBehaviour _character;
+        [SyncVar] public int PlayerNumber;
+
+        public CharacterBehaviour _character;
         public CharacterBehaviour Owner { get { return _character; } }
 
         [SerializeField]
         private CharacterShield _shieldPrefab;
 
         private CharacterShield _shield;
-
-        public void Awake()
-        {
-            _character = gameObject.GetComponentInParent<CharacterBehaviour>();
-        }
-
-        [ClientCallback]
+        
+        
         void Update()
         {
-            if (!isLocalPlayer)
-            {
-                return;
-            }
             if (_shield == null)
             {
                 return;
             }
+
+
             _shield.transform.position = _character.Shield.position;
             _shield.transform.rotation = _character.Shield.rotation;
         }
@@ -59,7 +57,7 @@ namespace FCS
             }
         }
 
-        [Command]
+        [ServerCallback]
         private void CmdShieldEnable()
         {
             if (_shield != null)
@@ -69,14 +67,16 @@ namespace FCS
 
             _shield = Instantiate(_shieldPrefab);
             _shield._character = _character;
+
+            
             NetworkServer.Spawn(_shield.gameObject);
         }
 
-        [Command]
+        [ServerCallback]
         private void CmdShieldDisable()
         {
-            NetworkServer.Destroy(_shield.gameObject);
             //Destroy(_shield.gameObject);
+            NetworkServer.Destroy(_shield.gameObject);
             _shield = null;
         }
     }

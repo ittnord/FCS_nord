@@ -42,6 +42,8 @@ namespace FCS.Character
         public int PlayerNumber { get { return _playerNumber; } set { _playerNumber = value; } }
         public bool IsReady { get { return _isReady; } set { _isReady = true; } }
 
+        private bool _guiInited;
+
         public override void OnStartClient()
         {
             base.OnStartClient();
@@ -61,11 +63,6 @@ namespace FCS.Character
 
             gameObject.SetActive(true);
             _nameText.text = "<color=#" + ColorUtility.ToHtmlStringRGB(_color) + ">" + _playerName + "</color>";
-
-            if (isClient)
-            {
-                InitGui();
-            }
         }
 
         [ClientCallback]
@@ -74,6 +71,12 @@ namespace FCS.Character
             if (!isLocalPlayer)
             {
                 return;
+            }
+
+            if (!_guiInited)
+            {
+                InitGui();
+                _guiInited = true;
             }
 
             if (GameManager.Instance.GameIsFinished && !_isReady)
