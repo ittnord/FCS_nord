@@ -61,6 +61,7 @@ namespace FCS
 
         private void PlayEffect(float explosionRadius)
         {
+            explosionRadius *= 2;
             var effect = Instantiate(ImpactEffect, transform.position, Quaternion.identity);
             Vector3 explosionSize = new Vector3(explosionRadius, explosionRadius, explosionRadius);
             effect.transform.localScale = explosionSize;
