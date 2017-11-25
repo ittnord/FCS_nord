@@ -5,9 +5,6 @@ namespace FCS
 {
     public class Ability : NetworkBehaviour
     {
-        private CharacterBehaviour _owner;
-        private IAbilityPerformer _performer;
-
         protected float Distance { get; private set; }
 
         public CharacterBehaviour Caster;
@@ -17,6 +14,8 @@ namespace FCS
         public GameObject SpawnEffect;
         public GameObject ImpactEffect;
 
+        private float _colliderActivationTime;
+
         protected void Start()
         {
             OnInstantiate();
@@ -24,6 +23,11 @@ namespace FCS
 
         protected virtual void Update()
         {
+            if (Time.time >=_colliderActivationTime)
+            {
+                GetComponent<Collider>().enabled = true;
+            }
+
             Distance += Speed * Time.deltaTime;
             Vector3 v = transform.rotation * Vector3.forward * Speed * Time.deltaTime;
             transform.position += v;
@@ -42,9 +46,11 @@ namespace FCS
                 Instantiate(SpawnEffect, Caster.transform.position, Quaternion.identity);
             }
 
-            var colliderSize = GetComponent<SphereCollider>().radius;
-            var testScale = new Vector3(colliderSize, colliderSize, colliderSize);
+            var colliderSize = GetComponent<BoxCollider>().size;
+            var testScale = new Vector3(colliderSize.x, colliderSize.y, colliderSize.z);
             transform.localScale = testScale;
+
+            _colliderActivationTime = Time.time + 0.3f;
         }
 
         public virtual void OnMaxDistance()

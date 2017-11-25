@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4156204380300088}
   - component: {fileID: 33410368386989676}
-  - component: {fileID: 135058250502894318}
   - component: {fileID: 23314491737279958}
   - component: {fileID: 114094021885329396}
   - component: {fileID: 114976883098135678}
   - component: {fileID: 114968362788161268}
+  - component: {fileID: 65120353249276244}
   m_Layer: 0
   m_Name: Teleport
   m_TagString: Untagged
@@ -86,6 +86,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1411788766746552}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65120353249276244
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411788766746552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114094021885329396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 0
+  m_TransformSyncMode: 1
   m_SendInterval: 0.1
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
@@ -155,15 +167,3 @@ MonoBehaviour:
     i15: 171
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!135 &135058250502894318
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411788766746552}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}

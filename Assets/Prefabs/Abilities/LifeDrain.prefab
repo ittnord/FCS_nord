@@ -20,13 +20,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4156204380300088}
   - component: {fileID: 33410368386989676}
-  - component: {fileID: 135058250502894318}
   - component: {fileID: 23314491737279958}
-  - component: {fileID: 114094021885329396}
   - component: {fileID: 114976883098135678}
   - component: {fileID: 114968362788161268}
+  - component: {fileID: 114744087794051306}
+  - component: {fileID: 65031779864303256}
   m_Layer: 0
-  m_Name: Teleport
+  m_Name: LifeDrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1411788766746552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.4379702, y: 2.55, z: 2.6422682}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -86,7 +86,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1411788766746552}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114094021885329396
+--- !u!65 &65031779864303256
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411788766746552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114744087794051306
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -94,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411788766746552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107efb06ba1b99149a18481c31079ef6, type: 3}
+  m_Script: {fileID: 11500000, guid: c2295b5d4db972e4ea520bd0220f83ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Caster: {fileID: 0}
@@ -137,33 +149,21 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 170
-    i1: 162
-    i2: 102
-    i3: 188
-    i4: 165
-    i5: 229
-    i6: 107
-    i7: 36
-    i8: 104
-    i9: 39
-    i10: 242
-    i11: 199
-    i12: 82
-    i13: 153
-    i14: 248
-    i15: 171
+    i0: 51
+    i1: 54
+    i2: 229
+    i3: 172
+    i4: 30
+    i5: 244
+    i6: 59
+    i7: 52
+    i8: 155
+    i9: 97
+    i10: 187
+    i11: 110
+    i12: 144
+    i13: 33
+    i14: 189
+    i15: 223
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!135 &135058250502894318
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411788766746552}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
