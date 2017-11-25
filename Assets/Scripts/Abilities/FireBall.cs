@@ -7,11 +7,11 @@ namespace FCS
     public class FireBall : Ability 
     {
         public int Damage = 15;
-        private float ExplosionDistance = 10f;
-        private  float ExplosionSpeed = 25f;
+        public float ExplosionDistance = 10f;
+        public  float ExplosionSpeed = 25f;
 
-        private float InnerRadius = 5f;
-        private float MaxRadius = 10f;
+        public float InnerRadius = 5f;
+        public float MaxRadius = 10f;
 
 
         [ServerCallback]

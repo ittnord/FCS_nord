@@ -6,7 +6,7 @@ namespace FCS
 {
     public class LifeDrain : Ability
     {
-        private int MaxDamage = 50;
+        public int MaxDamage = 50;
 
         [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)

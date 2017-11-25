@@ -7,9 +7,9 @@ namespace FCS
 {
     public class HookAbility : Ability
     {
-        private LineRenderer _lineRenderer;
-        private float HookSpeed = 10f;
-        private float HookDuration = 5f;
+        public LineRenderer _lineRenderer;
+        public float HookSpeed = 10f;
+        public float HookDuration = 5f;
 
         public override void OnInstantiate()
         {

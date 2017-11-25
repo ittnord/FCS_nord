@@ -6,7 +6,7 @@ namespace FCS
 {
     public class InvisibilityAbility : Ability
     {
-        private float InvisibilityDuration = 3f;
+        public float InvisibilityDuration = 3f;
 
         [ServerCallback]
         public override void OnInstantiate()
