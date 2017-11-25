@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 namespace FCS
 {
@@ -12,6 +13,7 @@ namespace FCS
         private const float _innerRadius = 5f;
         private const float _maxRadius = 10f;
 
+        [ServerCallback]
         public override void OnInstantiate()
         {
             Explode(false, true);

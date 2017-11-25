@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace FCS
 {
-    public class Ability : MonoBehaviour
+    public class Ability : NetworkBehaviour
     {
         private CharacterBehaviour _owner;
         private IAbilityPerformer _performer;
@@ -32,6 +33,7 @@ namespace FCS
             }
         }
 
+        [ServerCallback]
         public virtual void OnInstantiate()
         { }
 
@@ -40,12 +42,14 @@ namespace FCS
             Destroy(gameObject);
         }
 
+        [ServerCallback]
         public virtual void OnCollideWithEnvironment(Environment env)
         {
             Debug.Log("FUCK EAH!");
             Destroy(gameObject);
         }
 
+        [ServerCallback]
         public virtual void OnCollideWithCharacter(CharacterBehaviour character)
         {
             Debug.Log("FUCK EAH!");

@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 135925784858836086}
   - component: {fileID: 23542427508578006}
   - component: {fileID: 114099580801092934}
+  - component: {fileID: 114117700868361372}
+  - component: {fileID: 114440218925850384}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -100,6 +102,59 @@ MonoBehaviour:
   MaxDistance: 10
   ImpactEffect: {fileID: 1201937589591930, guid: ae12e370e6819394bb6f83f26d7bdbb0,
     type: 2}
+--- !u!114 &114117700868361372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203219601496828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 94
+    i1: 14
+    i2: 97
+    i3: 183
+    i4: 72
+    i5: 255
+    i6: 98
+    i7: 180
+    i8: 250
+    i9: 119
+    i10: 242
+    i11: 174
+    i12: 68
+    i13: 141
+    i14: 193
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114440218925850384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203219601496828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!135 &135925784858836086
 SphereCollider:
   m_ObjectHideFlags: 1

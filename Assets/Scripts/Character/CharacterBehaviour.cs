@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Character;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace FCS
@@ -49,15 +51,7 @@ namespace FCS
             }
         }
 
-        public void UseAbility()
-        {
-            var ability = Instantiate(_abilityPrefab);
-            ability.transform.position = _spawnAbilityTransform.position;
-            ability.transform.rotation = transform.rotation;
-            ability.Caster = this;
-        }
-
-        void OnTriggerEnter(Collider col)
+        private void OnTriggerEnter(Collider col)
         {
             var ability = col.gameObject.GetComponent<Ability>();
             if (ability != null)

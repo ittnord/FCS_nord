@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
 namespace FCS
 {
@@ -8,6 +8,7 @@ namespace FCS
         private const int _moveDistance = 10;
         private const int _moveSpeed = 10;
 
+        [ServerCallback]
         public override void OnInstantiate()
         {
             var moveEffect = Caster.gameObject.AddComponent<MoveEffect>();

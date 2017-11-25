@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 namespace FCS
 {
@@ -17,11 +18,13 @@ namespace FCS
             Explode(true, true);
         }
 
+        [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)
         {
             Explode(true, true);
         }
 
+        [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             Explode(true, true);

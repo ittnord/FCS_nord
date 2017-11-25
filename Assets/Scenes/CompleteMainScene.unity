@@ -381,12 +381,12 @@ Prefab:
     - target: {fileID: 224226690295089038, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 574
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 224226690295089038, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 267.5
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 224226690295089038, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
@@ -707,13 +707,18 @@ MonoBehaviour:
   _numRoundsToWin: 5
   _startDelay: 3
   _endDelay: 3
-  _cameraControl: {fileID: 0}
-  _messageText: {fileID: 0}
-  CharacterPrefab: {fileID: 0}
-  _spawnPoint: []
+  _cameraControl: {fileID: 1771596988}
+  _messageText: {fileID: 223292193}
+  CharacterPrefab: {fileID: 1917638087960374, guid: 9dabb4f76bccad74ca6c38a525f42dd1,
+    type: 2}
+  _spawnPoint:
+  - {fileID: 194018016}
+  - {fileID: 2083660209}
+  - {fileID: 2017063093}
+  - {fileID: 240578414}
   GameIsFinished: 0
-  _fadingScreen: {fileID: 0}
-  _endRoundScreen: {fileID: 0}
+  _fadingScreen: {fileID: 1423439976}
+  _endRoundScreen: {fileID: 2043816357}
   _roundNumber: 0
 --- !u!4 &1304999366
 Transform:

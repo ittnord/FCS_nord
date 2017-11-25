@@ -108,7 +108,6 @@ namespace FCS.Character
 
         public void ActivateCrown(bool active)
         {
-//if we try to show (not hide) the crown, we only show it we are the current leader
             _nameText.gameObject.SetActive(active);
         }
 

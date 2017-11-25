@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 namespace FCS
 {
@@ -9,6 +10,7 @@ namespace FCS
         private const float _moveDistance = 4f;
         private const float _moveSpeed = 8f;
 
+        [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             character.Change(StatType.Hp, _damage);

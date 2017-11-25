@@ -203,10 +203,13 @@
             <e p="Effects" t="Include">
               <e p="MoveEffect.cs" t="Include" />
             </e>
+            <e p="Explosion.cs" t="Include" />
             <e p="FireBall.cs" t="Include" />
+            <e p="ForcePush.cs" t="Include" />
           </e>
           <e p="Ability.cs" t="Include" />
           <e p="AbilityPerformer.cs" t="Include" />
+          <e p="AutoDestroy.cs" t="Include" />
           <e p="Camera" t="Include">
             <e p="CameraControl.cs" t="Include" />
           </e>
@@ -248,6 +251,7 @@
             <e p="BattleHud.cs" t="Include" />
             <e p="GuiFactory.cs" t="Include" />
             <e p="Hud.cs" t="Include" />
+            <e p="InverseButton.cs" t="Include" />
             <e p="Joystick.cs" t="Include" />
             <e p="UIDirectionControl.cs" t="Include" />
           </e>

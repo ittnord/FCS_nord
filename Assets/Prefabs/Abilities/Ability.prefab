@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 135058250502894318}
   - component: {fileID: 23314491737279958}
   - component: {fileID: 114537070607764596}
+  - component: {fileID: 114860593268617152}
+  - component: {fileID: 114423142401528214}
   m_Layer: 0
   m_Name: Ability
   m_TagString: Untagged
@@ -84,6 +86,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1411788766746552}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114423142401528214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411788766746552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114537070607764596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,6 +121,39 @@ MonoBehaviour:
   Caster: {fileID: 0}
   Speed: 10
   MaxDistance: 20
+  ImpactEffect: {fileID: 0}
+--- !u!114 &114860593268617152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411788766746552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 67
+    i1: 181
+    i2: 170
+    i3: 60
+    i4: 210
+    i5: 42
+    i6: 99
+    i7: 148
+    i8: 200
+    i9: 50
+    i10: 46
+    i11: 122
+    i12: 145
+    i13: 106
+    i14: 138
+    i15: 242
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!135 &135058250502894318
 SphereCollider:
   m_ObjectHideFlags: 1

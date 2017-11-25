@@ -11,10 +11,7 @@ namespace FCS
 
         public void HandleAbility()
         {
-            if (OnAbilityUsed != null)
-            {
-                OnAbilityUsed();
-            }
+            OnAbilityUsed?.Invoke();
         }
 
         public bool InverseDirection { set; get; }

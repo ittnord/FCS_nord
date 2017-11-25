@@ -29,10 +29,5 @@ namespace FCS
         {
             //_character.Move(InputController.Instance.InputDirection, false, false);
         }
-
-        private void UseAbility()
-        {
-            _character.UseAbility();
-        }
     }
 }
