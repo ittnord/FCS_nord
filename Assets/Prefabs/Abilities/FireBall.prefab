@@ -112,7 +112,7 @@ MonoBehaviour:
   Caster: {fileID: 0}
   Speed: 10
   MaxDistance: 10
-  SpawnEffect: {fileID: 1203219601496828}
+  SpawnEffect: {fileID: 0}
   ImpactEffect: {fileID: 1201937589591930, guid: ae12e370e6819394bb6f83f26d7bdbb0,
     type: 2}
 --- !u!114 &114117700868361372
