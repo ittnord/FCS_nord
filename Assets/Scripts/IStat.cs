@@ -9,9 +9,9 @@ namespace FCS
     {
         StatType Type { get; }
 
-        int Current { get; set; }
+        float Current { get; set; }
 
-        int Max { get; }
+        float Max { get; }
     }
 
     public class Stat : IStat
@@ -26,7 +26,7 @@ namespace FCS
         }
 
         public StatType Type { get { return _type; } }
-        public int Max { get { return _max; } }
-        public int Current { get; set; }
+        public float Max { get { return _max; } }
+        public float Current { get; set; }
     }
 }

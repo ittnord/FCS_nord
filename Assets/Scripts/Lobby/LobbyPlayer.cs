@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Prototype.NetworkLobby
 {
@@ -11,9 +8,7 @@ namespace Prototype.NetworkLobby
     //Any LobbyHook can then grab it and pass those value to the game player prefab (see the Pong Example in the Samples Scenes)
     public class LobbyPlayer : NetworkLobbyPlayer
     {
-        static Color[] Colors = new Color[] { Color.magenta, Color.red, Color.cyan, Color.blue, Color.green, Color.yellow };
-        //used on server to avoid assigning the same color to two player
-        static List<int> _colorInUse = new List<int>();
+        private static readonly Color[] Colors = { Color.magenta, Color.red, Color.cyan, Color.blue, Color.green, Color.yellow };
 
         public Button colorButton;
         public InputField nameInput;
@@ -24,7 +19,7 @@ namespace Prototype.NetworkLobby
         [SyncVar(hook = "OnMyName")]
         public string playerName = "";
         [SyncVar(hook = "OnMyColor")]
-        public Color playerColor = Color.white;
+        public Color playerColor = Color.magenta;
 
         public Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
         public Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
@@ -42,7 +37,8 @@ namespace Prototype.NetworkLobby
         {
             base.OnClientEnterLobby();
 
-            if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(1);
+            if (LobbyManager.s_Singleton != null) 
+                LobbyManager.s_Singleton.OnPlayersNumberModified(1);
 
             LobbyPlayerList._instance.AddPlayer(this);
             LobbyPlayerList._instance.DisplayDirectServerWarning(isServer && LobbyManager.s_Singleton.matchMaker == null);
@@ -72,6 +68,13 @@ namespace Prototype.NetworkLobby
            SetupLocalPlayer();
         }
 
+        public void SetTeeamHard(int teamId)
+        {
+            playerColor = Colors[teamId];
+            CmdColorChange();
+        }
+        
+
         void ChangeReadyButtonColor(Color c)
         {
             ColorBlock b = readyButton.colors;
@@ -100,7 +103,8 @@ namespace Prototype.NetworkLobby
 
             CheckRemoveButton();
 
-            if (playerColor == Color.white)
+            playerColor = Colors[0];
+            if (playerColor == Color.magenta)
                 CmdColorChange();
 
             ChangeReadyButtonColor(JoinColor);
@@ -110,7 +114,7 @@ namespace Prototype.NetworkLobby
 
             //have to use child count of player prefab already setup as "this.slot" is not set yet
             if (playerName == "")
-                CmdNameChanged("Player" + (LobbyPlayerList._instance.playerListContentTransform.childCount-1));
+                CmdNameChanged("Player" + (LobbyPlayerList._instance.GetPlayersCount()-1));
 
             //we switch from simple name display to name input
             colorButton.interactable = true;
@@ -240,38 +244,6 @@ namespace Prototype.NetworkLobby
         public void CmdColorChange()
         {
             int idx = System.Array.IndexOf(Colors, playerColor);
-
-            int inUseIdx = _colorInUse.IndexOf(idx);
-
-            if (idx < 0) idx = 0;
-
-            idx = (idx + 1) % Colors.Length;
-
-            bool alreadyInUse = false;
-
-            do
-            {
-                alreadyInUse = false;
-                for (int i = 0; i < _colorInUse.Count; ++i)
-                {
-                    if (_colorInUse[i] == idx)
-                    {//that color is already in use
-                        alreadyInUse = true;
-                        idx = (idx + 1) % Colors.Length;
-                    }
-                }
-            }
-            while (alreadyInUse);
-
-            if (inUseIdx >= 0)
-            {//if we already add an entry in the colorTabs, we change it
-                _colorInUse[inUseIdx] = idx;
-            }
-            else
-            {//else we add it
-                _colorInUse.Add(idx);
-            }
-
             playerColor = Colors[idx];
         }
 
@@ -285,21 +257,8 @@ namespace Prototype.NetworkLobby
         public void OnDestroy()
         {
             LobbyPlayerList._instance.RemovePlayer(this);
-            if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(-1);
-
-            int idx = System.Array.IndexOf(Colors, playerColor);
-
-            if (idx < 0)
-                return;
-
-            for (int i = 0; i < _colorInUse.Count; ++i)
-            {
-                if (_colorInUse[i] == idx)
-                {//that color is already in use
-                    _colorInUse.RemoveAt(i);
-                    break;
-                }
-            }
+            if (LobbyManager.s_Singleton != null) 
+                LobbyManager.s_Singleton.OnPlayersNumberModified(-1);
         }
     }
 }

@@ -20,6 +20,9 @@ namespace FCS.Managers
        
         [HideInInspector]
         public int PlayerNumber;                // This specifies which player this the manager for.
+        
+        [HideInInspector]
+        public int PlayerTeeam;                // This specifies which player this the manager for.
         [HideInInspector]
         public GameObject Instance;             // A reference to the instance of the tank when it is created.
         [HideInInspector]
@@ -62,16 +65,14 @@ namespace FCS.Managers
             Shooting.localID = LocalPlayerID;
 
             //setup is use for diverse Network Related sync
-            this.CharacterSetup.Color = PlayerColor;
-            this.CharacterSetup.PlayerName = PlayerName;
-            this.CharacterSetup.PlayerNumber = PlayerNumber;
-            this.CharacterSetup.LocalId = LocalPlayerID;
-
+            CharacterSetup.Color = PlayerColor;
+            CharacterSetup.PlayerName = PlayerName;
+            CharacterSetup.PlayerNumber = PlayerNumber;
+            CharacterSetup.LocalId = LocalPlayerID;
+         
             CharacterShield.PlayerNumber = PlayerNumber;
             CharacterShield._character = CharacterBehaviour;
         }
-
-
 
         // Used during the phases of the game where the player shouldn't be able to control their tank.
         public void DisableControl()
@@ -90,17 +91,17 @@ namespace FCS.Managers
 
         public string GetName()
         {
-            return this.CharacterSetup.PlayerName;
+            return CharacterSetup.PlayerName;
         }
 
         public void SetLeader(bool leader)
         { 
-            this.CharacterSetup.SetLeader(leader);
+            CharacterSetup.SetLeader(leader);
         }
 
         public bool IsReady()
         {
-            return this.CharacterSetup.IsReady;
+            return CharacterSetup.IsReady;
         }
 
         // Used at the start of each round to put the tank into it's default state.

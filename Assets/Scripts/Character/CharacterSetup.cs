@@ -28,6 +28,8 @@ namespace FCS.Character
         [SyncVar] 
         private bool _isReady = false;
 
+        private AbilityType[] _abilityTypes;
+
         //This allow to know if the crown must be displayed or not
         protected bool isLeader = false;
 

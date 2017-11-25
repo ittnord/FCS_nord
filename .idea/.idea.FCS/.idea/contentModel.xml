@@ -201,11 +201,14 @@
           <e p="Abilities" t="Include">
             <e p="DefaultAttackAbility.cs" t="Include" />
             <e p="Effects" t="Include">
+              <e p="InvisibilityEffect.cs" t="Include" />
               <e p="MoveEffect.cs" t="Include" />
+              <e p="TimeBasedEffect.cs" t="Include" />
             </e>
             <e p="Explosion.cs" t="Include" />
             <e p="FireBall.cs" t="Include" />
             <e p="ForcePush.cs" t="Include" />
+            <e p="InvisibilityAbility.cs" t="Include" />
             <e p="Swap.cs" t="Include" />
             <e p="TeleportAbility.cs" t="Include" />
           </e>
@@ -244,9 +247,6 @@
           </e>
           <e p="MyCharacterController.cs" t="Include" />
           <e p="Player.cs" t="Include" />
-          <e p="Shell" t="Include">
-            <e p="ShellExplosion.cs" t="Include" />
-          </e>
           <e p="Singleton.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="AbilitySlot.cs" t="Include" />

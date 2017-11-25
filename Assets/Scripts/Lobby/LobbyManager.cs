@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections;
+using FCS.Managers;
 
 
 namespace Prototype.NetworkLobby
@@ -13,7 +14,7 @@ namespace Prototype.NetworkLobby
     {
         static short MsgKicked = MsgType.Highest + 1;
 
-        static public LobbyManager s_Singleton;
+        public static LobbyManager s_Singleton;
 
 
         [Header("Unity UI Lobby")]
@@ -50,11 +51,13 @@ namespace Prototype.NetworkLobby
         protected ulong _currentMatchID;
 
         protected LobbyHook _lobbyHooks;
+        
+        public GameType GameType { get; set; }
 
-        void Start()
+        private void Start()
         {
             s_Singleton = this;
-            _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
+            _lobbyHooks = GetComponent<LobbyHook>();
             currentPanel = mainMenuPanel;
 
             backButton.gameObject.SetActive(false);
@@ -72,6 +75,8 @@ namespace Prototype.NetworkLobby
                 if (topPanel.isInGame)
                 {
                     ChangeTo(lobbyPanel);
+                    lobbyPanel.GetComponent<LobbyPlayerList>().Init(GameType);
+
                     if (_isMatchmaking)
                     {
                         if (conn.playerControllers[0].unetView.isServer)
@@ -234,6 +239,8 @@ namespace Prototype.NetworkLobby
             base.OnStartHost();
 
             ChangeTo(lobbyPanel);
+            lobbyPanel.GetComponent<LobbyPlayerList>().Init(GameType);
+
             backDelegate = StopHostClbk;
             SetServerInfo("Hosting", networkAddress);
         }
@@ -392,12 +399,14 @@ namespace Prototype.NetworkLobby
 
             conn.RegisterHandler(MsgKicked, KickedMessageHandler);
 
-            if (!NetworkServer.active)
-            {//only to do on pure client (not self hosting client)
-                ChangeTo(lobbyPanel);
-                backDelegate = StopClientClbk;
-                SetServerInfo("Client", networkAddress);
-            }
+            if (NetworkServer.active) 
+                return; 
+            
+            //only to do on pure client (not self hosting client)
+            ChangeTo(lobbyPanel);
+            lobbyPanel.GetComponent<LobbyPlayerList>().Init(GameType);
+            backDelegate = StopClientClbk;
+            SetServerInfo("Client", networkAddress);
         }
 
 

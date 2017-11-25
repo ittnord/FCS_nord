@@ -1,60 +1,95 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using FCS.Managers;
+using UnityStandardAssets.Utility;
 
 namespace Prototype.NetworkLobby
 {
     //Main menu, mainly only a bunch of callback called by the UI (setup throught the Inspector)
     public class LobbyMainMenu : MonoBehaviour 
     {
-        public LobbyManager lobbyManager;
+        [SerializeField]
+        private LobbyManager _lobbyManager;
 
-        public RectTransform lobbyServerList;
-        public RectTransform lobbyPanel;
+        [SerializeField] private RectTransform _gameTypeSelect;
+        [SerializeField] private RectTransform _abilityesSelect;
+        
+        [SerializeField] private RectTransform _lobbyServerList;
+        [SerializeField] private RectTransform _lobbyPanel;
 
-        public InputField ipInput;
+        [SerializeField] private InputField _ipInput;
 
+        private Action _callback;
+        
         public void OnEnable()
         {
-            lobbyManager.topPanel.ToggleVisibility(true);
+            _lobbyManager.topPanel.ToggleVisibility(true);
 
-            ipInput.onEndEdit.RemoveAllListeners();
-            ipInput.onEndEdit.AddListener(OnEndEditIp);
+            _ipInput.onEndEdit.RemoveAllListeners();
+            _ipInput.onEndEdit.AddListener(OnEndEditIp);
         }
 
         public void OnClickHost()
         {
-            lobbyManager.StartHost();
+            _callback = () => _lobbyManager.StartHost();
+            _gameTypeSelect.gameObject.SetActive(true);
         }
 
         public void OnClickJoin()
         {
-            lobbyManager.ChangeTo(lobbyPanel);
+            _callback = () =>
+            {
+                _lobbyManager.ChangeTo(_lobbyPanel);
+                _lobbyPanel.GetComponent<LobbyPlayerList>().Init(_lobbyManager.GameType);
+                _lobbyManager.networkAddress = _ipInput.text;
+                _lobbyManager.StartClient();
 
-            lobbyManager.networkAddress = ipInput.text;
-            lobbyManager.StartClient();
+                _lobbyManager.backDelegate = _lobbyManager.StopClientClbk;
+                _lobbyManager.DisplayIsConnecting();
 
-            lobbyManager.backDelegate = lobbyManager.StopClientClbk;
-            lobbyManager.DisplayIsConnecting();
+                _lobbyManager.SetServerInfo("Connecting...", _lobbyManager.networkAddress);
+            };
+            
+            _abilityesSelect.gameObject.SetActive(true);
+        }
 
-            lobbyManager.SetServerInfo("Connecting...", lobbyManager.networkAddress);
+        public void OnClickSolo()
+        {
+            LobbyManager.s_Singleton.GameType = GameType.Solo;
+            _gameTypeSelect.gameObject.SetActive(false);
+            _abilityesSelect.gameObject.SetActive(true);
+        }
+
+        public void OnClickCoop()
+        {
+            LobbyManager.s_Singleton.GameType = GameType.Coop;
+            _gameTypeSelect.gameObject.SetActive(false);
+            _abilityesSelect.gameObject.SetActive(true);
+        }
+
+        public void OnClilckToBattle()
+        {
+            _callback();
+            _abilityesSelect.gameObject.SetActive(false);
         }
 
         public void OnClickDedicated()
         {
-            lobbyManager.ChangeTo(null);
-            lobbyManager.StartServer();
+            _lobbyManager.ChangeTo(null);
+            _lobbyManager.StartServer();
 
-            lobbyManager.backDelegate = lobbyManager.StopServerClbk;
+            _lobbyManager.backDelegate = _lobbyManager.StopServerClbk;
 
-            lobbyManager.SetServerInfo("Dedicated Server", lobbyManager.networkAddress);
+            _lobbyManager.SetServerInfo("Dedicated Server", _lobbyManager.networkAddress);
         }
 
         public void OnClickOpenServerList()
         {
-            lobbyManager.StartMatchMaker();
-            lobbyManager.backDelegate = lobbyManager.SimpleBackClbk;
-            lobbyManager.ChangeTo(lobbyServerList);
+            _lobbyManager.StartMatchMaker();
+            _lobbyManager.backDelegate = _lobbyManager.SimpleBackClbk;
+            _lobbyManager.ChangeTo(_lobbyServerList);
         }
 
         private void OnEndEditIp(string text)
@@ -64,5 +99,6 @@ namespace Prototype.NetworkLobby
                 OnClickJoin();
             }
         }
+        
     }
 }
