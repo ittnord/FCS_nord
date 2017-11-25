@@ -66,7 +66,7 @@ namespace FCS.Character
 
             _nameText.text = "<color=#" + ColorUtility.ToHtmlStringRGB(_color) + ">" + _playerName + "</color>";
 
-            if (isServer || isLocalPlayer)
+            if (isClient)
             {
                 InitGui();
             }
@@ -82,7 +82,7 @@ namespace FCS.Character
 
             if (GameManager.Instance.GameIsFinished && !_isReady)
             {
-                if (Input.GetButtonDown("Fire" + (_localId + 1)))
+                if (Input.GetButtonDown("Fire"))
                 {
                     CmdSetReady();
                 }

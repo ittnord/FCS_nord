@@ -30,7 +30,7 @@ public class ShellExplosion : NetworkBehaviour
     }
 
     //allow to delay a bit the activation of the collider so that it don't collide when spawn close to the canon
-    IEnumerator EnableCollision()
+    private IEnumerator EnableCollision()
     {
         yield return new WaitForSeconds(0.1f);
         GetComponent<Collider>().enabled = true;
