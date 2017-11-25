@@ -1,4 +1,5 @@
-﻿using FCS.Managers;
+﻿using System.Collections.Generic;
+using FCS.Managers;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -28,7 +29,7 @@ namespace FCS.Character
         [SyncVar] 
         private bool _isReady = false;
 
-        private AbilityType[] _abilityTypes;
+        private SyncList<Abilities> _abilityTypes;
 
         //This allow to know if the crown must be displayed or not
         protected bool isLeader = false;
