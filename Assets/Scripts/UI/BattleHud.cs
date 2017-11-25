@@ -15,5 +15,10 @@ namespace FCS
         {
             Instantiate(_abilitySlotPrefab, _abilitiesLayout, false);
         }
+
+        public void OnBackClicked()
+        {
+            InputController.Instance.InverseDirection = true;
+        }
     }
 }

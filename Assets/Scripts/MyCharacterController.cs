@@ -27,7 +27,7 @@ namespace FCS
 
         protected override void FixedUpdate()
         {
-            _character.Move(InputController.Instance.InputDirection, false, false);
+            //_character.Move(InputController.Instance.InputDirection, false, false);
         }
 
         private void UseAbility()

@@ -67,12 +67,19 @@ namespace Character
             if (!isLocalPlayer)
                 return;
 
+#if !MOBILE_INPUT
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                InputController.Instance.HandleAbility();
+            }
+#endif
+
             // If the max force has been exceeded and the shell hasn't yet been launched...
             if (CurrentLaunchForce >= MaxLaunchForce && !Fired)
             {
                 // ... use the max force and launch the shell.
                 CurrentLaunchForce = MaxLaunchForce;
-                Fire();
+                //Fire();
             }
             // Otherwise, if the fire button has just started being pressed...
             else if (Input.GetButtonDown(FireButton))

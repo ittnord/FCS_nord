@@ -31,7 +31,11 @@ namespace Character
             if (!isLocalPlayer)
                 return;
 
-            _character.Move(InputController.Instance.InputDirection, false, false);
+#if !MOBILE_INPUT
+            InputController.Instance.InverseDirection = Input.GetKey(KeyCode.LeftControl);
+#endif
+
+            _character.Move(InputController.Instance.InputDirection, InputController.Instance.InverseDirection);
         }
 
 

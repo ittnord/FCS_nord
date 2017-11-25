@@ -29,6 +29,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+	    private bool m_Inverse;
+
 
 		protected virtual void Start()
 		{
@@ -43,61 +45,29 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
-		public void Move(Vector3 move, bool crouch, bool jump)
+		public void Move(Vector3 move, bool inverse)
 		{
 
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
 			// direction.
 			if (move.magnitude > 1f) move.Normalize();
-			move = transform.InverseTransformDirection(move);
+			move = inverse ? move : -move;
 			CheckGroundStatus();
-			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-			m_TurnAmount = Mathf.Atan2(move.x, move.z);
-			m_ForwardAmount = move.z;
+			m_TurnAmount = 0;
+			m_ForwardAmount = move.sqrMagnitude;
 
-			ApplyExtraTurnRotation();
+		    m_Inverse = inverse;
 
-			// control and velocity handling is different when grounded and airborne:
-			if (m_IsGrounded)
-			{
-				HandleGroundedMovement(crouch, jump);
-			}
-			else
-			{
-				HandleAirborneMovement();
-			}
-
-			ScaleCapsuleForCrouching(crouch);
+		    if (m_ForwardAmount > 0.01f)
+		    {
+		        transform.rotation = Quaternion.FromToRotation(Vector3.right, move);
+            }
+            
 			PreventStandingInLowHeadroom();
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);
-		}
-
-
-		void ScaleCapsuleForCrouching(bool crouch)
-		{
-			if (m_IsGrounded && crouch)
-			{
-				if (m_Crouching) return;
-				m_Capsule.height = m_Capsule.height / 2f;
-				m_Capsule.center = m_Capsule.center / 2f;
-				m_Crouching = true;
-			}
-			else
-			{
-				Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-				float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
-				if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-				{
-					m_Crouching = true;
-					return;
-				}
-				m_Capsule.height = m_CapsuleHeight;
-				m_Capsule.center = m_CapsuleCenter;
-				m_Crouching = false;
-			}
 		}
 
 		void PreventStandingInLowHeadroom()
@@ -176,13 +146,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
-		void ApplyExtraTurnRotation()
-		{
-			// help the character turn faster (this is in addition to root rotation in the animation)
-			float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
-			transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
-		}
-
 
 		public void OnAnimatorMove()
 		{
@@ -190,7 +153,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// this allows us to modify the positional speed before it's applied.
 			if (m_IsGrounded && Time.deltaTime > 0)
 			{
-				Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+				Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime * (m_Inverse ? -1.0f : 1.0f);
 
 				// we preserve the existing y part of the current velocity.
 				v.y = m_Rigidbody.velocity.y;

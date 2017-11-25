@@ -16,5 +16,7 @@ namespace FCS
                 OnAbilityUsed();
             }
         }
+
+        public bool InverseDirection { set; get; }
     }
 }
