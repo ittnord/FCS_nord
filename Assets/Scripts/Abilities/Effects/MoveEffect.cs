@@ -19,12 +19,12 @@ public class MoveEffect : MonoBehaviour
     {
         _moveDistance += _moveSpeed * Time.fixedDeltaTime;
         Vector3 v = _direction * _moveSpeed * Time.fixedDeltaTime;
-        transform.Translate(v);
+        //transform.Translate(v);
+        transform.position += v;
 
         if (_moveDistance >= _maxMoveDistance)
         {
             Destroy(this);
         }
-        
     }
 }

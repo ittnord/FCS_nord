@@ -5,15 +5,40 @@ namespace FCS
 {
     public class ForcePush : Ability
     {
-        private const int _moveDistance = 10;
-        private const int _moveSpeed = 10;
+        private const int _moveDistance = 7;
+        private const int _moveSpeed = 20;
 
-        [ServerCallback]
-        public override void OnInstantiate()
+        private const int _damage = 10;
+
+        private const int _pushDistance = 10;
+        private const int _pushSpeed = 10;
+
+        private Vector3 _projectilePosition;
+
+        protected override void Update()
         {
-            var moveEffect = Caster.gameObject.AddComponent<MoveEffect>();
-            moveEffect.Init(Vector3.forward, _moveSpeed, _moveDistance);
-            base.OnInstantiate();
+            base.Update();
+            _projectilePosition = new Vector3(transform.position.x, Caster.transform.position.y, transform.position.z);
+            Caster.transform.position = _projectilePosition;
+        }
+
+        public override void OnCollideWithCharacter(CharacterBehaviour character)
+        {
+            if (character == Caster)
+            {
+                return;
+            }
+
+            var direction = (_projectilePosition - character.transform.position).normalized;
+            var moveEffect = character.gameObject.AddComponent<MoveEffect>();
+            moveEffect.Init(-direction, _pushSpeed, _pushSpeed);
+
+            character.Change(StatType.Hp, -10);
+            Destroy(gameObject);
+        }
+
+        public override void OnCollideWithEnvironment(Environment env)
+        {
             Destroy(gameObject);
         }
     }

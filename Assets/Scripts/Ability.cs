@@ -8,7 +8,7 @@ namespace FCS
         private CharacterBehaviour _owner;
         private IAbilityPerformer _performer;
 
-        private float _distance;
+        protected float Distance { get; private set; }
 
         public CharacterBehaviour Caster;
         public int Speed = 10;
@@ -22,13 +22,13 @@ namespace FCS
             OnInstantiate();
         }
 
-        protected void Update()
+        protected virtual void Update()
         {
-            _distance += Speed * Time.deltaTime;
+            Distance += Speed * Time.deltaTime;
             Vector3 v = transform.rotation * Vector3.forward * Speed * Time.deltaTime;
             transform.position += v;
 
-            if (_distance > MaxDistance)
+            if (Distance > MaxDistance)
             {
                 OnMaxDistance();
             }

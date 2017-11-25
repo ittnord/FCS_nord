@@ -6,9 +6,9 @@ namespace FCS
 {
     public class FireBall : Ability 
     {
-        private const int _damage = -15;
-        private const float _explosionDistance = 4f;
-        private const float _explosionSpeed = 20f;
+        private const int _damage = 15;
+        private const float _explosionDistance = 10f;
+        private const float _explosionSpeed = 25f;
 
         private const float _innerRadius = 5f;
         private const float _maxRadius = 10f;
@@ -49,13 +49,13 @@ namespace FCS
 
                     if (distance <= _innerRadius)
                     {
-                        character.Change(StatType.Hp, _damage);
+                        character.Change(StatType.Hp, -_damage);
                         move.Init(direction, _explosionSpeed, _explosionDistance);
 
                     }
                     else
                     {
-                        character.Change(StatType.Hp, (int)(1 - distance / _maxRadius) * _damage);
+                        character.Change(StatType.Hp, (int)(1 - distance / _maxRadius) * -_damage);
                         move.Init(direction, _explosionSpeed, (int)(1 - distance / _maxRadius) * _explosionDistance);
                     }
                 }
