@@ -3,6 +3,21 @@ using UnityEngine.Networking;
 
 namespace FCS
 {
+    public enum Abilities
+    {
+        Ability = 0,
+        DefaultAbility = 1,
+        Explosion = 2,
+        Fireball = 3,
+        ForcePush = 4,
+        Hook = 5,
+        Invisibility = 6,
+        LifeDrain = 7,
+        Shield = 8,
+        Swap = 9,
+        Teleport = 10
+    }
+
     public class Ability : NetworkBehaviour
     {
         protected float Distance { get; private set; }
@@ -50,7 +65,7 @@ namespace FCS
             var testScale = new Vector3(colliderSize.x, colliderSize.y, colliderSize.z);
             transform.localScale = testScale;
 
-            _colliderActivationTime = Time.time + 1f;
+            _colliderActivationTime = Time.time + 0.5f;
         }
 
         public virtual void OnMaxDistance()
