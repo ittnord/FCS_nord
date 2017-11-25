@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FCS;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Character
@@ -13,33 +14,16 @@ namespace Character
         public float PitchRange = 0.2f; // The amount by which the pitch of the engine noises can vary.
 
         public Rigidbody Rigidbody; // Reference used to move the tank.
-
-        private string MovementAxis; // The name of the input axis for moving forward and back.
-        private string TurnAxis; // The name of the input axis for turning.
+        
         private float MovementInput; // The current value of the movement input.
         private float TurnInput; // The current value of the turn input.
+
+        private CharacterBehaviour _character;
 
         private void Awake()
         {
             Rigidbody = GetComponent<Rigidbody>();
-        }
-
-
-        private void Start()
-        {
-            // The axes are based on player number.
-            MovementAxis = "Vertical";
-            TurnAxis = "Horizontal";
-        }
-
-        private void Update()
-        {
-            if (!isLocalPlayer)
-                return;
-
-            // Store the value of both input axes.
-            MovementInput = Input.GetAxis(MovementAxis);
-            TurnInput = Input.GetAxis(TurnAxis);
+            _character = GetComponent<CharacterBehaviour>();
         }
 
         private void FixedUpdate()
@@ -47,32 +31,7 @@ namespace Character
             if (!isLocalPlayer)
                 return;
 
-            // Adjust the rigidbodies position and orientation in FixedUpdate.
-            Move();
-            Turn();
-        }
-
-
-        private void Move()
-        {
-            // Create a movement vector based on the input, speed and the time between frames, in the direction the tank is facing.
-            Vector3 movement = transform.forward * MovementInput * Speed * Time.deltaTime;
-
-            // Apply this movement to the rigidbody's position.
-            Rigidbody.MovePosition(Rigidbody.position + movement);
-        }
-
-
-        private void Turn()
-        {
-            // Determine the number of degrees to be turned based on the input, speed and time between frames.
-            float turn = TurnInput * TurnSpeed * Time.deltaTime;
-
-            // Make this into a rotation in the y axis.
-            Quaternion inputRotation = Quaternion.Euler(0f, turn, 0f);
-
-            // Apply this rotation to the rigidbody's rotation.
-            Rigidbody.MoveRotation(Rigidbody.rotation * inputRotation);
+            _character.Move(InputController.Instance.InputDirection, false, false);
         }
 
 

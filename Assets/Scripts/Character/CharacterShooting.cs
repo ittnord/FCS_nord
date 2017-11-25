@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FCS;
+using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
@@ -26,10 +27,18 @@ namespace Character
         [SyncVar] private float ChargeSpeed; // How fast the launch force increases, based on the max charge time.
         private bool Fired; // Whether or not the shell has been launched with this button press.
 
+        private CharacterBehaviour _character;
+
         private void Awake()
         {
             // Set up the references.
             Rigidbody = GetComponent<Rigidbody>();
+
+            _character = GetComponent<CharacterBehaviour>();
+            if (isServer || isLocalPlayer)
+            {
+                InputController.Instance.OnAbilityUsed += UseAbility;
+            }
         }
 
         private void Start()
@@ -39,6 +48,17 @@ namespace Character
 
             // The rate that the launch force charges up is the range of possible forces by the max charge time.
             ChargeSpeed = (MaxLaunchForce - MinLaunchForce) / MaxChargeTime;
+        }
+
+        private void OnDestroy()
+        {
+            InputController.Instance.OnAbilityUsed -= UseAbility;
+        }
+
+        [ClientCallback]
+        private void UseAbility()
+        {
+            _character.UseAbility();
         }
 
         [ClientCallback]
@@ -71,7 +91,7 @@ namespace Character
             else if (Input.GetButtonUp(FireButton) && !Fired)
             {
                 // ... launch the shell.
-                Fire();
+                // Fire();
             }
         }
 

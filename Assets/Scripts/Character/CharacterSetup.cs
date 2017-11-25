@@ -59,17 +59,17 @@ namespace FCS.Character
                 renderers[i].material.color = _color;
             }
 
+            gameObject.SetActive(true);
+
 //            if (gameObject)
 //                gameObject.SetActive(false);
 
             _nameText.text = "<color=#" + ColorUtility.ToHtmlStringRGB(_color) + ">" + _playerName + "</color>";
 
-
-            // TODO: Валера, хелп ми
-            //if (isLocalPlayer)
-            //{
+            if (isServer || isLocalPlayer)
+            {
                 InitGui();
-            //}
+            }
         }
 
         [ClientCallback]
