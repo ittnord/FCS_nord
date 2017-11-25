@@ -1,11 +1,12 @@
-﻿using UnityEngine;
-using UnityEditor;
-
-public class Swap : ScriptableObject
+﻿namespace FCS
 {
-    [MenuItem("Tools/MyTool/Do It in C#")]
-    static void DoIt()
+    public class Swap : Ability
     {
-        EditorUtility.DisplayDialog("MyTool", "Do It in C# !", "OK", "");
+        public override void OnCollideWithCharacter(CharacterBehaviour character)
+        {
+            var characterPosition = character.transform.position;
+            character.transform.position = Caster.transform.position;
+            Caster.transform.position = characterPosition;
+        }
     }
 }
