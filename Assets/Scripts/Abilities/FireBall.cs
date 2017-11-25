@@ -22,7 +22,7 @@ namespace FCS
             Explode();
         }
 
-        public override void OnCollideWithCharacter(Character character)
+        public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             Explode();
         }
@@ -32,7 +32,7 @@ namespace FCS
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, _maxRadius);
             foreach (Collider collider in hitColliders)
             {
-                var character = collider.GetComponent<Character>();
+                var character = collider.GetComponent<CharacterBehaviour>();
                 if (character != null)
                 {
                     var distance = Vector3.Distance(transform.position, collider.transform.position);

@@ -12,23 +12,27 @@ namespace FCS
         {
             base.Start();
             _character = GetComponent<CharacterBehaviour>();
+            //InputController.Instance.OnAbilityUsed += UseAbility;
         }
+
+        //protected void OnDestroy()
+        //{
+        //    InputController.Instance.OnAbilityUsed -= UseAbility;
+        //}
 
         protected override void Update()
         {
-            base.Update();
+        //    base.Update();
         }
 
         protected override void FixedUpdate()
         {
-            base.FixedUpdate();
+            _character.Move(InputController.Instance.InputDirection, false, false);
+        }
 
-#if !MOBILE_INPUT
-            if (Input.GetMouseButtonUp(0))
-            {
-                _character.UseAbility();
-            }
-#endif
+        private void UseAbility()
+        {
+            _character.UseAbility();
         }
     }
 }

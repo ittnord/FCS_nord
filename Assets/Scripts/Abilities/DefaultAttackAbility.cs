@@ -7,7 +7,7 @@ namespace FCS
     {
         private const int _damage = -10;
 
-        public override void OnCollideWithCharacter(Character character)
+        public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             character.Change(StatType.Hp, _damage);
             Destroy(gameObject);

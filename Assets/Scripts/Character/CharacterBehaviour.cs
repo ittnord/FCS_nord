@@ -18,8 +18,9 @@ namespace FCS
         public event Action<IStat> OnStatChanged;
         public event Action<IStat> OnStatDie;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             _stats.Add(new Stat(StatType.Hp, 100));
         }
 
