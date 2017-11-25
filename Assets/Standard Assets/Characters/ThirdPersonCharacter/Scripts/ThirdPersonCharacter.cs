@@ -27,7 +27,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		float m_CapsuleHeight;
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
-		bool m_Crouching;
 
 	    private bool m_Inverse;
 
@@ -65,25 +64,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
                 transform.rotation = Quaternion.FromToRotation(correctedDir, move);
             }
-            
-			PreventStandingInLowHeadroom();
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);
-		}
-
-		void PreventStandingInLowHeadroom()
-		{
-			// prevent standing up in crouch-only zones
-			if (!m_Crouching)
-			{
-				Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-				float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
-				if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-				{
-					m_Crouching = true;
-				}
-			}
 		}
 
 
@@ -92,7 +75,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// update the animator parameters
 			m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-			m_Animator.SetBool("Crouch", m_Crouching);
+			m_Animator.SetBool("Crouch", false);
 			m_Animator.SetBool("OnGround", m_IsGrounded);
 			if (!m_IsGrounded)
 			{
@@ -121,30 +104,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			{
 				// don't use that while airborne
 				m_Animator.speed = 1;
-			}
-		}
-
-
-		void HandleAirborneMovement()
-		{
-			// apply extra gravity from multiplier:
-			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
-			m_Rigidbody.AddForce(extraGravityForce);
-
-			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
-		}
-
-
-		void HandleGroundedMovement(bool crouch, bool jump)
-		{
-			// check whether conditions are right to allow a jump:
-			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
-			{
-				// jump!
-				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
-				m_IsGrounded = false;
-				m_Animator.applyRootMotion = false;
-				m_GroundCheckDistance = 0.1f;
 			}
 		}
 

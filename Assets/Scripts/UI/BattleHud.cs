@@ -7,18 +7,17 @@ namespace FCS
         [SerializeField]
         private Joystick _joystick;
         [SerializeField]
-        private RectTransform _abilitiesLayout;
+        private AbilitySlot _abilitySlotMain;
         [SerializeField]
-        private AbilitySlot _abilitySlotPrefab;
+        private AbilitySlot _abilitySlotAdd1;
+        [SerializeField]
+        private AbilitySlot _abilitySlotAdd2;
+        [SerializeField]
+        private AbilitySlot _abilitySlotAdd3;
 
         protected void Start()
         {
-            Instantiate(_abilitySlotPrefab, _abilitiesLayout, false);
-        }
-
-        public void OnBackClicked()
-        {
-            InputController.Instance.InverseDirection = true;
+            // TODO: вытащить CharacterSetup
         }
     }
 }
