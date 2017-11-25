@@ -6,28 +6,28 @@ namespace FCS
     public class FireBall : Ability 
     {
         private const int _damage = -15;
-        private const float _explosionPower = 4f;
-        private const float _explosionSpeed = 8f;
+        private const float _explosionDistance = 4f;
+        private const float _explosionSpeed = 20f;
 
         private const float _innerRadius = 5f;
         private const float _maxRadius = 10f;
 
         public override void OnMaxDistance()
         {
-            Explode();
+            Explode(true, true);
         }
 
         public override void OnCollideWithEnvironment(Environment env)
         {
-            Explode();
+            Explode(true, true);
         }
 
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
-            Explode();
+            Explode(true, true);
         }
 
-        private void Explode()
+        protected void Explode(bool damageSelf, bool pushSelf)
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, _maxRadius);
             foreach (Collider collider in hitColliders)
@@ -42,18 +42,28 @@ namespace FCS
                     if (distance <= _innerRadius)
                     {
                         character.Change(StatType.Hp, _damage);
-                        move.Init(direction, _explosionSpeed, _explosionPower);
+                        move.Init(direction, _explosionSpeed, _explosionDistance);
 
                     }
                     else
                     {
                         character.Change(StatType.Hp, (int)(1 - distance / _maxRadius) * _damage);
-                        move.Init(direction, _explosionSpeed, (int)(1 - distance / _maxRadius) * _explosionPower);
+                        move.Init(direction, _explosionSpeed, (int)(1 - distance / _maxRadius) * _explosionDistance);
                     }
                 }
             }
 
+            PlayEffect(_innerRadius);
+            PlayEffect(_maxRadius);
+
             Destroy(gameObject);
+        }
+
+        private void PlayEffect(float explosionRadius)
+        {
+            var effect = Instantiate(ImpactEffect, transform.position, Quaternion.identity);
+            Vector3 explosionSize = new Vector3(explosionRadius, explosionRadius, explosionRadius);
+            effect.transform.localScale = explosionSize;
         }
 
     }

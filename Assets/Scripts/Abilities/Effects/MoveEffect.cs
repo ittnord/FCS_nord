@@ -15,11 +15,11 @@ public class MoveEffect : MonoBehaviour
         _maxMoveDistance = maxMoveDistance;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _moveDistance += _moveSpeed * Time.deltaTime;
-        Vector3 v = transform.rotation * _direction * _moveSpeed * Time.deltaTime;
-        transform.position += v;
+        _moveDistance += _moveSpeed * Time.fixedDeltaTime;
+        Vector3 v = _direction * _moveSpeed * Time.fixedDeltaTime;
+        transform.Translate(v);
 
         if (_moveDistance >= _maxMoveDistance)
         {

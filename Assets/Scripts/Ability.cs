@@ -13,6 +13,13 @@ namespace FCS
         public int Speed = 10;
         public int MaxDistance = 10;
 
+        public GameObject ImpactEffect;
+
+        protected void Start()
+        {
+            OnInstantiate();
+        }
+
         protected void Update()
         {
             _distance += Speed * Time.deltaTime;
@@ -24,6 +31,9 @@ namespace FCS
                 OnMaxDistance();
             }
         }
+
+        public virtual void OnInstantiate()
+        { }
 
         public virtual void OnMaxDistance()
         {
