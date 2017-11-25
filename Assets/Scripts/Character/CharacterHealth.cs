@@ -47,7 +47,7 @@ namespace Character
             var stat = _stats.First(element => element.Type == type);
             stat.Current += value;
             
-            _currentHealth = value;
+            _currentHealth += value;
             if (_currentHealth <= 0f && !_zeroHealthHappened)
             {
                 OnZeroHealth();
