@@ -6,7 +6,7 @@ namespace FCS
 {
     public class LifeDrain : Ability
     {
-        private const int _maxDamage = 50;
+        private int MaxDamage = 50;
 
         [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)
@@ -24,7 +24,7 @@ namespace FCS
                 return;
             }
 
-            int damage = (int)(_maxDamage * (Distance / MaxDistance));
+            int damage = (int)(MaxDamage * (Distance / MaxDistance));
             character.Change(StatType.Hp, -damage);
             Caster.Change(StatType.Hp, damage);
             Destroy(gameObject);

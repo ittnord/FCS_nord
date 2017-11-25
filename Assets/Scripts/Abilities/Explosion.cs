@@ -6,12 +6,12 @@ namespace FCS
 {
     public class Explosion : FireBall
     {
-        private const int _damage = -15;
-        private const float _explosionDistance = 4f;
-        private const float _explosionSpeed = 20f;
+        public int Damage = -15;
+        public float ExplosionDistance = 4f;
+        public float ExplosionSpeed = 20f;
 
-        private const float _innerRadius = 5f;
-        private const float _maxRadius = 10f;
+        public float InnerRadius = 5f;
+        public float MaxRadius = 10f;
 
         [ServerCallback]
         public override void OnInstantiate()

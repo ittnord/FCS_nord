@@ -6,12 +6,12 @@ namespace FCS
 {
     public class FireBall : Ability 
     {
-        private const int _damage = 15;
-        private const float _explosionDistance = 10f;
-        private const float _explosionSpeed = 25f;
+        public int Damage = 15;
+        private float ExplosionDistance = 10f;
+        private  float ExplosionSpeed = 25f;
 
-        private const float _innerRadius = 5f;
-        private const float _maxRadius = 10f;
+        private float InnerRadius = 5f;
+        private float MaxRadius = 10f;
 
 
         [ServerCallback]
@@ -39,7 +39,7 @@ namespace FCS
 
         protected void Explode(bool ignoreSelf)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, _maxRadius);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, MaxRadius);
             foreach (Collider collider in hitColliders)
             {
                 var character = collider.GetComponent<CharacterBehaviour>();
@@ -54,22 +54,22 @@ namespace FCS
                     var direction = (collider.transform.position - transform.position).normalized;
                     var move = collider.gameObject.AddComponent<MoveEffect>();
 
-                    if (distance <= _innerRadius)
+                    if (distance <= InnerRadius)
                     {
-                        character.Change(StatType.Hp, -_damage);
-                        move.Init(direction, _explosionSpeed, _explosionDistance);
+                        character.Change(StatType.Hp, -Damage);
+                        move.Init(direction, ExplosionSpeed, ExplosionDistance);
 
                     }
                     else
                     {
-                        character.Change(StatType.Hp, (int)(1 - distance / _maxRadius) * -_damage);
-                        move.Init(direction, _explosionSpeed, (int)(1 - distance / _maxRadius) * _explosionDistance);
+                        character.Change(StatType.Hp, (int)(1 - distance / MaxRadius) * -Damage);
+                        move.Init(direction, ExplosionSpeed, (int)(1 - distance / MaxRadius) * ExplosionDistance);
                     }
                 }
             }
 
-            PlayEffect(_innerRadius);
-            PlayEffect(_maxRadius);
+            PlayEffect(InnerRadius);
+            PlayEffect(MaxRadius);
 
             Destroy(gameObject);
         }

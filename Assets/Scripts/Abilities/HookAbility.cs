@@ -8,8 +8,8 @@ namespace FCS
     public class HookAbility : Ability
     {
         private LineRenderer _lineRenderer;
-        private const float _hookSpeed = 10f;
-        private const float _hookDuration = 5f;
+        private float HookSpeed = 10f;
+        private float HookDuration = 5f;
 
         public override void OnInstantiate()
         {
@@ -37,7 +37,7 @@ namespace FCS
                 return;
             }
             var hookEffect = character.gameObject.AddComponent<HookEffect>();
-            hookEffect.Init(Caster.transform, character.transform, _hookSpeed, _hookDuration);
+            hookEffect.Init(Caster.transform, character.transform, HookSpeed, HookDuration);
             Destroy(gameObject);
         }
 
@@ -45,7 +45,7 @@ namespace FCS
         public override void OnCollideWithEnvironment(Environment env)
         {
             var hookEffect = Caster.gameObject.AddComponent<HookEffect>();
-            hookEffect.Init(env.transform, Caster.transform, _hookSpeed, _hookDuration);
+            hookEffect.Init(env.transform, Caster.transform, HookSpeed, HookDuration);
             Destroy(gameObject);
         }
     }

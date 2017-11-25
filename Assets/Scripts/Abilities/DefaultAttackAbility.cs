@@ -6,9 +6,9 @@ namespace FCS
 {
     public class DefaultAttackAbility : Ability
     {
-        private const int _damage = -10;
-        private const float _moveDistance = 4f;
-        private const float _moveSpeed = 8f;
+        public  int Damage = -10;
+        public float MoveDistance = 4f;
+        public float MoveSpeed = 8f;
 
         [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
@@ -18,10 +18,10 @@ namespace FCS
                 return;
             }
 
-            character.Change(StatType.Hp, _damage);
+            character.Change(StatType.Hp, Damage);
             var direction = (character.transform.position - transform.position).normalized;
             var move = character.gameObject.AddComponent<MoveEffect>();
-            move.Init(direction, _moveSpeed, _moveDistance);
+            move.Init(direction, MoveSpeed, MoveDistance);
             Destroy(gameObject);
         }
     }

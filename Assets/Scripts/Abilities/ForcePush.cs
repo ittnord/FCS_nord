@@ -5,13 +5,13 @@ namespace FCS
 {
     public class ForcePush : Ability
     {
-        private const int _moveDistance = 7;
-        private const int _moveSpeed = 20;
+        private int MoveDistance = 7;
+        private int MoveSpeed = 20;
 
-        private const int _damage = 10;
+        private int Damage = 10;
 
-        private const int _pushDistance = 10;
-        private const int _pushSpeed = 10;
+        private const int PushDistance = 10;
+        private const int PushSpeed = 10;
 
         private Vector3 _projectilePosition;
 
@@ -32,7 +32,7 @@ namespace FCS
 
             var direction = (_projectilePosition - character.transform.position).normalized;
             var moveEffect = character.gameObject.AddComponent<MoveEffect>();
-            moveEffect.Init(-direction, _pushSpeed, _pushSpeed);
+            moveEffect.Init(-direction, PushSpeed, PushDistance);
 
             character.Change(StatType.Hp, -10);
             Destroy(gameObject);
