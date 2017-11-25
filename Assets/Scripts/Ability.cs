@@ -41,6 +41,10 @@ namespace FCS
             {
                 Instantiate(SpawnEffect, Caster.transform.position, Quaternion.identity);
             }
+
+            var colliderSize = GetComponent<SphereCollider>().radius;
+            var testScale = new Vector3(colliderSize, colliderSize, colliderSize);
+            transform.localScale = testScale;
         }
 
         public virtual void OnMaxDistance()
@@ -65,7 +69,7 @@ namespace FCS
         [ServerCallback]
         public virtual void OnCollideWithShield(CharacterShield shield)
         {
-            if (shield.Owner == Caster && _distance < 10)
+            if (shield.Owner == Caster && Distance < 10)
             {
                 return;
             }
