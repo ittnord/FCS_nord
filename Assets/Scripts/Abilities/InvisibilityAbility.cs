@@ -7,6 +7,8 @@ namespace FCS
     {
         private const float _invisibilityDuration = 3f;
 
+        public Abilities AbilityType = Abilities.Invisibility;
+
         public override void OnInstantiate()
         {
             var invisEffect = Caster.gameObject.AddComponent<InvisibilityEffect>();

@@ -9,6 +9,8 @@ namespace FCS
         private const float _hookSpeed = 10f;
         private const float _hookDuration = 5f;
 
+        public Abilities AbilityType = Abilities.Hook;
+
         public override void OnInstantiate()
         {
             base.OnInstantiate();

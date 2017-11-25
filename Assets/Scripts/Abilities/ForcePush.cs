@@ -15,6 +15,8 @@ namespace FCS
 
         private Vector3 _projectilePosition;
 
+        public Abilities AbilityType = Abilities.ForcePush;
+
         protected override void Update()
         {
             base.Update();

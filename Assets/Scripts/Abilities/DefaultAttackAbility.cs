@@ -10,6 +10,8 @@ namespace FCS
         private const float _moveDistance = 4f;
         private const float _moveSpeed = 8f;
 
+        public Abilities AbilityType = Abilities.DefaultAbility;
+
         [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {

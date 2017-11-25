@@ -5,6 +5,8 @@ namespace FCS
 {
     public class TeleportAbility : Ability
     {
+        public Abilities AbilityType = Abilities.Teleport;
+
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             Teleport();
