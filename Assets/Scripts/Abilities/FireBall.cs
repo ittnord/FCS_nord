@@ -13,7 +13,6 @@ namespace FCS
         private const float _innerRadius = 5f;
         private const float _maxRadius = 10f;
 
-        public Abilities AbilityType = Abilities.Fireball;
 
         [ServerCallback]
         public override void OnMaxDistance()

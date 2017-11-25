@@ -8,8 +8,6 @@ namespace FCS
     {
         private const float _invisibilityDuration = 3f;
 
-        public Abilities AbilityType = Abilities.Invisibility;
-
         [ServerCallback]
         public override void OnInstantiate()
         {

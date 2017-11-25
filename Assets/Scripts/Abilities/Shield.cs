@@ -4,8 +4,6 @@ namespace FCS
 {
     public class Shield : Ability
     {
-        public Abilities AbilityType = Abilities.Shield;
-
         [ServerCallback]
         public override void OnInstantiate()
         {

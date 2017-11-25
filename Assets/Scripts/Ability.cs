@@ -21,6 +21,7 @@ namespace FCS
     public class Ability : NetworkBehaviour
     {
         protected float Distance { get; private set; }
+        public Abilities AbilityType;
 
         public CharacterBehaviour Caster;
         public int Speed = 10;

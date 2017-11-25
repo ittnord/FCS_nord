@@ -8,8 +8,6 @@ namespace FCS
     {
         private const int _maxDamage = 50;
 
-        public Abilities AbilityType = Abilities.LifeDrain;
-
         [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)
         {
