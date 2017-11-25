@@ -49,10 +49,8 @@ namespace FCS.Character
             if (!isServer) //if not hosting, we had the tank to the gamemanger for easy access!
                 GameManager.AddCharacter(gameObject, _playerNumber, _color, _playerName, _localId);
 
-            GameObject TankRenderers = transform.Find("TankRenderers").gameObject;
-
             // Get all of the renderers of the tank.
-            Renderer[] renderers = TankRenderers.GetComponentsInChildren<Renderer>();
+            Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
 
             // Go through all the renderers...
             for (int i = 0; i < renderers.Length; i++)
@@ -61,8 +59,8 @@ namespace FCS.Character
                 renderers[i].material.color = _color;
             }
 
-            if (TankRenderers)
-                TankRenderers.SetActive(false);
+//            if (gameObject)
+//                gameObject.SetActive(false);
 
             _nameText.text = "<color=#" + ColorUtility.ToHtmlStringRGB(_color) + ">" + _playerName + "</color>";
 

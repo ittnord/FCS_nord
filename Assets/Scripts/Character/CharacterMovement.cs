@@ -28,8 +28,8 @@ namespace Character
         private void Start()
         {
             // The axes are based on player number.
-            MovementAxis = "Vertical" + (LocalID + 1);
-            TurnAxis = "Horizontal" + (LocalID + 1);
+            MovementAxis = "Vertical";
+            TurnAxis = "Horizontal";
         }
 
         private void Update()

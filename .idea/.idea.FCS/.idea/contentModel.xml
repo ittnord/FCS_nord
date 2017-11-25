@@ -200,6 +200,10 @@
         <e p="Scripts" t="Include">
           <e p="Abilities" t="Include">
             <e p="DefaultAttackAbility.cs" t="Include" />
+            <e p="Effects" t="Include">
+              <e p="MoveEffect.cs" t="Include" />
+            </e>
+            <e p="FireBall.cs" t="Include" />
           </e>
           <e p="Ability.cs" t="Include" />
           <e p="AbilityPerformer.cs" t="Include" />
@@ -212,10 +216,10 @@
             <e p="CharacterMovement.cs" t="Include" />
             <e p="CharacterSetup.cs" t="Include" />
             <e p="CharacterShooting.cs" t="Include" />
-            <e p="CharaterHealth.cs" t="Include" />
           </e>
           <e p="Environment.cs" t="Include" />
           <e p="Game.cs" t="Include" />
+          <e p="InputController.cs" t="Include" />
           <e p="IStat.cs" t="Include" />
           <e p="Lobby" t="Include">
             <e p="LobbyHook.cs" t="Include" />
@@ -240,6 +244,11 @@
           </e>
           <e p="Singleton.cs" t="Include" />
           <e p="UI" t="Include">
+            <e p="AbilitySlot.cs" t="Include" />
+            <e p="BattleHud.cs" t="Include" />
+            <e p="GuiFactory.cs" t="Include" />
+            <e p="Hud.cs" t="Include" />
+            <e p="Joystick.cs" t="Include" />
             <e p="UIDirectionControl.cs" t="Include" />
           </e>
         </e>
