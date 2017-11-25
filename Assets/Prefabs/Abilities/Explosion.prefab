@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4159880368579634}
   - component: {fileID: 33530897755078790}
   - component: {fileID: 23542427508578006}
-  - component: {fileID: 114099580801092934}
   - component: {fileID: 114975897006700856}
   - component: {fileID: 114622509148091260}
   - component: {fileID: 65093844860470680}
+  - component: {fileID: 114255693539997824}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -93,12 +93,12 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1203219601496828}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 0.2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114099580801092934
+--- !u!114 &114255693539997824
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -106,13 +106,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203219601496828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49ee37c6e96e2f149ba426c0b742604e, type: 3}
+  m_Script: {fileID: 11500000, guid: c58f4a0d5c929f940ad7a57de2efcc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Caster: {fileID: 0}
   Speed: 10
   MaxDistance: 10
-  SpawnEffect: {fileID: 0}
+  SpawnEffect: {fileID: 1201937589591930, guid: ae12e370e6819394bb6f83f26d7bdbb0,
+    type: 2}
   ImpactEffect: {fileID: 1201937589591930, guid: ae12e370e6819394bb6f83f26d7bdbb0,
     type: 2}
 --- !u!114 &114622509148091260
