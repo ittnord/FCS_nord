@@ -14,7 +14,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
         
-        private void Start()
+        protected virtual void Start()
         {
             // get the transform of the main camera
             if (Camera.main != null)
@@ -33,7 +33,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
 
 
-        private void Update()
+        protected virtual void Update()
         {
             if (!m_Jump)
             {
@@ -43,7 +43,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 
         // Fixed update is called in sync with physics
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             // read inputs
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
