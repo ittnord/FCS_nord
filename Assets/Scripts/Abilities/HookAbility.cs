@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
+
 
 namespace FCS
 {
@@ -29,6 +31,7 @@ namespace FCS
             _lineRenderer.SetPosition(1, transform.position);
         }
 
+        [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             var hookEffect = character.gameObject.AddComponent<HookEffect>();
@@ -36,6 +39,7 @@ namespace FCS
             Destroy(gameObject);
         }
 
+        [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)
         {
             var hookEffect = Caster.gameObject.AddComponent<HookEffect>();

@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.2, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!114 &114099580801092934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +115,7 @@ MonoBehaviour:
   SpawnEffect: {fileID: 0}
   ImpactEffect: {fileID: 1201937589591930, guid: ae12e370e6819394bb6f83f26d7bdbb0,
     type: 2}
+  AbilityType: 3
 --- !u!114 &114117700868361372
 MonoBehaviour:
   m_ObjectHideFlags: 1

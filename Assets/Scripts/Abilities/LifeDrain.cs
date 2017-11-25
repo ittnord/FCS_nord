@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 namespace FCS
 {
@@ -9,6 +10,7 @@ namespace FCS
 
         public Abilities AbilityType = Abilities.LifeDrain;
 
+        [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)
         {
             var effectDirection = transform.rotation * Vector3.forward;
@@ -16,6 +18,7 @@ namespace FCS
             transform.rotation = Quaternion.FromToRotation(effectDirection, reflect);
         }
 
+        [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             int damage = (int)(_maxDamage * (Distance / MaxDistance));

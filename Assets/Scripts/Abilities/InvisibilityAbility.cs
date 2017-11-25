@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 namespace FCS
 {
@@ -9,6 +10,7 @@ namespace FCS
 
         public Abilities AbilityType = Abilities.Invisibility;
 
+        [ServerCallback]
         public override void OnInstantiate()
         {
             var invisEffect = Caster.gameObject.AddComponent<InvisibilityEffect>();

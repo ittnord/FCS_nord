@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!114 &114102207220647134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +135,7 @@ MonoBehaviour:
   MaxDistance: 1
   SpawnEffect: {fileID: 0}
   ImpactEffect: {fileID: 0}
+  AbilityType: 8
 --- !u!114 &114902372253034308
 MonoBehaviour:
   m_ObjectHideFlags: 1
