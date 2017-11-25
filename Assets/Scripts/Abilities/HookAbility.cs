@@ -14,7 +14,7 @@ namespace FCS
         public override void OnInstantiate()
         {
             base.OnInstantiate();
-            _lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer = gameObject.AddComponent<LineRenderer>();
 
             _lineRenderer.SetPosition(0, new Vector3(Caster.transform.position.x, 1, Caster.transform.position.z));
             _lineRenderer.SetPosition(1, transform.position);

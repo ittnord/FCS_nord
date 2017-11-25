@@ -65,7 +65,7 @@ namespace FCS
             var testScale = new Vector3(colliderSize.x, colliderSize.y, colliderSize.z);
             transform.localScale = testScale;
 
-            _colliderActivationTime = Time.time + 0.25f;
+            _colliderActivationTime = Time.time + 0.15f;
         }
 
         public virtual void OnMaxDistance()

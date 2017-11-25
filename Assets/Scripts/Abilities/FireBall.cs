@@ -15,6 +15,7 @@ namespace FCS
 
         public Abilities AbilityType = Abilities.Fireball;
 
+        [ServerCallback]
         public override void OnMaxDistance()
         {
             Explode(false);
