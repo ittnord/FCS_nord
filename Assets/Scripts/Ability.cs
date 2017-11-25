@@ -84,7 +84,7 @@ namespace FCS
         [ServerCallback]
         public virtual void OnCollideWithCharacter(CharacterBehaviour character)
         {
-            if (shield.Owner == Caster && Distance < 10)
+            if (character == Caster && Distance < 10)
             {
                 return;
             }
