@@ -61,5 +61,18 @@ namespace FCS
             Debug.Log("FUCK EAH!");
             Destroy(gameObject);
         }
+
+        [ServerCallback]
+        public virtual void OnCollideWithShield(CharacterShield shield)
+        {
+            if (shield.Owner == Caster && _distance < 10)
+            {
+                return;
+            }
+            var effectDirection = transform.rotation * Vector3.forward;
+            var shieldDirection = shield.transform.rotation * Vector3.forward;
+            var reflect = Vector3.Reflect(effectDirection, shieldDirection);
+            transform.rotation = Quaternion.FromToRotation(effectDirection, reflect);
+        }
     }
 }

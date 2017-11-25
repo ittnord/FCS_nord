@@ -11,9 +11,13 @@ namespace FCS
     public class CharacterBehaviour : ThirdPersonCharacter
     {
         [SerializeField]
-        private Ability _abilityPrefab;
-        [SerializeField]
         private Transform _spawnAbilityTransform;
+
+        [SerializeField]
+        private Transform _shieldTransform;
+
+
+        public Transform Shield { get { return _shieldTransform; } }
 
         private readonly HashSet<IStat> _stats = new HashSet<IStat>();
 
