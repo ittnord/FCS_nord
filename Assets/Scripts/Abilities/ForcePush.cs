@@ -13,6 +13,7 @@ namespace FCS
         {
             var moveEffect = Caster.gameObject.AddComponent<MoveEffect>();
             moveEffect.Init(Vector3.forward, _moveSpeed, _moveDistance);
+            base.OnInstantiate();
             Destroy(gameObject);
         }
     }
