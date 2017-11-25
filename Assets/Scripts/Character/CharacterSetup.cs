@@ -65,6 +65,13 @@ namespace FCS.Character
                 TankRenderers.SetActive(false);
 
             _nameText.text = "<color=#" + ColorUtility.ToHtmlStringRGB(_color) + ">" + _playerName + "</color>";
+
+
+            // TODO: Валера, хелп ми
+            //if (isLocalPlayer)
+            //{
+                InitGui();
+            //}
         }
 
         [ClientCallback]
@@ -110,6 +117,12 @@ namespace FCS.Character
         public override void OnNetworkDestroy()
         {
             GameManager.RemoveCharacter(gameObject);
+        }
+
+        private void InitGui()
+        {
+            var hud = Instantiate(GuiFactory.Instance.BattleHud);
+            GuiFactory.Instance.Add(hud.GetComponent<RectTransform>());
         }
     }
 }
