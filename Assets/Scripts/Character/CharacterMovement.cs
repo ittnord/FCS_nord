@@ -33,7 +33,7 @@ namespace Character
                 return;
 
 #if !MOBILE_INPUT
-            InputController.Instance.InverseDirection = Input.GetKey(KeyCode.LeftControl);
+            InputController.Instance.InverseDirection = Input.GetKey(KeyCode.Z);
 #endif
 
             _character.Move(InputController.Instance.InputDirection, InputController.Instance.InverseDirection);
