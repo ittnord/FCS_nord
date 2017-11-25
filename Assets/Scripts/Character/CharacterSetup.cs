@@ -54,10 +54,10 @@ namespace FCS.Character
 
             _abilityTypes = new SyncListStruct<Abilities>
             {
-                Abilities.DefaultAbility,
-                Abilities.Teleport,
-                Abilities.Hook,
-                Abilities.ForcePush
+                Abilities.Swap,
+                Abilities.Swap,
+                Abilities.Swap,
+                Abilities.Swap
             };
 
             if (!isServer) //if not hosting, we had the tank to the gamemanger for easy access!
@@ -83,7 +83,7 @@ namespace FCS.Character
         }
 
         [ClientCallback]
-        public void Update()
+        public void Update() 
         {
             if (!isLocalPlayer)
             {

@@ -54,7 +54,6 @@ namespace FCS
             }
         }
 
-        [ServerCallback]
         public virtual void OnInstantiate()
         {
             if (SpawnEffect != null)
@@ -74,14 +73,11 @@ namespace FCS
             Destroy(gameObject);
         }
 
-        [ServerCallback]
         public virtual void OnCollideWithEnvironment(Environment env)
         {
-            Debug.Log("FUCK EAH!");
             Destroy(gameObject);
         }
 
-        [ServerCallback]
         public virtual void OnCollideWithCharacter(CharacterBehaviour character)
         {
             if (character == Caster && Distance < 10)
@@ -89,7 +85,6 @@ namespace FCS
                 return;
             }
 
-            Debug.Log("FUCK EAH!");
             Destroy(gameObject);
         }
 

@@ -67,14 +67,17 @@ namespace Character
 
         public void SetPosition(Vector3 position)
         {
-            if(!isLocalPlayer)
-                return;
-            Debug.LogError("SWAP! + " + GetComponent<CharacterSetup>().PlayerName);
-            CmdSetPosition(position);
+            RpcSetPosition(position);
         }
 
         [Command]
         public void CmdSetPosition(Vector3 position)
+        { 
+            transform.position = position;
+        }
+
+        [ClientRpc]
+        public void RpcSetPosition(Vector3 position)
         {
             transform.position = position;
         }

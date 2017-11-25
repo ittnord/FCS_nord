@@ -1,12 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.Networking;
-
-namespace FCS
+﻿namespace FCS
 {
     public class TeleportAbility : Ability
     {
-        [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             if (character == Caster && Distance < 1)
@@ -17,7 +12,6 @@ namespace FCS
             Teleport();
         }
 
-        [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)
         {
             Teleport();

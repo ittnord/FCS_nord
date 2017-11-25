@@ -6,11 +6,10 @@ namespace FCS
 {
     public class Explosion : FireBall
     {
-        [ServerCallback]
         public override void OnInstantiate()
         {
             Explode(true);
             Destroy(gameObject);
-        }
+        } 
     }
 }

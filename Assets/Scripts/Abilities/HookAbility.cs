@@ -29,7 +29,6 @@ namespace FCS
             _lineRenderer.SetPosition(1, transform.position);
         }
 
-        [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             if (character == Caster && Distance < 1)
@@ -41,7 +40,6 @@ namespace FCS
             Destroy(gameObject);
         }
 
-        [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)
         {
             var hookEffect = Caster.gameObject.AddComponent<HookEffect>();

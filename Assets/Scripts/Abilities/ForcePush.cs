@@ -22,7 +22,6 @@ namespace FCS
             Caster.transform.position = _projectilePosition;
         }
 
-        [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             if (character == Caster)
@@ -38,7 +37,6 @@ namespace FCS
             Destroy(gameObject);
         }
 
-        [ServerCallback]
         public override void OnCollideWithEnvironment(Environment env)
         {
             Destroy(gameObject);

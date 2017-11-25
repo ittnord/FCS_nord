@@ -10,7 +10,6 @@ namespace FCS
         public float MoveDistance = 4f;
         public float MoveSpeed = 8f;
 
-        [ServerCallback]
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             if (character == Caster && Distance < 1)
