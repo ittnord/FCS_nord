@@ -7,9 +7,9 @@ namespace FCS
     {
         public Vector3 InputDirection { get; set; }
 
-        public event Action<Ability> OnAbilityUsed;
+        public event Action<Abilities> OnAbilityUsed;
 
-        public void HandleAbility(Ability ability)
+        public void HandleAbility(Abilities ability)
         {
             OnAbilityUsed?.Invoke(ability);
         }

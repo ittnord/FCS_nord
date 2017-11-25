@@ -15,7 +15,7 @@ namespace Character
 
         private CharacterBehaviour _character;
 
-        private Ability _useAbility;
+        private Abilities _useAbility;
 
         private void Awake()
         {
@@ -29,19 +29,19 @@ namespace Character
                 InputController.Instance.OnAbilityUsed -= UseAbility;
         }
 
-        private void UseAbility(Ability ability)
+        private void UseAbility(Abilities ability)
         {
             if (!isLocalPlayer)
                 return;
 
             _useAbility = ability;
-            CmdUseAbility();
+            CmdUseAbility(ability);
         }
 
         [Command]
-        private void CmdUseAbility()
+        private void CmdUseAbility(Abilities abilityType)
         {
-            var ability = Instantiate(_useAbility);
+            var ability = GuiFactory.Instance.Instantiate(abilityType);
             ability.transform.position = FireTransform.position;
             ability.transform.rotation = transform.rotation;
             ability.Caster = _character;
@@ -56,7 +56,7 @@ namespace Character
 #if !MOBILE_INPUT
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                InputController.Instance.HandleAbility(GuiFactory.Instance.Instantiate(Abilities.DefaultAbility));
+                InputController.Instance.HandleAbility(Abilities.DefaultAbility);
             }
 #endif
         }

@@ -9,7 +9,7 @@ namespace FCS
 
         public void OnSlotClicked()
         {
-            InputController.Instance.HandleAbility(GuiFactory.Instance.Instantiate(AbilityType));
+            InputController.Instance.HandleAbility(AbilityType);
         }
     }
 }
