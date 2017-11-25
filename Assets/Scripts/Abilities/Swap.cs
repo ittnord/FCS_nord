@@ -13,8 +13,10 @@ namespace FCS
             }
 
             var characterPosition = character.transform.position;
-            character.transform.position = Caster.transform.position;
-            Caster.transform.position = characterPosition;
+//           character.transform.position = Caster.transform.position;
+//            Caster.transform.position = characterPosition;
+            Caster.SetPosition(characterPosition);
+            character.GetComponent<CharacterBehaviour>().SetPosition(Caster.transform.position);
         }
     }
 }

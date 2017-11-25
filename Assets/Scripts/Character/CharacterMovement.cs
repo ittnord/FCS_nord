@@ -1,4 +1,5 @@
 ﻿using FCS;
+using FCS.Character;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -62,6 +63,20 @@ namespace Character
         private void OnEnable()
         {
             Rigidbody.constraints = OriginalConstrains;
+        }
+
+        public void SetPosition(Vector3 position)
+        {
+            if(!isLocalPlayer)
+                return;
+            Debug.LogError("SWAP! + " + GetComponent<CharacterSetup>().PlayerName);
+            CmdSetPosition(position);
+        }
+
+        [Command]
+        public void CmdSetPosition(Vector3 position)
+        {
+            transform.position = position;
         }
     }
 }

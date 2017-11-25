@@ -2741,7 +2741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNumber: 1
-  _abilityPrefab: {fileID: 114099580801092934, guid: 5e0e61b748ff62b4fa77f2ae448dc100,
+  _abilityPrefab: {fileID: 114360571066030352, guid: dcb461d48131361449ef8b6302b4b7e1,
     type: 2}
   FireTransform: {fileID: 4497690423260866}
   localID: 0

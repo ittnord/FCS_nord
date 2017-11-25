@@ -35,5 +35,10 @@ namespace FCS
                 ability.OnCollideWithCharacter(this);
             }
         }
+
+        public void SetPosition(Vector3 position)
+        {
+            GetComponent<CharacterMovement>().SetPosition(position);
+        }
     }
 }

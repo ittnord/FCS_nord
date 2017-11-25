@@ -63,7 +63,6 @@ namespace Character
 
         // This is used by the game manager to reset the tank.
         public void SetDefaults()
-        {
-        }
+        {}
     }
 }

@@ -37,7 +37,7 @@ namespace FCS.Character
 
         public int LocalId
         {
-            get { return _localId; }
+            get { return _localId; } 
             set { _localId = value; }
         }
 
