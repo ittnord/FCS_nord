@@ -28,7 +28,11 @@ namespace FCS
         protected override void Update()
         {
             base.Update();
-            if (_lineRenderer == null) return;
+            if (_lineRenderer == null) 
+                return;
+            if(Caster == null)
+                return;
+            
             _lineRenderer.SetPosition(0, new Vector3(Caster.transform.position.x, 1, Caster.transform.position.z));
             _lineRenderer.SetPosition(1, transform.position);
         }
