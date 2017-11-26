@@ -50,6 +50,9 @@ namespace Character
 
         public void Damage(StatType type, float value)
         {
+            if(_stats.Count <= 0 || _stats.All(s => s.Type != type))
+                return;
+            
             var stat = _stats.First(element => element.Type == type);
             stat.Current += value;
             

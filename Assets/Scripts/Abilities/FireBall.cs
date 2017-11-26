@@ -39,6 +39,9 @@ namespace FCS
 
         protected void Explode(bool ignoreSelf)
         {
+            PlayEffect(InnerRadius);
+            PlayEffect(MaxRadius);
+
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, MaxRadius);
             foreach (Collider collider in hitColliders)
             {
@@ -49,27 +52,14 @@ namespace FCS
                     {
                         continue;
                     }
+                    
 
                     var distance = Vector3.Distance(transform.position, collider.transform.position);
                     var direction = (collider.transform.position - transform.position).normalized;
-                    var move = collider.gameObject.AddComponent<MoveEffect>();
-
-                    if (distance <= InnerRadius)
-                    {
-                        character.Change(StatType.Hp, -Damage);
-                        move.Init(direction, ExplosionSpeed, ExplosionDistance);
-
-                    }
-                    else
-                    {
-                        character.Change(StatType.Hp, (int)(1 - distance / MaxRadius) * -Damage);
-                        move.Init(direction, ExplosionSpeed, (int)(1 - distance / MaxRadius) * ExplosionDistance);
-                    }
+//                    character.CmdAddMoveEffect(direction, distance, this.InnerRadius, Damage, ExplosionDistance, ExplosionSpeed, MaxRadius);
+                    character.AddMoveEffect(direction, distance, this.InnerRadius, Damage, ExplosionDistance, ExplosionSpeed, MaxRadius);
                 }
             }
-
-            PlayEffect(InnerRadius);
-            PlayEffect(MaxRadius);
 
             Destroy(gameObject);
         }
@@ -84,8 +74,9 @@ namespace FCS
 
             explosionRadius *= 2;
             var effect = Instantiate(ImpactEffect, transform.position, Quaternion.identity);
-            Vector3 explosionSize = new Vector3(explosionRadius, explosionRadius, explosionRadius);
+            var explosionSize = new Vector3(explosionRadius, explosionRadius, explosionRadius);
             effect.transform.localScale = explosionSize;
+            NetworkServer.Spawn(effect.gameObject);
         }
 
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Character;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace FCS
@@ -24,7 +25,7 @@ namespace FCS
 
         public void Change(StatType type, int value)
         {
-          Health.Damage(type, value);
+            Health.Damage(type, value);
         }
 
         private void OnTriggerEnter(Collider col)
@@ -40,5 +41,66 @@ namespace FCS
         {
             GetComponent<CharacterMovement>().SetPosition(position);
         }
+
+        public void AddMoveEffect(Vector3 direction, float distance, float InnerRadius, int Damage, float ExplosionDistance, float ExplosionSpeed, float MaxRadius)
+        {
+            if (isLocalPlayer)
+            {
+                var move = gameObject.AddComponent<MoveEffect>();
+
+                if (distance <= InnerRadius)
+                {
+                    Change(StatType.Hp, -Damage);
+                    move.Init(direction, ExplosionSpeed, ExplosionDistance);
+
+                }
+                else
+                {
+                    Change(StatType.Hp, (int) (1 - distance / MaxRadius) * -Damage);
+                    move.Init(direction, ExplosionSpeed, (int) (1 - distance / MaxRadius) * ExplosionDistance);
+                }
+            }
+            else
+            {
+                RpcAddMoveEffect(direction, distance, InnerRadius, Damage, ExplosionDistance, ExplosionSpeed, MaxRadius);
+            }
+            
+        }
+
+        [ClientRpc]
+        public void RpcAddMoveEffect(Vector3 direction, float distance, float InnerRadius, int Damage, float ExplosionDistance, float ExplosionSpeed, float MaxRadius)
+        {
+            var move = gameObject.AddComponent<MoveEffect>();
+
+            if (distance <= InnerRadius)
+            {
+                Change(StatType.Hp, -Damage);
+                move.Init(direction, ExplosionSpeed, ExplosionDistance);
+
+            }
+            else
+            {
+                Change(StatType.Hp, (int) (1 - distance / MaxRadius) * -Damage);
+                move.Init(direction, ExplosionSpeed, (int) (1 - distance / MaxRadius) * ExplosionDistance);
+            }
+        }
+//
+//        [Command]
+//        public void CmdAddMoveEffect(Vector3 direction, float distance, float InnerRadius, int Damage, float ExplosionDistance, float ExplosionSpeed, float MaxRadius)
+//        {
+//            var move = gameObject.AddComponent<MoveEffect>();
+//
+//            if (distance <= InnerRadius)
+//            {
+//                Change(StatType.Hp, -Damage);
+//                move.Init(direction, ExplosionSpeed, ExplosionDistance);
+//
+//            }
+//            else
+//            {
+//                Change(StatType.Hp, (int) (1 - distance / MaxRadius) * -Damage);
+//                move.Init(direction, ExplosionSpeed, (int) (1 - distance / MaxRadius) * ExplosionDistance);
+//            }
+//        }
     }
 }

@@ -222,6 +222,7 @@
             <e p="Swap.cs" t="Include" />
             <e p="TeleportAbility.cs" t="Include" />
           </e>
+          <e p="AbilitiesStorage.cs" t="Include" />
           <e p="Ability.cs" t="Include" />
           <e p="AbilityPerformer.cs" t="Include" />
           <e p="AutoDestroy.cs" t="Include" />
@@ -267,6 +268,7 @@
             <e p="Hud.cs" t="Include" />
             <e p="InverseButton.cs" t="Include" />
             <e p="Joystick.cs" t="Include" />
+            <e p="SelectAbilitiesPanel.cs" t="Include" />
             <e p="UIDirectionControl.cs" t="Include" />
           </e>
         </e>

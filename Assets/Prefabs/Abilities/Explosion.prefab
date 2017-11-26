@@ -117,6 +117,11 @@ MonoBehaviour:
     type: 2}
   ImpactEffect: {fileID: 1201937589591930, guid: ae12e370e6819394bb6f83f26d7bdbb0,
     type: 2}
+  Damage: 15
+  ExplosionDistance: 10
+  ExplosionSpeed: 25
+  InnerRadius: 5
+  MaxRadius: 10
 --- !u!114 &114622509148091260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,14 +134,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
-  m_SendInterval: 0.1
+  m_SendInterval: 0.07692308
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
-  m_SyncSpin: 0
+  m_SyncSpin: 1
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
-  m_InterpolateRotation: 1
+  m_InterpolateRotation: 10
   m_InterpolateMovement: 1
 --- !u!114 &114975897006700856
 MonoBehaviour:
