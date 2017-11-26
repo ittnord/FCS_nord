@@ -37,7 +37,7 @@ namespace FCS
             var moveEffect = character.gameObject.AddComponent<MoveEffect>();
             moveEffect.Init(-direction, PushSpeed, PushDistance);
 
-            character.Change(StatType.Hp, -Damage);
+            character.Change(StatType.Hp, Damage);
             Destroy(gameObject);
         }
 

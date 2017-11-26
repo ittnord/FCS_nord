@@ -71,13 +71,13 @@ namespace FCS
 
                 if (distance <= InnerRadius)
                 {
-                    Change(StatType.Hp, -Damage);
+                    Change(StatType.Hp, Damage);
                     move.Init(direction, ExplosionSpeed, ExplosionDistance);
 
                 }
                 else
                 {
-                    Change(StatType.Hp, (int) (1 - distance / MaxRadius) * -Damage);
+                    Change(StatType.Hp, (int) (1 - distance / MaxRadius) * Damage);
                     move.Init(direction, ExplosionSpeed, (int) (1 - distance / MaxRadius) * ExplosionDistance);
                 }
             }
@@ -95,13 +95,13 @@ namespace FCS
 
             if (distance <= InnerRadius)
             {
-                Change(StatType.Hp, -Damage);
+                Change(StatType.Hp, Damage);
                 move.Init(direction, ExplosionSpeed, ExplosionDistance);
 
             }
             else
             {
-                Change(StatType.Hp, (int) (1 - distance / MaxRadius) * -Damage);
+                Change(StatType.Hp, (int) (1 - distance / MaxRadius) * Damage);
                 move.Init(direction, ExplosionSpeed, (int) (1 - distance / MaxRadius) * ExplosionDistance);
             }
         }
