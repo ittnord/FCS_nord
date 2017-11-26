@@ -19,9 +19,7 @@ namespace FCS
 
         protected void Start()
         {
-            var character = GameManager.Characters.First(element => element.CharacterSetup.isLocalPlayer)
-                .CharacterSetup;
-            var abilities = character.GetAbilities();
+            var abilities = AbilitiesStorage.Instance.SelectedAbilities;
             _abilitySlotMain.AbilityType = abilities[0];
             _abilitySlotAdd1.AbilityType = abilities[1];
             _abilitySlotAdd2.AbilityType = abilities[2];

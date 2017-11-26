@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using FCS;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
@@ -14,12 +16,17 @@ namespace Prototype.NetworkLobby
         public InputField nameInput;
         public Button readyButton;
         public Button waitingPlayerButton;
+        public SelectAbilitiesPanel abilitiesPanel;
+        public GameObject abilitiesLayout;
 
         //OnMyName function will be invoked on clients when server change the value of playerName
         [SyncVar(hook = "OnMyName")]
         public string playerName = "";
         [SyncVar(hook = "OnMyColor")]
         public Color playerColor = Color.magenta;
+
+        [SyncVar(hook = "OnCanConnectChanged")]
+        public bool canConnect;
 
         public Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
         public Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
@@ -56,6 +63,7 @@ namespace Prototype.NetworkLobby
             //will be created with the right value currently on server
             OnMyName(playerName);
             OnMyColor(playerColor);
+            OnCanConnectChanged(false);
         }
 
         public override void OnStartAuthority()
@@ -129,6 +137,9 @@ namespace Prototype.NetworkLobby
             readyButton.onClick.RemoveAllListeners();
             readyButton.onClick.AddListener(OnReadyClicked);
 
+            abilitiesLayout.gameObject.SetActive(true);
+            AbilitiesStorage.Instance.AvailableChanged += OnCanConnectChanged;
+
             //when OnClientEnterLobby is called, the loval PlayerController is not yet created, so we need to redo that here to disable
             //the add button if we reach maxLocalPlayer. We pass 0, as it was already counted on OnClientEnterLobby
             if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(0);
@@ -188,6 +199,12 @@ namespace Prototype.NetworkLobby
         {
             playerColor = newColor;
             colorButton.GetComponent<Image>().color = newColor;
+        }
+
+        public void OnCanConnectChanged(bool value)
+        {
+            canConnect = value;
+            readyButton.interactable = value;
         }
 
         //===== UI Handler
@@ -262,6 +279,8 @@ namespace Prototype.NetworkLobby
             LobbyPlayerList._instance.RemovePlayer(this);
             if (LobbyManager.s_Singleton != null) 
                 LobbyManager.s_Singleton.OnPlayersNumberModified(-1);
+
+            AbilitiesStorage.Instance.AvailableChanged -= OnCanConnectChanged;
         }
     }
 }

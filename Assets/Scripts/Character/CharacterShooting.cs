@@ -55,7 +55,7 @@ namespace Character
             if (!isLocalPlayer)
                 return;
 #if !MOBILE_INPUT
-            var abilities = GetComponent<CharacterSetup>().GetAbilities();
+            var abilities = AbilitiesStorage.Instance.SelectedAbilities;
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 InputController.Instance.HandleAbility(abilities[0]);

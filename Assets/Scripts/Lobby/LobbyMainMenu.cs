@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using FCS;
 using FCS.Managers;
 using UnityStandardAssets.Utility;
 
@@ -20,9 +21,10 @@ namespace Prototype.NetworkLobby
         [SerializeField] private RectTransform _lobbyPanel;
 
         [SerializeField] private InputField _ipInput;
+        [SerializeField] private Button _goToBattleButton;
 
         private Action _callback;
-        
+
         public void OnEnable()
         {
             _lobbyManager.topPanel.ToggleVisibility(true);
