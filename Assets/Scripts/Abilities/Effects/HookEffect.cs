@@ -32,22 +32,29 @@ namespace FCS
 
         protected void Update()
         {
-            if (_lineRenderer != null)
+            if (_lineRenderer != null && _hookOrigin != null && _hookTarget != null)
             {
-                _lineRenderer.SetPosition(0, new Vector3(_hookOrigin.transform.position.x, 1, _hookOrigin.transform.position.z));
-                _lineRenderer.SetPosition(1, new Vector3(_hookTarget.transform.position.x, 1, _hookTarget.transform.position.z));
+                _lineRenderer.SetPosition(0,
+                    new Vector3(_hookOrigin.transform.position.x, 1, _hookOrigin.transform.position.z));
+                _lineRenderer.SetPosition(1, 
+                    new Vector3(_hookTarget.transform.position.x, 1, _hookTarget.transform.position.z));
             }
 
-            var direction = (_hookOrigin.transform.position - _hookTarget.position).normalized;
+            if (_hookOrigin != null && _hookTarget != null)
+            {
+                var direction = (_hookOrigin.transform.position - _hookTarget.position).normalized;
 
-            //_moveDistance += _moveSpeed * Time.fixedDeltaTime;
-            Vector3 v = direction * _hookSpeed * Time.fixedDeltaTime;
-            //transform.Translate(v);
-            transform.position += v;
+                //_moveDistance += _moveSpeed * Time.fixedDeltaTime;
+                Vector3 v = direction * _hookSpeed * Time.fixedDeltaTime;
+                //transform.Translate(v);
+                transform.position += v;
+            }
 
             if (Vector3.Distance(_hookOrigin.position, _hookTarget.position) <= 2f)
             {
-                Destroy(_lineRenderer);
+                if (_lineRenderer != null)
+                    Destroy(_lineRenderer);
+                
                 Destroy(this);
             }
         }
