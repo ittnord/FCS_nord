@@ -24,7 +24,7 @@
 
         private void Teleport()
         {
-            Caster.transform.position = transform.position;
+            Caster.SetPosition(transform.position);
             Destroy(gameObject);
         }
     }
