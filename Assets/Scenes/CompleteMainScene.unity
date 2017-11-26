@@ -4888,9 +4888,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a000792783c934885973b761b3f96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numRoundsToWin: 5
-  _startDelay: 3
-  _endDelay: 3
+  _numRoundsToWin: 1000
+  _startDelay: 1
+  _endDelay: 1
   _cameraControl: {fileID: 1771596988}
   _messageText: {fileID: 567699717}
   _spawnPoint:
@@ -7181,12 +7181,12 @@ Prefab:
     - target: {fileID: 224226690295089038, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 314
+      value: 640
       objectReference: {fileID: 0}
     - target: {fileID: 224226690295089038, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 263
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 224226690295089038, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
