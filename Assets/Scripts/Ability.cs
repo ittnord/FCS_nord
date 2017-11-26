@@ -61,9 +61,9 @@ namespace FCS
                 Instantiate(SpawnEffect, Caster.transform.position, Quaternion.identity);
             }
 
-            var colliderSize = GetComponent<BoxCollider>().size;
-            var testScale = new Vector3(colliderSize.x, colliderSize.y, colliderSize.z);
-            transform.localScale = testScale;
+            //var colliderSize = GetComponent<BoxCollider>().size;
+            //var testScale = new Vector3(colliderSize.x, colliderSize.y, colliderSize.z);
+            //transform.localScale = testScale;
 
             //_colliderActivationTime = Time.time + 0.15f;
         }
