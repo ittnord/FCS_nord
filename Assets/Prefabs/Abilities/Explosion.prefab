@@ -117,7 +117,7 @@ MonoBehaviour:
     type: 2}
   ImpactEffect: {fileID: 1201937589591930, guid: ae12e370e6819394bb6f83f26d7bdbb0,
     type: 2}
-  Damage: 15
+  Damage: -15
   ExplosionDistance: 10
   ExplosionSpeed: 25
   InnerRadius: 5

@@ -156,7 +156,7 @@ MonoBehaviour:
   ImpactEffect: {fileID: 0}
   MoveDistance: 7
   MoveSpeed: 20
-  Damage: 10
+  Damage: -10
   PushDistance: 10
   PushSpeed: 10
 --- !u!114 &114288518493424104

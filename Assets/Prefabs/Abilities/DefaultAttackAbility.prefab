@@ -175,7 +175,7 @@ MonoBehaviour:
   MaxDistance: 10
   SpawnEffect: {fileID: 0}
   ImpactEffect: {fileID: 0}
-  Damage: 10
+  Damage: -10
   MoveDistance: 20
   MoveSpeed: 4
 --- !u!114 &114903905352325762
