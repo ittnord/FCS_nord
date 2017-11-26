@@ -54,9 +54,9 @@ namespace FCS.Character
 
             _abilityTypes = new SyncListStruct<Abilities>
             {
-                Abilities.Swap,
-                Abilities.Swap,
-                Abilities.Swap,
+                Abilities.DefaultAbility,
+                Abilities.Teleport,
+                Abilities.LifeDrain,
                 Abilities.Swap
             };
 
