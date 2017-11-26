@@ -23,6 +23,27 @@ namespace FCS
         public event Action<IStat> OnStatChanged;
         public event Action<IStat> OnStatDie;
 
+        public LineRenderer LineRenderer;
+        public Transform Sights;
+
+        protected override void Start()
+        {
+            base.Start();
+            if (isLocalPlayer && LineRenderer != null)
+            {
+                LineRenderer.enabled = true;
+            }
+        }
+
+        protected void Update()
+        {
+            if (isLocalPlayer)
+            {
+                LineRenderer.SetPosition(0, transform.position);
+                LineRenderer.SetPosition(1, Sights.position);
+            }
+        }
+
         public void Change(StatType type, int value)
         {
             Health.Damage(type, value);
