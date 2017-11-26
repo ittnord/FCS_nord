@@ -776,6 +776,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4299314538892346}
+  - component: {fileID: 120298921375987876}
   m_Layer: 0
   m_Name: Sights
   m_TagString: Untagged
@@ -1335,14 +1336,13 @@ GameObject:
   - component: {fileID: 114408704994381592}
   - component: {fileID: 114279088212791630}
   - component: {fileID: 114265730575688420}
-  - component: {fileID: 120244140158816168}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1927267078153594
 GameObject:
   m_ObjectHideFlags: 1
@@ -1908,7 +1908,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1917638087960374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2125077, y: -1.4820936, z: -5.716337}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4295134717293128}
@@ -2076,7 +2076,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1234197815358154}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2898,7 +2898,7 @@ MonoBehaviour:
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.5
   _shieldTransform: {fileID: 0}
-  LineRenderer: {fileID: 120244140158816168}
+  LineRenderer: {fileID: 120298921375987876}
   Sights: {fileID: 4299314538892346}
 --- !u!114 &114487021507584560
 MonoBehaviour:
@@ -3082,12 +3082,12 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 64
---- !u!120 &120244140158816168
+--- !u!120 &120298921375987876
 LineRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1917638087960374}
+  m_GameObject: {fileID: 1571328616338708}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -3096,7 +3096,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: ff21ff0ea9b18924bb1fdfbb0e58f5cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

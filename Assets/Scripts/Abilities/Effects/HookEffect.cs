@@ -22,7 +22,9 @@ namespace FCS
             _hookSpeed = hookSpeed;
             _hookDuration = hookDuration;
 
-            _lineRenderer = gameObject.AddComponent<LineRenderer>();
+            gameObject.AddComponent<LineRenderer>();
+            _lineRenderer = GetComponent<LineRenderer>();
+
             _lineRenderer.SetWidth(0.1f, 0.1f);
             _lineRenderer.SetPosition(0, _hookOrigin.transform.position);
             _lineRenderer.SetPosition(1, hookTarget.transform.position);
@@ -32,29 +34,22 @@ namespace FCS
 
         protected void Update()
         {
-            if (_lineRenderer != null && _hookOrigin != null && _hookTarget != null)
+            if (_lineRenderer != null)
             {
-                _lineRenderer.SetPosition(0,
-                    new Vector3(_hookOrigin.transform.position.x, 1, _hookOrigin.transform.position.z));
-                _lineRenderer.SetPosition(1, 
-                    new Vector3(_hookTarget.transform.position.x, 1, _hookTarget.transform.position.z));
+                _lineRenderer.SetPosition(0, new Vector3(_hookOrigin.transform.position.x, 1, _hookOrigin.transform.position.z));
+                _lineRenderer.SetPosition(1, new Vector3(_hookTarget.transform.position.x, 1, _hookTarget.transform.position.z));
             }
 
-            if (_hookOrigin != null && _hookTarget != null)
-            {
-                var direction = (_hookOrigin.transform.position - _hookTarget.position).normalized;
+            var direction = (_hookOrigin.transform.position - _hookTarget.position).normalized;
 
-                //_moveDistance += _moveSpeed * Time.fixedDeltaTime;
-                Vector3 v = direction * _hookSpeed * Time.fixedDeltaTime;
-                //transform.Translate(v);
-                transform.position += v;
-            }
+            //_moveDistance += _moveSpeed * Time.fixedDeltaTime;
+            Vector3 v = direction * _hookSpeed * Time.fixedDeltaTime;
+            //transform.Translate(v);
+            transform.position += v;
 
             if (Vector3.Distance(_hookOrigin.position, _hookTarget.position) <= 2f)
             {
-                if (_lineRenderer != null)
-                    Destroy(_lineRenderer);
-                
+                Destroy(_lineRenderer);
                 Destroy(this);
             }
         }
