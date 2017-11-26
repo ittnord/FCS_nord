@@ -34,6 +34,11 @@ namespace FCS
 
         protected void Update()
         {
+            if (_hookOrigin == null || _hookTarget == null)
+            {
+                return;
+            }
+
             if (_lineRenderer != null)
             {
                 _lineRenderer.SetPosition(0, new Vector3(_hookOrigin.transform.position.x, 1, _hookOrigin.transform.position.z));
