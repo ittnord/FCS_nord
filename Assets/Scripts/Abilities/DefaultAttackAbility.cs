@@ -10,6 +10,13 @@ namespace FCS
         public float MoveDistance = 4f;
         public float MoveSpeed = 8f;
 
+        public override void OnCollideWithEnvironment(Environment env)
+        {
+            var effectDirection = transform.rotation * Vector3.forward;
+            var reflect = Vector3.Reflect(effectDirection, env.transform.position.normalized);
+            transform.rotation = Quaternion.FromToRotation(effectDirection, reflect);
+        }
+
         public override void OnCollideWithCharacter(CharacterBehaviour character)
         {
             if (character == Caster && Distance < 1)
