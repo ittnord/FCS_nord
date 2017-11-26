@@ -1,4 +1,5 @@
-﻿using FCS;
+﻿using System.Collections.Generic;
+using FCS;
 using FCS.Character;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -34,6 +35,9 @@ namespace Character
         {
             if (!isLocalPlayer)
                 return;
+            
+            AbilitiesStorage.Instance.CallOnAbilityCdBegin(ability);
+            AbilitiesStorage.Instance.CallOnCdChanged(ability, 0);
 
             _useAbility = ability;
             CmdUseAbility(ability);
@@ -54,21 +58,35 @@ namespace Character
         {
             if (!isLocalPlayer)
                 return;
+
+            var s = AbilitiesStorage.Instance;
+            if (s.CanStart)
+            {
+                var ss = s.SelectedAbilities;
+                if (ss.Count == 4)
+                {
+                    s.CallOnCdChanged(ss[0], -Time.deltaTime);
+                    s.CallOnCdChanged(ss[1], -Time.deltaTime);
+                    s.CallOnCdChanged(ss[2], -Time.deltaTime);
+                    s.CallOnCdChanged(ss[3], -Time.deltaTime);
+                }
+            }
+
 #if !MOBILE_INPUT
-            var abilities = AbilitiesStorage.Instance.SelectedAbilities;
-            if (Input.GetKeyUp(KeyCode.Space))
+            var abilities = s.SelectedAbilities;
+            if (Input.GetKeyUp(KeyCode.Space) && !s.IsUnderCd(abilities[0]))
             {
                 InputController.Instance.HandleAbility(abilities[0]);
             }
-            if (Input.GetKeyUp(KeyCode.A))
+            if (Input.GetKeyUp(KeyCode.A) && !s.IsUnderCd(abilities[1]))
             {
                 InputController.Instance.HandleAbility(abilities[1]);
             }
-            if (Input.GetKeyUp(KeyCode.S))
+            if (Input.GetKeyUp(KeyCode.S) && !s.IsUnderCd(abilities[2]))
             {
                 InputController.Instance.HandleAbility(abilities[2]);
             }
-            if (Input.GetKeyUp(KeyCode.D))
+            if (Input.GetKeyUp(KeyCode.D) && !s.IsUnderCd(abilities[3]))
             {
                 InputController.Instance.HandleAbility(abilities[3]);
             }

@@ -280,7 +280,10 @@ namespace Prototype.NetworkLobby
             if (LobbyManager.s_Singleton != null) 
                 LobbyManager.s_Singleton.OnPlayersNumberModified(-1);
 
-            AbilitiesStorage.Instance.AvailableChanged -= OnCanConnectChanged;
+            if (LobbyManager.s_Singleton != null)
+            {
+                AbilitiesStorage.Instance.AvailableChanged -= OnCanConnectChanged;
+            }
         }
     }
 }
