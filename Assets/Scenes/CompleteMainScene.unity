@@ -3303,6 +3303,75 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 977870631}
   m_Mesh: {fileID: 4300000, guid: 50912a5d3c9322a46afa5ca162962a5c, type: 3}
+--- !u!1 &1026849536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1026849537}
+  - component: {fileID: 1026849540}
+  - component: {fileID: 1026849539}
+  - component: {fileID: 1026849538}
+  m_Layer: 0
+  m_Name: RuinEnv (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1026849537
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026849536}
+  m_LocalRotation: {x: -0.017191952, y: 0.999428, z: -0.028371569, w: -0.0065804417}
+  m_LocalPosition: {x: 2.14, y: -0, z: -0.73}
+  m_LocalScale: {x: 1.0000002, y: 0.99999905, z: 1.26}
+  m_Children: []
+  m_Father: {fileID: 1192986143}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 3.2640002, y: 180.69899, z: -1.9510001}
+--- !u!114 &1026849538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026849536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be53c6a1be271c4f886b7a8c507decb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1026849539
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026849536}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1026849540
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026849536}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29, y: 2, z: 1.67}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1030898853
 GameObject:
   m_ObjectHideFlags: 0
@@ -3528,6 +3597,75 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1039145637}
   m_Mesh: {fileID: 4300000, guid: 50912a5d3c9322a46afa5ca162962a5c, type: 3}
+--- !u!1 &1088833593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1088833594}
+  - component: {fileID: 1088833597}
+  - component: {fileID: 1088833596}
+  - component: {fileID: 1088833595}
+  m_Layer: 0
+  m_Name: RuinEnv
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1088833594
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1088833593}
+  m_LocalRotation: {x: -0, y: 0.0069883456, z: -0, w: 0.99997556}
+  m_LocalPosition: {x: -2.04, y: 0, z: 1.8139999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1192986143}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0.80100006, z: 0}
+--- !u!114 &1088833595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1088833593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be53c6a1be271c4f886b7a8c507decb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1088833596
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1088833593}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1088833597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1088833593}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29, y: 2, z: 1.87}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1132493036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4115,6 +4253,79 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c99ccdf18f6a404f84ffd08488298d8, type: 3}
   m_IsPrefabParent: 0
+--- !u!4 &1192986143 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 8c99ccdf18f6a404f84ffd08488298d8, type: 3}
+  m_PrefabInternal: {fileID: 1192986142}
+--- !u!1 &1208660446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1208660447}
+  - component: {fileID: 1208660450}
+  - component: {fileID: 1208660449}
+  - component: {fileID: 1208660448}
+  m_Layer: 0
+  m_Name: RuinEnv (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1208660447
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1208660446}
+  m_LocalRotation: {x: -0.09812567, y: 0.7172318, z: -0.046358213, w: -0.68833196}
+  m_LocalPosition: {x: -1.721, y: -0.215, z: -2.702}
+  m_LocalScale: {x: 1.5100013, y: 1.9999982, z: 0.39000157}
+  m_Children: []
+  m_Father: {fileID: 1192986143}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 11.63, y: 267.185, z: -4.505}
+--- !u!114 &1208660448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1208660446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be53c6a1be271c4f886b7a8c507decb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1208660449
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1208660446}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1208660450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1208660446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11, y: 1, z: 1.15}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1208672609
 GameObject:
   m_ObjectHideFlags: 0
@@ -5854,6 +6065,75 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1548121448}
   m_Mesh: {fileID: 4300000, guid: 961487dad48770a4d867fcbcca1e5950, type: 3}
+--- !u!1 &1577027097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1577027098}
+  - component: {fileID: 1577027101}
+  - component: {fileID: 1577027100}
+  - component: {fileID: 1577027099}
+  m_Layer: 0
+  m_Name: RuinEnv (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1577027098
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1577027097}
+  m_LocalRotation: {x: -0, y: 0.7005433, z: -0, w: 0.71361}
+  m_LocalPosition: {x: -1.36, y: 0, z: 2.63}
+  m_LocalScale: {x: 0.9999992, y: 0.99999905, z: 0.99999917}
+  m_Children: []
+  m_Father: {fileID: 1192986143}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 88.941, z: 0}
+--- !u!114 &1577027099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1577027097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be53c6a1be271c4f886b7a8c507decb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1577027100
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1577027097}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1577027101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1577027097}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29, y: 2, z: 1.67}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1633781170
 GameObject:
   m_ObjectHideFlags: 0
@@ -7501,6 +7781,75 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 40, y: 5, z: 130}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2009195432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2009195433}
+  - component: {fileID: 2009195436}
+  - component: {fileID: 2009195435}
+  - component: {fileID: 2009195434}
+  m_Layer: 0
+  m_Name: RuinEnv (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009195433
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2009195432}
+  m_LocalRotation: {x: -0.017191952, y: 0.999428, z: -0.028371569, w: -0.0065804413}
+  m_LocalPosition: {x: -2.029, y: -0.245, z: -2.469}
+  m_LocalScale: {x: 1.51, y: 2, z: 0.39}
+  m_Children: []
+  m_Father: {fileID: 1192986143}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 3.2640002, y: 180.69899, z: -1.9510001}
+--- !u!114 &2009195434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2009195432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be53c6a1be271c4f886b7a8c507decb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &2009195435
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2009195432}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &2009195436
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2009195432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11, y: 1, z: 1.15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2017063091
 GameObject:
