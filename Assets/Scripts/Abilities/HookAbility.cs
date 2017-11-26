@@ -11,6 +11,8 @@ namespace FCS
         public float HookSpeed = 10f;
         public float HookDuration = 5f;
 
+        public Material HookMaterial;
+
         public override void OnInstantiate()
         {
             base.OnInstantiate();
@@ -19,6 +21,8 @@ namespace FCS
             _lineRenderer.SetPosition(0, new Vector3(Caster.transform.position.x, 1, Caster.transform.position.z));
             _lineRenderer.SetPosition(1, transform.position);
             _lineRenderer.SetWidth(0.1f, 0.1f);
+            _lineRenderer.textureMode = LineTextureMode.Tile;
+            _lineRenderer.material = HookMaterial;
         }
 
         protected override void Update()
@@ -36,14 +40,14 @@ namespace FCS
                 return;
             }
             var hookEffect = character.gameObject.AddComponent<HookEffect>();
-            hookEffect.Init(Caster.transform, character.transform, HookSpeed, HookDuration);
+            hookEffect.Init(Caster.transform, character.transform, HookSpeed, HookDuration, HookMaterial);
             Destroy(gameObject);
         }
 
         public override void OnCollideWithEnvironment(Environment env)
         {
             var hookEffect = Caster.gameObject.AddComponent<HookEffect>();
-            hookEffect.Init(env.transform, Caster.transform, HookSpeed, HookDuration);
+            hookEffect.Init(env.transform, Caster.transform, HookSpeed, HookDuration, HookMaterial);
             Destroy(gameObject);
         }
     }

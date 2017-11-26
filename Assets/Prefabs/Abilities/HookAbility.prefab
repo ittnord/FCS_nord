@@ -136,6 +136,10 @@ MonoBehaviour:
   MaxDistance: 15
   SpawnEffect: {fileID: 0}
   ImpactEffect: {fileID: 0}
+  _lineRenderer: {fileID: 0}
+  HookSpeed: 10
+  HookDuration: 5
+  HookMaterial: {fileID: 2100000, guid: d43825c2779b8344a88ee04229e61731, type: 2}
 --- !u!114 &114903905352325762
 MonoBehaviour:
   m_ObjectHideFlags: 1

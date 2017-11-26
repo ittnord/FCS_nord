@@ -12,8 +12,10 @@ namespace FCS
         private float _hookDuration;
         private float _hookSpeed;
 
-        public void Init(Transform hookOrigin, Transform hookTarget, float hookSpeed, float hookDuration)
+        public void Init(Transform hookOrigin, Transform hookTarget, float hookSpeed, float hookDuration, Material hookMaterial)
         {
+            var material = (Material)Resources.Load("Assets/Materials/Chain");
+
             _hookOrigin = hookOrigin;
             _hookTarget = hookTarget;
 
@@ -24,6 +26,8 @@ namespace FCS
             _lineRenderer.SetWidth(0.1f, 0.1f);
             _lineRenderer.SetPosition(0, _hookOrigin.transform.position);
             _lineRenderer.SetPosition(1, hookTarget.transform.position);
+            _lineRenderer.material = hookMaterial;
+            _lineRenderer.textureMode = LineTextureMode.Tile;
         }
 
         protected void Update()
