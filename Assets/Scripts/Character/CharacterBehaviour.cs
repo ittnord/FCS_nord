@@ -39,7 +39,7 @@ namespace FCS
         {
             if (isLocalPlayer)
             {
-                LineRenderer.SetPosition(0, transform.position);
+                LineRenderer.SetPosition(0, new Vector3(transform.position.x, transform.position.y-0.05f, transform.position.z));
                 LineRenderer.SetPosition(1, Sights.position);
             }
         }
