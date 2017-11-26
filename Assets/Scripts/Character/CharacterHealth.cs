@@ -41,6 +41,12 @@ namespace Character
         public CharacterManager Manager { get; set; }
         public GameObject CharacterRenderers { get { return _characterRenderers; } set { _characterRenderers = value; } }
 
+        
+
+        public float GeStat(StatType hp)
+        {
+            return _currentHealth;
+        }
 
         public void Damage(StatType type, float value)
         {
@@ -108,6 +114,21 @@ namespace Character
             _currentHealth = _startingHealth;
             _zeroHealthHappened = false;
             SetCharacterActive(true);
+        }
+
+
+        private void OnTriggerEnter(Collider other)
+        {
+            var lava = other.GetComponent<Lava>();
+            if(lava != null)
+                lava.AddCharacter(this);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            var lava = other.GetComponent<Lava>();
+            if(lava != null)
+                lava.RemoveCharacter(this);
         }
     }
 }

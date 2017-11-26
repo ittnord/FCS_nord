@@ -240,6 +240,7 @@
           <e p="Game.cs" t="Include" />
           <e p="InputController.cs" t="Include" />
           <e p="IStat.cs" t="Include" />
+          <e p="Lava.cs" t="Include" />
           <e p="Lobby" t="Include">
             <e p="LobbyHook.cs" t="Include" />
             <e p="LobbyInfoPanel.cs" t="Include" />
