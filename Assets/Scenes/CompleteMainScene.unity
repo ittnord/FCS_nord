@@ -7181,12 +7181,12 @@ Prefab:
     - target: {fileID: 224226690295089038, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 535
+      value: 314
       objectReference: {fileID: 0}
     - target: {fileID: 224226690295089038, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 229
+      value: 263
       objectReference: {fileID: 0}
     - target: {fileID: 224226690295089038, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
@@ -7364,13 +7364,13 @@ Prefab:
         type: 2}
       propertyPath: _spriteStorage.Array.data[7].Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: af66259081c184fe9a17c24661edf059,
+      objectReference: {fileID: 21300000, guid: 9696c40bc8a6e484aa494a7a9beea8d9,
         type: 3}
     - target: {fileID: 114518058006643250, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
       propertyPath: _spriteStorage.Array.data[8].Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6f095593e42f5a54b992a1534ff86ca4,
+      objectReference: {fileID: 21300000, guid: 5f393849f014b24408e669573ac67083,
         type: 3}
     - target: {fileID: 114518058006643250, guid: ec9e4df4424ddad4db98b4b2efb4fcac,
         type: 2}
