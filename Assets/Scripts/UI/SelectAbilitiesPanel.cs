@@ -19,6 +19,22 @@ namespace FCS
         [SerializeField] private Button _teleportButton;
         
 
+        private Color usedColor = Color.cyan;
+        private Color unusedColor = Color.gray;
+
+        protected void Awake()
+        {
+            SetSelected(_explosionButton, false);
+            SetSelected(_fireballButton, false);
+            SetSelected(_forcePushButton, false);
+            SetSelected(_hookButton, false);
+            SetSelected(_invisibilityButton, false);
+            SetSelected(_lifeDrainButton, false);
+            SetSelected(_shieldButton, false);
+            SetSelected(_swapButton, false);
+            SetSelected(_teleportButton, false);
+        }
+
         private void ChangeState(Button button, Abilities abilities)
         {
             var selectedAbilities = AbilitiesStorage.Instance.SelectedAbilities;
@@ -40,7 +56,7 @@ namespace FCS
 
         public void SetSelected(Button button, bool state)
         {
-
+            button.image.color = state ? usedColor : unusedColor;
         }
 
         public void OnAddExplosion()
