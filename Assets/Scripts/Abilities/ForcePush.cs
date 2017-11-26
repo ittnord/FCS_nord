@@ -18,8 +18,12 @@ namespace FCS
         protected override void Update()
         {
             base.Update();
+            
+            if(Caster == null)
+                return;
+            
             _projectilePosition = new Vector3(transform.position.x, Caster.transform.position.y, transform.position.z);
-            Caster.transform.position = _projectilePosition;
+            Caster.SetPosition(_projectilePosition);
         }
 
         public override void OnCollideWithCharacter(CharacterBehaviour character)

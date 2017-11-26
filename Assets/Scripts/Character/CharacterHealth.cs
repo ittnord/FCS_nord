@@ -79,7 +79,14 @@ namespace Character
         private void OnZeroHealth()
         {
             _zeroHealthHappened = true;
-            RpcOnZeroHealth();
+            if (isLocalPlayer)
+            {
+                InternalOnZeroHealth();
+            }
+            else
+            {
+                RpcOnZeroHealth();
+            }
         }
 
         private void InternalOnZeroHealth()

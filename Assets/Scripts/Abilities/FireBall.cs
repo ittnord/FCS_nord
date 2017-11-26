@@ -39,8 +39,7 @@ namespace FCS
 
         protected void Explode(bool ignoreSelf)
         {
-            PlayEffect(InnerRadius);
-            PlayEffect(MaxRadius);
+            PlayEffect();
 
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, MaxRadius);
             foreach (Collider collider in hitColliders)
@@ -64,7 +63,7 @@ namespace FCS
             Destroy(gameObject);
         }
 
-        private void PlayEffect(float explosionRadius)
+        private void PlayEffect()
         {
             if (ImpactEffect == null)
             {
@@ -72,10 +71,7 @@ namespace FCS
                 return;
             }
 
-            explosionRadius *= 2;
             var effect = Instantiate(ImpactEffect, transform.position, Quaternion.identity);
-            var explosionSize = new Vector3(explosionRadius, explosionRadius, explosionRadius);
-            effect.transform.localScale = explosionSize;
             NetworkServer.Spawn(effect.gameObject);
         }
 
