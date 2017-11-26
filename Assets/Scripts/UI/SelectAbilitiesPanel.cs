@@ -45,7 +45,7 @@ namespace FCS
             }
             else
             {
-                if (selectedAbilities.Count >= 3)
+                if (selectedAbilities.Count >= 4)
                 {
                     return;
                 }

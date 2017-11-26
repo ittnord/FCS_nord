@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -19,6 +20,15 @@ namespace FCS
         [SerializeField] private Swap _swap;
         [SerializeField] private TeleportAbility _teleport;
         [SerializeField] private HookAbility _hook;
+
+        [Serializable]
+        public struct AbilitiesToImage
+        {
+            public Abilities Type;
+            public Sprite Sprite;
+        }
+
+        [SerializeField] private List<AbilitiesToImage> _spriteStorage;
 
         private List<Ability> _allAbilities;
 
@@ -51,6 +61,11 @@ namespace FCS
         {
             var ability = _allAbilities.First(element => element.AbilityType == abilityType);
             return Instantiate(ability);
+        }
+
+        public Sprite GetSprite(Abilities abilityType)
+        {
+            return _spriteStorage.First(element => element.Type == abilityType).Sprite;
         }
     }
 }

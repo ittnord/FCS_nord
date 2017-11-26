@@ -21,9 +21,17 @@ namespace FCS
         {
             var abilities = AbilitiesStorage.Instance.SelectedAbilities;
             _abilitySlotMain.AbilityType = abilities[0];
+            _abilitySlotMain.Init(GuiFactory.Instance.GetSprite(abilities[0]));
+
             _abilitySlotAdd1.AbilityType = abilities[1];
+            _abilitySlotAdd1.Init(GuiFactory.Instance.GetSprite(abilities[1]));
+
             _abilitySlotAdd2.AbilityType = abilities[2];
+            _abilitySlotAdd2.Init(GuiFactory.Instance.GetSprite(abilities[2]));
+
             _abilitySlotAdd3.AbilityType = abilities[3];
+            _abilitySlotAdd3.Init(GuiFactory.Instance.GetSprite(abilities[3]));
+
         }
     }
 }
