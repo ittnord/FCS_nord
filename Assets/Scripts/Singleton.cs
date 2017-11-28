@@ -2,75 +2,82 @@
 
 namespace FCS
 {
-	public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+	public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 	{
 		private static T _instance;
-
-		private static object _lock = new object();
 
 		public static T Instance
 		{
 			get
 			{
-				if (applicationIsQuitting)
+				// Instance requiered for the first time, we look for it
+				if (_instance == null)
 				{
-					Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
-					                 "' already destroyed on application quit." +
-					                 " Won't create again - returning null.");
-					return null;
-				}
+					_instance = GameObject.FindObjectOfType(typeof(T)) as T;
 
-				lock (_lock)
-				{
+					// Object not found, we create a temporary one
 					if (_instance == null)
 					{
-						_instance = (T) FindObjectOfType(typeof(T));
+						Debug.LogWarning("No instance of " + typeof(T).ToString() + ", a temporary one is created.");
 
-						if (FindObjectsOfType(typeof(T)).Length > 1)
-						{
-							Debug.LogError("[Singleton] Something went really wrong " +
-							               " - there should never be more than 1 singleton!" +
-							               " Reopening the scene might fix it.");
-							return _instance;
-						}
+						isTemporaryInstance = true;
+						_instance = new GameObject("Temp Instance of " + typeof(T).ToString(), typeof(T)).GetComponent<T>();
 
+						// Problem during the creation, this should not happen
 						if (_instance == null)
 						{
-							GameObject singleton = new GameObject();
-							_instance = singleton.AddComponent<T>();
-							singleton.name = "(singleton) " + typeof(T).ToString();
-
-							DontDestroyOnLoad(singleton);
-
-							Debug.Log("[Singleton] An instance of " + typeof(T) +
-							          " is needed in the scene, so '" + singleton +
-							          "' was created with DontDestroyOnLoad.");
-						}
-						else
-						{
-							Debug.Log("[Singleton] Using instance already created: " +
-							          _instance.gameObject.name);
+							Debug.LogError("Problem during the creation of " + typeof(T).ToString());
 						}
 					}
-
-					return _instance;
+					if (!_isInitialized)
+					{
+						_isInitialized = true;
+						_instance.Init();
+					}
 				}
+				return _instance;
 			}
 		}
 
-		private static bool applicationIsQuitting = false;
+		public static bool isTemporaryInstance { private set; get; }
+
+		private static bool _isInitialized;
+
+		// If no other monobehaviour request the instance in an awake function
+		// executing before this one, no need to search the object.
+		private void Awake()
+		{
+			if (_instance == null)
+			{
+				_instance = this as T;
+			}
+			else if (_instance != this)
+			{
+				Debug.LogError("Another instance of " + GetType() + " is already exist! Destroying self...");
+				DestroyImmediate(this);
+				return;
+			}
+			if (!_isInitialized)
+			{
+				DontDestroyOnLoad(gameObject);
+				_isInitialized = true;
+				_instance.Init();
+			}
+		}
+
 
 		/// <summary>
-		/// When Unity quits, it destroys objects in a random order.
-		/// In principle, a Singleton is only destroyed when application quits.
-		/// If any script calls Instance after it have been destroyed, 
-		///   it will create a buggy ghost object that will stay on the Editor scene
-		///   even after stopping playing the Application. Really bad!
-		/// So, this was made to be sure we're not creating that buggy ghost object.
+		/// This function is called when the instance is used the first time
+		/// Put all the initializations you need here, as you would do in Awake
 		/// </summary>
-		public void OnDestroy()
+		public virtual void Init()
 		{
-			applicationIsQuitting = true;
+		}
+
+		/// Make sure the instance isn't referenced anymore when the user quit, just in case.
+		private void OnApplicationQuit()
+		{
+			_instance = null;
 		}
 	}
 }
