@@ -89,36 +89,7 @@
           </e>
         </e>
         <e p="Standard Assets" t="Include">
-          <e p="Cameras" t="Include">
-            <e p="CameraGuidelines.txt" t="Include" />
-            <e p="Scripts" t="Include">
-              <e p="AbstractTargetFollower.cs" t="Include" />
-              <e p="AutoCam.cs" t="Include" />
-              <e p="FreeLookCam.cs" t="Include" />
-              <e p="HandHeldCam.cs" t="Include" />
-              <e p="LookatTarget.cs" t="Include" />
-              <e p="PivotBasedCameraRig.cs" t="Include" />
-              <e p="ProtectCameraFromWallClip.cs" t="Include" />
-              <e p="TargetFieldOfView.cs" t="Include" />
-            </e>
-          </e>
           <e p="Characters" t="Include">
-            <e p="FirstPersonCharacter" t="Include">
-              <e p="FirstPersonCharacterGuidelines.txt" t="Include" />
-              <e p="Scripts" t="Include">
-                <e p="FirstPersonController.cs" t="Include" />
-                <e p="HeadBob.cs" t="Include" />
-                <e p="MouseLook.cs" t="Include" />
-                <e p="RigidbodyFirstPersonController.cs" t="Include" />
-              </e>
-            </e>
-            <e p="RollerBall" t="Include">
-              <e p="RollerBallGuidelines.txt" t="Include" />
-              <e p="Scripts" t="Include">
-                <e p="Ball.cs" t="Include" />
-                <e p="BallUserControl.cs" t="Include" />
-              </e>
-            </e>
             <e p="ThirdPersonCharacter" t="Include">
               <e p="Scripts" t="Include">
                 <e p="AICharacterControl.cs" t="Include" />
@@ -144,40 +115,6 @@
               <e p="TiltInput.cs" t="Include" />
               <e p="TouchPad.cs" t="Include" />
               <e p="VirtualInput.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Environment" t="Include">
-            <e p="Water" t="Include">
-              <e p="Water" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Displace.cs" t="Include" />
-                  <e p="GerstnerDisplace.cs" t="Include" />
-                  <e p="MeshContainer.cs" t="Include" />
-                  <e p="PlanarReflection.cs" t="Include" />
-                  <e p="SpecularLighting.cs" t="Include" />
-                  <e p="Water.cs" t="Include" />
-                  <e p="WaterBase.cs" t="Include" />
-                  <e p="WaterTile.cs" t="Include" />
-                </e>
-                <e p="Shaders" t="Include">
-                  <e p="FXWaterPro.shader" t="Include" />
-                </e>
-              </e>
-              <e p="Water4" t="Include">
-                <e p="Shaders" t="Include">
-                  <e p="FXWater4Advanced.shader" t="Include" />
-                  <e p="FXWater4Simple.shader" t="Include" />
-                  <e p="WaterInclude.cginc" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="Water (Basic)" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="WaterBasic.cs" t="Include" />
-              </e>
-              <e p="Shaders" t="Include">
-                <e p="FXWaterBasic.shader" t="Include" />
-              </e>
             </e>
           </e>
           <e p="ParticleSystems" t="Include">

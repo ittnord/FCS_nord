@@ -61,20 +61,20 @@ namespace Prototype.NetworkLobby
         {
             LobbyManager.s_Singleton.GameType = GameType.Solo;
             _gameTypeSelect.gameObject.SetActive(false);
-            _abilityesSelect.gameObject.SetActive(true);
+            _callback();
         }
 
         public void OnClickCoop()
         {
             LobbyManager.s_Singleton.GameType = GameType.Coop;
             _gameTypeSelect.gameObject.SetActive(false);
-            _abilityesSelect.gameObject.SetActive(true);
+            _callback();
         }
 
         public void OnClilckToBattle()
         {
-            _callback();
             _abilityesSelect.gameObject.SetActive(false);
+            _callback();
         }
 
         public void OnClickDedicated()
