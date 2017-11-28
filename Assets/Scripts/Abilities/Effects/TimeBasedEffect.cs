@@ -1,44 +1,46 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class TimeBasedEffect : MonoBehaviour
+namespace FCS.Abilities.Effects
 {
-    private float _expireTime;
-    private float _nextTickTime;
-    private int _tickCount;
-
-    public virtual void Init(float duration)
+    public class TimeBasedEffect : MonoBehaviour
     {
-        _expireTime = Time.time + duration;
-    }
+        private float _expireTime;
+        private float _nextTickTime;
+        private int _tickCount;
 
-    public virtual void Init(float duration, float tickTime)
-    {
-        _nextTickTime = Time.time + _nextTickTime;
-        Init(duration);
-    }
-
-    public void Update()
-    {
-        if (Time.time > _expireTime)
+        public virtual void Init(float duration)
         {
-            OnExpire();
+            _expireTime = Time.time + duration;
         }
 
-        if (Time.time > _nextTickTime)
+        public virtual void Init(float duration, float tickTime)
         {
-            _tickCount++;
-            OnTick(_tickCount);
             _nextTickTime = Time.time + _nextTickTime;
+            Init(duration);
         }
-    }
 
-    public virtual void OnExpire()
-    {
-        Destroy(this);
-    }
+        public void Update()
+        {
+            if (Time.time > _expireTime)
+            {
+                OnExpire();
+            }
 
-    public virtual void OnTick(int tickCount)
-    {
+            if (Time.time > _nextTickTime)
+            {
+                _tickCount++;
+                OnTick(_tickCount);
+                _nextTickTime = Time.time + _nextTickTime;
+            }
+        }
+
+        public virtual void OnExpire()
+        {
+            Destroy(this);
+        }
+
+        public virtual void OnTick(int tickCount)
+        {
+        }
     }
 }

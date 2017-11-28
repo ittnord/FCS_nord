@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FCS.Abilities;
 using UnityEngine;
 
 namespace FCS
@@ -24,7 +25,7 @@ namespace FCS
         [Serializable]
         public struct AbilitiesToImage
         {
-            public Abilities Type;
+            public AbilityType Type;
             public Sprite Sprite;
         }
 
@@ -57,15 +58,15 @@ namespace FCS
             gui.SetParent(_guiHolder, false);
         }
 
-        public Ability Instantiate(Abilities abilityType)
+        public Ability Instantiate(AbilityType abilityTypeType)
         {
-            var ability = _allAbilities.First(element => element.AbilityType == abilityType);
+            var ability = _allAbilities.First(element => element.AbilityType == abilityTypeType);
             return Instantiate(ability);
         }
 
-        public Sprite GetSprite(Abilities abilityType)
+        public Sprite GetSprite(AbilityType abilityTypeType)
         {
-            return _spriteStorage.First(element => element.Type == abilityType).Sprite;
+            return _spriteStorage.First(element => element.Type == abilityTypeType).Sprite;
         }
     }
 }

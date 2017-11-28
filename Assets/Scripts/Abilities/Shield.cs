@@ -1,6 +1,6 @@
-using UnityEngine.Networking;
+using FCS.Abilities.Effects;
 
-namespace FCS
+namespace FCS.Abilities
 {
     public class Shield : Ability
     {

@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using FCS;
-using FCS.Character;
+﻿using FCS;
+using FCS.Abilities;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 
 namespace Character
 {
@@ -17,7 +15,7 @@ namespace Character
 
         private CharacterBehaviour _character;
 
-        private Abilities _useAbility;
+        private AbilityType _useAbilityType;
 
         private void Awake()
         {
@@ -31,22 +29,22 @@ namespace Character
                 InputController.Instance.OnAbilityUsed -= UseAbility;
         }
 
-        private void UseAbility(Abilities ability)
+        private void UseAbility(AbilityType abilityType)
         {
             if (!isLocalPlayer)
                 return;
             
-            AbilitiesStorage.Instance.CallOnAbilityCdBegin(ability);
-            AbilitiesStorage.Instance.CallOnCdChanged(ability, 0);
+            AbilitiesStorage.Instance.CallOnAbilityCdBegin(abilityType);
+            AbilitiesStorage.Instance.CallOnCdChanged(abilityType, 0);
 
-            _useAbility = ability;
-            CmdUseAbility(ability);
+            _useAbilityType = abilityType;
+            CmdUseAbility(abilityType);
         }
 
         [Command]
-        private void CmdUseAbility(Abilities abilityType)
+        private void CmdUseAbility(AbilityType abilityTypeType)
         {
-            var ability = GuiFactory.Instance.Instantiate(abilityType);
+            var ability = GuiFactory.Instance.Instantiate(abilityTypeType);
             ability.transform.position = FireTransform.position;
             ability.transform.rotation = transform.rotation;
             ability.Caster = _character;

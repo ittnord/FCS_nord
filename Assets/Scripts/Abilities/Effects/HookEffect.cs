@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace FCS
+namespace FCS.Abilities.Effects
 {
     public class HookEffect : MonoBehaviour
     {

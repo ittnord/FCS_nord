@@ -1,4 +1,4 @@
-﻿namespace FCS
+﻿namespace FCS.Abilities
 {
     public class TeleportAbility : Ability
     {

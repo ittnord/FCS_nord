@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Character;
+using FCS.Abilities;
+using FCS.Abilities.Effects;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityStandardAssets.Characters.ThirdPerson;

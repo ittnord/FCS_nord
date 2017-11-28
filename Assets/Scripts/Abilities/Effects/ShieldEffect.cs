@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Networking;
 
-namespace FCS
+namespace FCS.Abilities.Effects
 {
     public class ShieldEffect : MonoBehaviour
     {

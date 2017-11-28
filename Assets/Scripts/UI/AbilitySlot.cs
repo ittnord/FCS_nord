@@ -1,3 +1,4 @@
+using FCS.Abilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,14 +9,12 @@ namespace FCS
         [SerializeField]
         private Image _image;
 
-        public Abilities AbilityType;
+        public AbilityType AbilityType;
         private bool _canCast = true;
 
         public void Init(Sprite ability)
         {
             _image.sprite = ability;
-            //_image.SetNativeSize();
-
             var asd = AbilitiesStorage.Instance;
             asd.OnCdBegin += OnCdBegin;
             asd.OnCdEnd += OnCdEnd;
@@ -40,27 +39,27 @@ namespace FCS
             InputController.Instance.HandleAbility(AbilityType);
         }
 
-        private void OnCdBegin(Abilities abilityType)
+        private void OnCdBegin(AbilityType abilityTypeType)
         {
-            if (AbilityType != abilityType)
+            if (AbilityType != abilityTypeType)
             {
                 return;
             }
             _canCast = false;
         }
 
-        private void OnCdEnd(Abilities abilityType)
+        private void OnCdEnd(AbilityType abilityTypeType)
         {
-            if (AbilityType != abilityType)
+            if (AbilityType != abilityTypeType)
             {
                 return;
             }
             _canCast = true;
         }
 
-        private void OnCdChanged(Abilities abilityType, float value)
+        private void OnCdChanged(AbilityType abilityTypeType, float value)
         {
-            if (AbilityType != abilityType)
+            if (AbilityType != abilityTypeType)
             {
                 return;
             }

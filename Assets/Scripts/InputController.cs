@@ -1,4 +1,5 @@
 using System;
+using FCS.Abilities;
 using UnityEngine;
 
 namespace FCS
@@ -7,11 +8,11 @@ namespace FCS
     {
         public Vector3 InputDirection { get; set; }
 
-        public event Action<Abilities> OnAbilityUsed;
+        public event Action<AbilityType> OnAbilityUsed;
 
-        public void HandleAbility(Abilities ability)
+        public void HandleAbility(AbilityType abilityType)
         {
-            OnAbilityUsed?.Invoke(ability);
+            OnAbilityUsed?.Invoke(abilityType);
         }
 
         public bool InverseDirection { set; get; }

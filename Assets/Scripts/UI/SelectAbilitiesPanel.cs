@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using FCS;
+using FCS.Abilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,11 +36,11 @@ namespace FCS
             SetSelected(_teleportButton, false);
         }
 
-        private void ChangeState(Button button, Abilities abilities)
+        private void ChangeState(Button button, AbilityType abilityType)
         {
             var selectedAbilities = AbilitiesStorage.Instance.SelectedAbilities;
-            AbilitiesStorage.Instance.ChangeState(abilities);
-            if (selectedAbilities.Contains(abilities))
+            AbilitiesStorage.Instance.ChangeState(abilityType);
+            if (selectedAbilities.Contains(abilityType))
             {
                 SetSelected(button, false);
             }
@@ -61,47 +62,47 @@ namespace FCS
 
         public void OnAddExplosion()
         {
-            ChangeState(_explosionButton, Abilities.Explosion);
+            ChangeState(_explosionButton, AbilityType.Explosion);
         }
 
         public void OnAddFireball()
         {
-            ChangeState(_fireballButton, Abilities.Fireball);
+            ChangeState(_fireballButton, AbilityType.Fireball);
         }
 
         public void OnAddForcePush()
         {
-            ChangeState(_forcePushButton, Abilities.ForcePush);
+            ChangeState(_forcePushButton, AbilityType.ForcePush);
         }
 
         public void OnAddHook()
         {
-            ChangeState(_hookButton, Abilities.Hook);
+            ChangeState(_hookButton, AbilityType.Hook);
         }
 
         public void OnAddInvisibility()
         {
-            ChangeState(_invisibilityButton, Abilities.Invisibility);
+            ChangeState(_invisibilityButton, AbilityType.Invisibility);
         }
 
         public void OnAddLifeDrain()
         {
-            ChangeState(_lifeDrainButton, Abilities.LifeDrain);
+            ChangeState(_lifeDrainButton, AbilityType.LifeDrain);
         }
 
         public void OnAddShield()
         {
-            ChangeState(_shieldButton, Abilities.Shield);
+            ChangeState(_shieldButton, AbilityType.Shield);
         }
 
         public void OnAddSwap()
         {
-            ChangeState(_swapButton, Abilities.Swap);
+            ChangeState(_swapButton, AbilityType.Swap);
         }
 
         public void OnAddTeleport()
         {
-            ChangeState(_teleportButton, Abilities.Teleport);
+            ChangeState(_teleportButton, AbilityType.Teleport);
         }
     }
 }

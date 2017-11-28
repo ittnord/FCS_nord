@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using FCS.Abilities.Effects;
 
 namespace FCS
 {

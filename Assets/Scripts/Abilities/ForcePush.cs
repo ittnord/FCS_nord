@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.Networking;
+﻿using FCS.Abilities.Effects;
+using UnityEngine;
 
-namespace FCS
+namespace FCS.Abilities
 {
     public class ForcePush : Ability
     {

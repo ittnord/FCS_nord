@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using FCS.Abilities.Effects;
+using UnityEngine;
 using UnityEngine.Networking;
 
-namespace FCS
+namespace FCS.Abilities
 {
     public class DefaultAttackAbility : Ability
     {

@@ -19,28 +19,12 @@
             </e>
           </e>
         </e>
-        <e p="Readme.txt" t="Include" />
-        <e p="SampleScenes" t="Include">
-          <e p="Menu" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="MenuSceneLoader.cs" t="Include" />
-              <e p="PauseMenu.cs" t="Include" />
-              <e p="SceneAndURLLoader.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="CameraSwitch.cs" t="Include" />
-            <e p="LevelReset.cs" t="Include" />
-            <e p="ParticleSceneControls.cs" t="Include" />
-            <e p="PlaceTargetWithMouse.cs" t="Include" />
-            <e p="SlowMoButton.cs" t="Include" />
-          </e>
-          <e p="Shaders" t="Include">
-            <e p="Skybox-Procedural.shader" t="Include" />
-          </e>
-        </e>
         <e p="Scripts" t="Include">
           <e p="Abilities" t="Include">
+            <e p="AbilitiesStorage.cs" t="Include" />
+            <e p="Ability.cs" t="Include" />
+            <e p="AbilityPerformer.cs" t="Include" />
+            <e p="AbilityType.cs" t="Include" />
             <e p="DefaultAttackAbility.cs" t="Include" />
             <e p="Effects" t="Include">
               <e p="HookEffect.cs" t="Include" />
@@ -59,9 +43,6 @@
             <e p="Swap.cs" t="Include" />
             <e p="TeleportAbility.cs" t="Include" />
           </e>
-          <e p="AbilitiesStorage.cs" t="Include" />
-          <e p="Ability.cs" t="Include" />
-          <e p="AbilityPerformer.cs" t="Include" />
           <e p="AutoDestroy.cs" t="Include" />
           <e p="Camera" t="Include">
             <e p="CameraControl.cs" t="Include" />
@@ -75,7 +56,6 @@
             <e p="CharacterShooting.cs" t="Include" />
           </e>
           <e p="Environment.cs" t="Include" />
-          <e p="Game.cs" t="Include" />
           <e p="InputController.cs" t="Include" />
           <e p="IStat.cs" t="Include" />
           <e p="Lava.cs" t="Include" />
@@ -96,7 +76,6 @@
             <e p="GameManager.cs" t="Include" />
           </e>
           <e p="MyCharacterController.cs" t="Include" />
-          <e p="Player.cs" t="Include" />
           <e p="Singleton.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="AbilitySlot.cs" t="Include" />

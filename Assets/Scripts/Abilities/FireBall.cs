@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.Networking;
 
-namespace FCS
+namespace FCS.Abilities
 {
     public class FireBall : Ability 
     {
