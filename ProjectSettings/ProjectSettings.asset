@@ -697,9 +697,9 @@ PlayerSettings:
     Unity_Ads: 0
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 3
-  cloudProjectId: 0d58132c-5e99-485d-9218-a122a438f06b
-  projectName: Tanks!
-  organizationId: unityguillaume
+  cloudProjectId: 1a13899e-56b5-4f86-ae68-f2480d6fe83e
+  projectName: FCS
+  organizationId: sealtv
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

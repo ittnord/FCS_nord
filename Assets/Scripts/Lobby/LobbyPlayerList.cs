@@ -8,7 +8,7 @@ namespace Prototype.NetworkLobby
     //List of players in the lobby
     public class LobbyPlayerList : MonoBehaviour
     {
-        public static LobbyPlayerList _instance = null;
+        public static LobbyPlayerList Instance = null;
 
         public RectTransform playerListContentTransform;
         
@@ -40,7 +40,7 @@ namespace Prototype.NetworkLobby
         
         public void OnEnable()
         {
-            _instance = this;
+            Instance = this;
             Layout.Clear();
 
             Layout.Add(playerListContentTransform.GetComponent<VerticalLayoutGroup>());

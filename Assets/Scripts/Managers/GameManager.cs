@@ -14,10 +14,11 @@ namespace FCS.Managers
         Solo, Coop
     }
     
+    [RequireComponent(typeof(NetworkIdentity))]
     public class GameManager : NetworkBehaviour
     {
-        public static GameManager Instance;
         public static readonly List<CharacterManager> Characters = new List<CharacterManager>();             
+        public static GameManager Instance;
         
         [SerializeField] private int _numRoundsToWin = 5;          
         [SerializeField] private float _startDelay = 3f;           
@@ -43,13 +44,11 @@ namespace FCS.Managers
         private CharacterManager _roundWinner;         
         private CharacterManager _gameWinner;
 
-        public GameType GameType { get; set; }
-        
         private void Awake()
         {
             Instance = this;
         }
-
+        
         [ServerCallback]
         private void Start()
         {
@@ -59,22 +58,13 @@ namespace FCS.Managers
             StartCoroutine(GameLoop());
         }
 
-        /// <summary>
-        /// Add a tank from the lobby hook
-        /// </summary>
-        /// <param name="character">The actual GameObject instantiated by the lobby, which is a NetworkBehaviour</param>
-        /// <param name="playerNum">The number of the player (based on their slot position in the lobby)</param>
-        /// <param name="c">The color of the player, choosen in the lobby</param>
-        /// <param name="name">The name of the Player, choosen in the lobby</param>
-        /// <param name="localID">The localID. e.g. if 2 player are on the same machine this will be 1 & 2</param>
         public static void AddCharacter(GameObject character, int playerNum, Color c, string name, int localID)
         {
-            int teeam = Instance.GameType == GameType.Solo ? -1 : Characters.Count % 2;
             var tmp = new CharacterManager
             {
                 Instance = character,
                 PlayerNumber = playerNum,
-                PlayerTeeam = teeam,
+                PlayerTeeam = -1,
                 PlayerColor = c,
                 PlayerName = name,
                 LocalPlayerID = localID
@@ -131,12 +121,24 @@ namespace FCS.Managers
                     }
                 }
 
-                LobbyManager.s_Singleton.ServerReturnToLobby();
+                LobbyManager.Instance.ServerReturnToLobby();
             }
             else
             {
                 StartCoroutine(GameLoop());
             }
+        }
+
+        public Vector3 GetLocalPlayerPosition()
+        {
+            var charcter = Characters.FirstOrDefault(c => c.IsLocalPlayer());
+            return charcter?.Movement.transform.position ?? Vector3.zero;
+        }
+
+        public GameObject GetLocalPlayer()
+        {
+            var charcter = Characters.FirstOrDefault(c => c.IsLocalPlayer());
+            return charcter?.Movement.gameObject;
         }
 
 

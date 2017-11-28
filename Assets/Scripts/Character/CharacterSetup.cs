@@ -84,7 +84,7 @@ namespace FCS.Character
                 _guiInited = true;
             }
 
-            if (GameManager.Instance.GameIsFinished && !_isReady)
+            if (GameManager.Instance != null && GameManager.Instance.GameIsFinished && !_isReady)
             {
                 if (Input.GetButtonDown("Fire"))
                 {

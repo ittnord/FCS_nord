@@ -14,7 +14,7 @@ namespace Prototype.NetworkLobby
     {
         static short MsgKicked = MsgType.Highest + 1;
 
-        public static LobbyManager s_Singleton;
+        public static LobbyManager Instance;
 
 
         [Header("Unity UI Lobby")]
@@ -56,7 +56,7 @@ namespace Prototype.NetworkLobby
 
         private void Start()
         {
-            s_Singleton = this;
+            Instance = this;
             _lobbyHooks = GetComponent<LobbyHook>();
             currentPanel = mainMenuPanel;
 

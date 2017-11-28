@@ -54,19 +54,19 @@ namespace Prototype.NetworkLobby
                 _lobbyManager.SetServerInfo("Connecting...", _lobbyManager.networkAddress);
             };
             
-            _abilityesSelect.gameObject.SetActive(true);
+            _gameTypeSelect.gameObject.SetActive(true);
         }
 
         public void OnClickSolo()
         {
-            LobbyManager.s_Singleton.GameType = GameType.Solo;
+            LobbyManager.Instance.GameType = GameType.Solo;
             _gameTypeSelect.gameObject.SetActive(false);
             _callback();
         }
 
         public void OnClickCoop()
         {
-            LobbyManager.s_Singleton.GameType = GameType.Coop;
+            LobbyManager.Instance.GameType = GameType.Coop;
             _gameTypeSelect.gameObject.SetActive(false);
             _callback();
         }

@@ -37,19 +37,15 @@ namespace Prototype.NetworkLobby
         static Color ReadyColor = new Color(0.0f, 204.0f / 255.0f, 204.0f / 255.0f, 1.0f);
         static Color TransparentColor = new Color(0, 0, 0, 0);
 
-        //static Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
-        //static Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
-
-
         public override void OnClientEnterLobby()
         {
             base.OnClientEnterLobby();
 
-            if (LobbyManager.s_Singleton != null) 
-                LobbyManager.s_Singleton.OnPlayersNumberModified(1);
+            if (LobbyManager.Instance != null) 
+                LobbyManager.Instance.OnPlayersNumberModified(1);
 
-            LobbyPlayerList._instance.AddPlayer(this);
-            LobbyPlayerList._instance.DisplayDirectServerWarning(isServer && LobbyManager.s_Singleton.matchMaker == null);
+            LobbyPlayerList.Instance.AddPlayer(this);
+            LobbyPlayerList.Instance.DisplayDirectServerWarning(isServer && LobbyManager.Instance.matchMaker == null);
 
             if (isLocalPlayer)
             {
@@ -63,6 +59,7 @@ namespace Prototype.NetworkLobby
             //setup the player data on UI. The value are SyncVar so the player
             //will be created with the right value currently on server
             OnMyName(playerName);
+            playerColor = Colors[(int) Random.Range(0, Colors.Length)];
             OnMyColor(playerColor);
             OnCanConnectChanged(false);
         }
@@ -77,14 +74,7 @@ namespace Prototype.NetworkLobby
            SetupLocalPlayer();
         }
 
-        public void SetTeeamHard(int teamId)
-        {
-            playerColor = Colors[teamId];
-            CmdColorChange();
-        }
-        
-
-        void ChangeReadyButtonColor(Color c)
+        private void ChangeReadyButtonColor(Color c)
         {
             ColorBlock b = readyButton.colors;
             b.normalColor = c;
@@ -94,7 +84,7 @@ namespace Prototype.NetworkLobby
             readyButton.colors = b;
         }
 
-        void SetupOtherPlayer()
+        private void SetupOtherPlayer()
         {
             nameInput.interactable = false;
 
@@ -106,13 +96,13 @@ namespace Prototype.NetworkLobby
             OnClientReady(false);
         }
 
-        void SetupLocalPlayer()
+        private void SetupLocalPlayer()
         {
             nameInput.interactable = true;
 
             CheckRemoveButton();
 
-            playerColor = Colors[0];
+//            playerColor = Colors[0];
             if (playerColor == Color.magenta)
                 CmdColorChange();
 
@@ -123,7 +113,7 @@ namespace Prototype.NetworkLobby
 
             //have to use child count of player prefab already setup as "this.slot" is not set yet
             if (playerName == "")
-                CmdNameChanged("Player" + (LobbyPlayerList._instance.GetPlayersCount()-1));
+                CmdNameChanged("Player" + (LobbyPlayerList.Instance.GetPlayersCount()-1));
 
             //we switch from simple name display to name input
             colorButton.interactable = true;
@@ -143,7 +133,7 @@ namespace Prototype.NetworkLobby
 
             //when OnClientEnterLobby is called, the loval PlayerController is not yet created, so we need to redo that here to disable
             //the add button if we reach maxLocalPlayer. We pass 0, as it was already counted on OnClientEnterLobby
-            if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(0);
+            if (LobbyManager.Instance != null) LobbyManager.Instance.OnPlayersNumberModified(0);
         }
 
         //This enable/disable the remove button depending on if that is the only local player or not
@@ -234,7 +224,7 @@ namespace Prototype.NetworkLobby
                 RemovePlayer();
             }
             else if (isServer)
-                LobbyManager.s_Singleton.KickPlayer(connectionToClient);
+                LobbyManager.Instance.KickPlayer(connectionToClient);
                 
         }
 
@@ -262,7 +252,7 @@ namespace Prototype.NetworkLobby
         public void CmdColorChange()
         {
             int idx = System.Array.IndexOf(Colors, playerColor);
-  
+            idx++;
             if (idx < 0 || idx >= Colors.Length)
                 idx = 0;
             playerColor = Colors[idx];
@@ -277,11 +267,11 @@ namespace Prototype.NetworkLobby
         //Cleanup thing when get destroy (which happen when client kick or disconnect)
         public void OnDestroy()
         {
-            LobbyPlayerList._instance.RemovePlayer(this);
-            if (LobbyManager.s_Singleton != null) 
-                LobbyManager.s_Singleton.OnPlayersNumberModified(-1);
+            LobbyPlayerList.Instance.RemovePlayer(this);
+            if (LobbyManager.Instance != null) 
+                LobbyManager.Instance.OnPlayersNumberModified(-1);
 
-            if (LobbyManager.s_Singleton != null)
+            if (LobbyManager.Instance != null)
             {
                 AbilitiesStorage.Instance.AvailableChanged -= OnCanConnectChanged;
             }

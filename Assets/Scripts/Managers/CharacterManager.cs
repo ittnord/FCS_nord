@@ -41,7 +41,7 @@ namespace FCS.Managers
         public CharacterSetup CharacterSetup;
         public CharacterShield CharacterShield;
         public CharacterBehaviour CharacterBehaviour;
-
+        
         public void Setup()
         {
             // Get references to the components.
@@ -50,8 +50,20 @@ namespace FCS.Managers
             Health = Instance.GetComponent<CharacterHealth>();
             CharacterBehaviour = Instance.GetComponent<CharacterBehaviour>();
             CharacterShield = Instance.GetComponent<CharacterShield>();
-            this.CharacterSetup = Instance.GetComponent<CharacterSetup>();
+            CharacterSetup = Instance.GetComponent<CharacterSetup>();
 
+            Movement.OnDestroyOject += () =>
+            {
+                Instance = null;
+                Movement = null;
+                Shooting =null;
+                Health = null;
+                CharacterBehaviour = null;
+                CharacterShield = null;
+                CharacterSetup = null;
+                GameManager.Characters.Remove(this);
+            };
+                
             // Get references to the child objects.
             CharacterRenderers = Health.CharacterRenderers;
 
@@ -117,6 +129,11 @@ namespace FCS.Managers
                 Movement.Rigidbody.position = SpawnPoint.position;
                 Movement.Rigidbody.rotation = SpawnPoint.rotation;
             }
+        }
+
+        public bool IsLocalPlayer()
+        {
+            return Movement.isLocalPlayer;
         }
     }
 }

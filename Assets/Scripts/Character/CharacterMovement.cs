@@ -1,5 +1,5 @@
-﻿using FCS;
-using FCS.Character;
+﻿using System;
+using FCS;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -7,6 +7,8 @@ namespace Character
 {
     public class CharacterMovement : NetworkBehaviour
     {
+        public event Action OnDestroyOject = delegate { };
+
         public int PlayerNumber = 1; // Used to identify which tank belongs to which player.  This is set by this tank's manager.
 
         public int LocalID = 1;
@@ -25,6 +27,14 @@ namespace Character
         {
             Rigidbody = GetComponent<Rigidbody>();
             _character = GetComponent<CharacterBehaviour>();
+        }
+
+        private void Start()
+        {
+            if (isLocalPlayer)
+            {
+                CameraControl.Instance.SetCharacter(this);
+            }
         }
 
         private void FixedUpdate()
@@ -80,6 +90,11 @@ namespace Character
         public void RpcSetPosition(Vector3 position)
         {
             transform.position = position;
+        }
+
+        private void OnDestroy()
+        {
+            OnDestroyOject();
         }
     }
 }
