@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace FCS.Abilities
@@ -11,9 +11,12 @@ namespace FCS.Abilities
         public event Action<bool> AvailableChanged;
         public event Action<AbilityType, float> OnCdChanged;
         public event Action<AbilityType> OnCdBegin;
-        public event Action<AbilityType> OnCdEnd; 
+        public event Action<AbilityType> OnCdEnd;
 
-        public bool CanStart => _selectedAbilities.Count == 3;
+        public bool CanStart
+        {
+            get { return _selectedAbilities.Count == 3; }
+        }
 
         public List<AbilityType> SelectedAbilities
         {

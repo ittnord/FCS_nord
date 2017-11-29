@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections;
+using FCS;
 using FCS.Managers;
 
 
@@ -194,7 +195,6 @@ namespace Prototype.NetworkLobby
             {
                 StopHost();
             }
-
             
             ChangeTo(mainMenuPanel);
         }

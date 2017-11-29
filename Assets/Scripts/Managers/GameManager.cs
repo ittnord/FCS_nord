@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FCS.Character;
@@ -132,13 +132,13 @@ namespace FCS.Managers
         public Vector3 GetLocalPlayerPosition()
         {
             var charcter = Characters.FirstOrDefault(c => c.IsLocalPlayer());
-            return charcter?.Movement.transform.position ?? Vector3.zero;
+            return charcter != null ? charcter.Movement.transform.position : Vector3.zero;
         }
 
         public GameObject GetLocalPlayer()
         {
             var charcter = Characters.FirstOrDefault(c => c.IsLocalPlayer());
-            return charcter?.Movement.gameObject;
+            return charcter != null ? charcter.Movement.gameObject : null;
         }
 
 

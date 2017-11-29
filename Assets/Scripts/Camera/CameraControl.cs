@@ -1,4 +1,4 @@
-﻿using Character;
+using Character;
 using FCS.Managers;
 using UnityEngine;
 
@@ -66,7 +66,7 @@ public class CameraControl : MonoBehaviour
 
     private Vector3 FindAveragePosition()
     {
-        var position = _targetCharacter?.transform.position ?? Vector3.zero;
+        var position = _targetCharacter != null ? _targetCharacter.transform.position : Vector3.zero;
         position.y = transform.position.y;
         return position;
     }
@@ -101,7 +101,7 @@ public class CameraControl : MonoBehaviour
 
         if (_targetCharacter != null)
         {
-            var targetDistance = (desiredPosition - _targetCharacter?.transform.position ?? Vector3.zero).magnitude;
+            var targetDistance = (desiredPosition - (_targetCharacter != null ? _targetCharacter.transform.position : Vector3.zero)).magnitude;
             if (targetDistance > furthestDistance)
             {
                 furthestDistance = targetDistance;

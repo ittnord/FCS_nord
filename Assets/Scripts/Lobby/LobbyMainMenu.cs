@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using FCS;
 using FCS.Managers;
+using UnityEngine.Networking;
 using UnityStandardAssets.Utility;
 
 namespace Prototype.NetworkLobby
@@ -31,30 +32,53 @@ namespace Prototype.NetworkLobby
 
             _ipInput.onEndEdit.RemoveAllListeners();
             _ipInput.onEndEdit.AddListener(OnEndEditIp);
+
+            NetClientSingleton.Instance.StopClient();
+            NetServerSingleton.Instance.StopServer();
         }
 
         public void OnClickHost()
         {
-            _callback = () => _lobbyManager.StartHost();
+            _callback = () =>
+            {
+                NetServerSingleton.Instance.StartServer();
+                _lobbyManager.StartHost();
+            };
             _gameTypeSelect.gameObject.SetActive(true);
+
+            
+        }
+
+        private void BackFromJoint()
+        {
+            _lobbyManager.StopClientClbk();
+            NetClientSingleton.Instance.StopClient();
         }
 
         public void OnClickJoin()
         {
             _callback = () =>
             {
+                NetClientSingleton.Instance.StartClient(OnReceivedBroadcast);
+
                 _lobbyManager.ChangeTo(_lobbyPanel);
                 _lobbyPanel.GetComponent<LobbyPlayerList>().Init(_lobbyManager.GameType);
-                _lobbyManager.networkAddress = _ipInput.text;
-                _lobbyManager.StartClient();
 
-                _lobbyManager.backDelegate = _lobbyManager.StopClientClbk;
+                _lobbyManager.backDelegate = BackFromJoint;
                 _lobbyManager.DisplayIsConnecting();
-
-                _lobbyManager.SetServerInfo("Connecting...", _lobbyManager.networkAddress);
             };
             
             _gameTypeSelect.gameObject.SetActive(true);
+        }
+
+        public void OnReceivedBroadcast(string fromAddress)
+        {
+            NetClientSingleton.Instance.StopClient();
+
+            _lobbyManager.networkAddress = fromAddress;
+            _lobbyManager.StartClient();
+
+            _lobbyManager.SetServerInfo("Connecting...", _lobbyManager.networkAddress);
         }
 
         public void OnClickSolo()

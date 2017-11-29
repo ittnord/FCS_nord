@@ -12,8 +12,12 @@ namespace FCS
     public class CharacterBehaviour : ThirdPersonCharacter
     {
         private CharacterHealth _characterHealth;
-        private CharacterHealth Health => _characterHealth ?? (_characterHealth = GetComponent<CharacterHealth>());
-      
+
+        private CharacterHealth Health
+        {
+            get { return _characterHealth ?? (_characterHealth = GetComponent<CharacterHealth>()); }
+        }
+
         [SerializeField]
         private Transform _shieldTransform;
 
