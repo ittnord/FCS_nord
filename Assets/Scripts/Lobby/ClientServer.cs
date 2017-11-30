@@ -10,7 +10,7 @@ namespace FCS
 
         void Awake()
         {
-            //useNetworkManager = true;
+            useNetworkManager = true;
             showGUI = false;
             StartClient();
         }
@@ -61,7 +61,7 @@ namespace FCS
         // Use this for initialization
         void Awake()
         {
-            //useNetworkManager = true;
+            useNetworkManager = true;
             showGUI = false;
             StartServer();
         }
@@ -88,9 +88,14 @@ namespace FCS
             StopBroadcast();
         }
 
-        int _minPort = 8082;
-        int _maxPort = 8888;
-        int _defaultPort = 8081;
+        const int _minPort = 8082;
+        const int _maxPort = 8888;
+        const int _defaultPort = 8081;
+
+        public static int Port
+        {
+            get { return 8080; }
+        }
 
         //Creates a server then returns the port the server is created with. Returns -1 if server is not created
         private int CreateServer()

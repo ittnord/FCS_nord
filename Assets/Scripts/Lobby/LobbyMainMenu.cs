@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using FCS;
+using FCS.Abilities;
 using FCS.Managers;
 using UnityEngine.Networking;
 using UnityStandardAssets.Utility;
@@ -33,6 +34,7 @@ namespace Prototype.NetworkLobby
             _ipInput.onEndEdit.RemoveAllListeners();
             _ipInput.onEndEdit.AddListener(OnEndEditIp);
 
+            AbilitiesStorage.Instance.Clear();
             NetClientSingleton.Instance.StopClient();
             NetServerSingleton.Instance.StopServer();
         }
@@ -42,6 +44,7 @@ namespace Prototype.NetworkLobby
             _callback = () =>
             {
                 NetServerSingleton.Instance.StartServer();
+                _lobbyManager.networkPort = NetServer.Port;
                 _lobbyManager.StartHost();
             };
             _gameTypeSelect.gameObject.SetActive(true);
@@ -76,6 +79,7 @@ namespace Prototype.NetworkLobby
             NetClientSingleton.Instance.StopClient();
 
             _lobbyManager.networkAddress = fromAddress;
+            _lobbyManager.networkPort = NetServer.Port;
             _lobbyManager.StartClient();
 
             _lobbyManager.SetServerInfo("Connecting...", _lobbyManager.networkAddress);
@@ -104,6 +108,7 @@ namespace Prototype.NetworkLobby
         public void OnClickDedicated()
         {
             _lobbyManager.ChangeTo(null);
+            _lobbyManager.networkPort = NetServer.Port;
             _lobbyManager.StartServer();
 
             _lobbyManager.backDelegate = _lobbyManager.StopServerClbk;

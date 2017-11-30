@@ -29,6 +29,12 @@ namespace FCS.Abilities
             }
         }
 
+        public void Clear()
+        {
+            _selectedAbilities.Clear();
+            _abilitiesCd.Clear();
+        }
+
         public void ChangeState(AbilityType abilityType)
         {
             if (_selectedAbilities.Contains(abilityType))
