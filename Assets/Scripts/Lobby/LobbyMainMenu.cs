@@ -35,8 +35,8 @@ namespace Prototype.NetworkLobby
             _ipInput.onEndEdit.AddListener(OnEndEditIp);
 
             AbilitiesStorage.Instance.Clear();
-            NetClientSingleton.Instance.StopClient();
-            NetServerSingleton.Instance.StopServer();
+//            NetClientSingleton.Instance.StopClient();
+//            NetServerSingleton.Instance.StopServer();
         }
 
         public void OnClickHost()
@@ -44,7 +44,7 @@ namespace Prototype.NetworkLobby
             _callback = () =>
             {
                 NetServerSingleton.Instance.StartServer();
-                _lobbyManager.networkPort = NetServer.Port;
+                _lobbyManager.networkPort = NetServer.DefaultPort;
                 _lobbyManager.StartHost();
             };
             _gameTypeSelect.gameObject.SetActive(true);
@@ -76,10 +76,10 @@ namespace Prototype.NetworkLobby
 
         public void OnReceivedBroadcast(string fromAddress)
         {
-            NetClientSingleton.Instance.StopClient();
+            //NetClientSingleton.Instance.StopClient();
 
             _lobbyManager.networkAddress = fromAddress;
-            _lobbyManager.networkPort = NetServer.Port;
+            _lobbyManager.networkPort = NetServer.DefaultPort;
             _lobbyManager.StartClient();
 
             _lobbyManager.SetServerInfo("Connecting...", _lobbyManager.networkAddress);
@@ -108,7 +108,7 @@ namespace Prototype.NetworkLobby
         public void OnClickDedicated()
         {
             _lobbyManager.ChangeTo(null);
-            _lobbyManager.networkPort = NetServer.Port;
+            _lobbyManager.networkPort = NetServer.DefaultPort;
             _lobbyManager.StartServer();
 
             _lobbyManager.backDelegate = _lobbyManager.StopServerClbk;

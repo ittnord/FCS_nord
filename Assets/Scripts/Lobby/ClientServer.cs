@@ -88,11 +88,11 @@ namespace FCS
             StopBroadcast();
         }
 
-        const int _minPort = 8082;
-        const int _maxPort = 8888;
-        const int _defaultPort = 8081;
+        const int _minPort = 7778;
+        const int _maxPort = 8000;
+        const int _broadcastPort = 7777;
 
-        public static int Port
+        public static int DefaultPort
         {
             get { return 8080; }
         }
@@ -102,10 +102,10 @@ namespace FCS
         {
             int serverPort = -1;
             //Connect to default port
-            bool serverCreated = NetworkServer.Listen(_defaultPort);
+            bool serverCreated = NetworkServer.Listen(_broadcastPort);
             if (serverCreated)
             {
-                serverPort = _defaultPort;
+                serverPort = _broadcastPort;
                 Debug.Log("Server Created with deafault port");
             }
             else
@@ -115,7 +115,7 @@ namespace FCS
                 for (int tempPort = _minPort; tempPort <= _maxPort; tempPort++)
                 {
                     //Skip the default port since we have already tried it
-                    if (tempPort != _defaultPort)
+                    if (tempPort != _broadcastPort)
                     {
                         //Exit loop if successfully create a server
                         if (NetworkServer.Listen(tempPort))

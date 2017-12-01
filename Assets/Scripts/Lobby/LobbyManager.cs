@@ -354,7 +354,7 @@ namespace Prototype.NetworkLobby
 
         public IEnumerator ServerCountdownCoroutine()
         {
-            NetServerSingleton.Instance.StopServer();
+            //NetServerSingleton.Instance.StopServer();
 
             float remainingTime = prematchCountdown;
             int floorTime = Mathf.FloorToInt(remainingTime);
